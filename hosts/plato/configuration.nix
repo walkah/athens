@@ -1,0 +1,84 @@
+{ config, pkgs, ... }:
+
+{
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    <home-manager/nixos>
+  ];
+
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.cleanTmpDir = true;
+
+  nixpkgs.config.allowUnfree = true;
+
+  # Set your time zone.
+  time.timeZone = "America/Toronto";
+
+  networking.hostName = "plato"; # Define your hostname.
+  networking.useDHCP = false;
+  networking.interfaces.enp10s0.useDHCP = true;
+  networking.interfaces.enp9s0.useDHCP = true;
+  networking.nameservers = [ "100.100.100.100" "1.1.1.1" ];
+  networking.search = [ "walkah.net.beta.tailscale.net" ];
+
+  security.sudo.wheelNeedsPassword = false;
+
+  users.users.root.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
+  ];
+  users.users.walkah = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "docker" ];
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM8YMax7PGIrcPNIHkpuNRFgn3HJK6Wepm+ycZWO6jfR walkah@walkah-ipadpro11"
+    ];
+  };
+  home-manager.users.walkah = import /home/walkah/.config/nixpkgs/home.nix;
+
+  system.autoUpgrade.enable = true;
+  environment.systemPackages = with pkgs; [ ];
+
+  fileSystems."/mnt/downloads" = {
+    device = "192.168.6.100:/volume1/Downloads";
+    fsType = "nfs";
+  };
+  fileSystems."/mnt/music" = {
+    device = "192.168.6.100:/volume1/Music";
+    fsType = "nfs";
+  };
+  fileSystems."/mnt/video" = {
+    device = "192.168.6.100:/volume1/Video";
+    fsType = "nfs";
+  };
+
+  programs.mosh.enable = true;
+  programs.zsh.enable = true;
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
+  services.tailscale.enable = true;
+  services.keybase.enable = true;
+
+  virtualisation.docker.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "20.09"; # Did you read the comment?
+
+}
+
