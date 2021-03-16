@@ -1,0 +1,18 @@
+$ORIGIN walkah.lab.
+@       3600 IN SOA plato.walkah.lab. walkah.walkah.net. (
+        2020042900 ; serial
+        7200       ; refresh (2 hours)
+        3600       ; retry (1 hour)
+        1209600    ; expire (2 weeks)
+        3600       ; minimum (1 hour)
+)
+
+socrates        IN A    100.103.57.96
+plato           IN A    100.111.208.75
+; aristotle
+agent           IN A    100.73.53.115
+form            IN A    100.124.46.121   
+matter          IN A    100.77.198.4 
+purpose         IN A    100.103.26.74  
+
+epicurus        IN A    100.66.26.116

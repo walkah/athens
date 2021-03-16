@@ -4,6 +4,8 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     <home-manager/nixos>
+
+    ../../modules/coredns
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -20,8 +22,8 @@
   networking.useDHCP = false;
   networking.interfaces.enp10s0.useDHCP = true;
   networking.interfaces.enp9s0.useDHCP = true;
-  networking.nameservers = [ "100.100.100.100" "1.1.1.1" ];
-  networking.search = [ "walkah.net.beta.tailscale.net" ];
+  networking.nameservers = [ "100.111.208.75" "1.1.1.1" ];
+  networking.search = [ "walkah.lab" ];
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -70,7 +72,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
