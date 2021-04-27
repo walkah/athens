@@ -2,5 +2,5 @@
 
 pkgs.mkShell {
   name = "athens";
-  buildInputs = [ ];
+  buildInputs = [ pkgs.morph ];
 }
