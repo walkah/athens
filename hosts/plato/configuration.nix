@@ -76,6 +76,45 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
+  services = {
+    grafana = {
+      enable = true;
+      domain = "plato.walkah.lab";
+      port = 2342;
+      addr = "0.0.0.0";
+    };
+    prometheus = {
+      enable = true;
+      port = 9090;
+      exporters = {
+        node = {
+          enable = true;
+          enabledCollectors = [ "systemd" ];
+          port = 9100;
+        };
+      };
+
+      scrapeConfigs = [
+        {
+          job_name = "node";
+          static_configs = [{
+            targets = [
+              "plato:9100"
+              "agent:9100"
+              "form:9100"
+              "matter:9100"
+              "purpose:9100"
+            ];
+          }];
+        }
+        {
+          job_name = "coredns";
+          static_configs = [{ targets = [ "plato:9153" ]; }];
+        }
+      ];
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
