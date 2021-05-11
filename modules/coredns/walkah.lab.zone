@@ -10,9 +10,10 @@ $ORIGIN walkah.lab.
 socrates        IN A    100.103.57.96
 plato           IN A    100.111.208.75
 ; aristotle
-agent           IN A    100.73.53.115
-form            IN A    100.124.46.121   
-matter          IN A    100.77.198.4 
-purpose         IN A    100.103.26.74  
+agent           IN A    100.95.167.126
+form            IN A    100.87.220.71
+matter          IN A    100.126.255.109
+purpose         IN A    100.74.59.80
 
+parthenon       IN A    100.73.24.17
 epicurus        IN A    100.66.26.116
