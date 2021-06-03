@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
-{
+let
+  dotfiles = builtins.fetchTarball
+    "https://github.com/walkah/dotfiles/archive/main.tar.gz";
+in {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     <home-manager/nixos>
@@ -41,7 +44,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM8YMax7PGIrcPNIHkpuNRFgn3HJK6Wepm+ycZWO6jfR walkah@walkah-ipadpro11"
     ];
   };
-  home-manager.users.walkah = import /home/walkah/.config/nixpkgs/home.nix;
+  home-manager.users.walkah = import "${dotfiles}/home.nix";
 
   system.autoUpgrade.enable = true;
   environment.systemPackages = with pkgs; [ ];
