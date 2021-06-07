@@ -1,4 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+let
+  dotfiles = builtins.fetchTarball
+    "https://github.com/walkah/dotfiles/archive/main.tar.gz";
+in {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
@@ -13,8 +18,8 @@
   networking.hostName = "socrates";
   networking.firewall.allowPing = true;
   networking.firewall.allowedTCPPorts = [ 80 443 ];
-  networking.nameservers = [ "100.100.100.100" "1.1.1.1" ];
-  networking.search = [ "walkah.net.beta.tailscale.net" ];
+  networking.nameservers = [ "100.111.208.75" "1.1.1.1" ];
+  networking.search = [ "walkah.lab" ];
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -32,7 +37,7 @@
       ];
     };
   };
-  home-manager.users.walkah = import /home/walkah/.config/nixpkgs/home.nix;
+  home-manager.users.walkah = import "${dotfiles}/home.nix";
 
   system.autoUpgrade.enable = true;
   environment.systemPackages = with pkgs; [ ];
@@ -43,8 +48,6 @@
   services.openssh.enable = true;
   services.tailscale.enable = true;
 
-  virtualisation.docker.enable = true;
-
   security.acme.acceptTerms = true;
   security.acme.email = "walkah@walkah.net";
 
@@ -53,15 +56,6 @@
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-
-    virtualHosts."walkah.codes" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:8080";
-        proxyWebsockets = true;
-      };
-    };
   };
 
 }
