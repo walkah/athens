@@ -8,6 +8,8 @@ in {
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
     <home-manager/nixos>
+
+    ../../modules/matrix/nginx.nix
   ];
 
   boot.cleanTmpDir = true;
@@ -39,7 +41,7 @@ in {
   };
   home-manager.users.walkah = import "${dotfiles}/home.nix";
 
-  system.autoUpgrade.enable = true;
+  system.autoUpgrade.enable = false;
   environment.systemPackages = with pkgs; [ ];
 
   programs.mosh.enable = true;
@@ -53,9 +55,10 @@ in {
 
   services.nginx = {
     enable = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
     recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedProxySettings = true;
   };
 
 }

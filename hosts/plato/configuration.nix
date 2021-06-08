@@ -9,6 +9,7 @@ in {
     <home-manager/nixos>
 
     ../../modules/coredns
+    ../../modules/matrix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -47,7 +48,7 @@ in {
   home-manager.users.walkah = import "${dotfiles}/home.nix";
 
   system.autoUpgrade.enable = true;
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ weechat ];
 
   fileSystems."/mnt/downloads" = {
     device = "192.168.6.100:/volume1/Downloads";
@@ -63,8 +64,10 @@ in {
   };
 
   programs.mosh.enable = true;
-  programs.zsh.enable = true;
-
+  programs.zsh = {
+    enable = true;
+    promptInit = "";
+  };
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
