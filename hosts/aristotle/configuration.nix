@@ -4,6 +4,8 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./rpi-poe.nix
+
+    ../../modules/ipfs
   ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
@@ -26,6 +28,7 @@
   networking.useDHCP = false;
   networking.interfaces.eth0.useDHCP = true;
   networking.interfaces.wlan0.useDHCP = true;
+  networking.firewall.enable = false;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
