@@ -117,6 +117,13 @@ in {
           job_name = "coredns";
           static_configs = [{ targets = [ "plato:9153" ]; }];
         }
+        {
+          job_name = "ipfs";
+          metrics_path = "/debug/metrics/prometheus";
+          static_configs = [{
+            targets = [ "agent:5001" "form:5001" "matter:5001" "purpose:5001" ];
+          }];
+        }
       ];
     };
   };
