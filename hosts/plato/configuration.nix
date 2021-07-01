@@ -110,6 +110,7 @@ in {
               "form:9100"
               "matter:9100"
               "purpose:9100"
+              "socrates:9100"
             ];
           }];
         }
