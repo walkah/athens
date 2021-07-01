@@ -47,18 +47,32 @@ in {
   programs.mosh.enable = true;
   programs.zsh.enable = true;
 
-  services.openssh.enable = true;
-  services.tailscale.enable = true;
-
   security.acme.acceptTerms = true;
   security.acme.email = "walkah@walkah.net";
 
-  services.nginx = {
-    enable = true;
-    recommendedTlsSettings = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    recommendedProxySettings = true;
+  services = {
+    nginx = {
+      enable = true;
+      recommendedTlsSettings = true;
+      recommendedOptimisation = true;
+      recommendedGzipSettings = true;
+      recommendedProxySettings = true;
+    };
+    openssh = { enable = true; };
+    prometheus = {
+      enable = true;
+      port = 9090;
+      listenAddress = "100.103.57.96";
+      exporters = {
+        node = {
+          enable = true;
+          enabledCollectors = [ "systemd" ];
+          openFirewall = true;
+          port = 9100;
+          listenAddress = "100.103.57.96";
+        };
+      };
+    };
+    tailscale = { enable = true; };
   };
-
 }
