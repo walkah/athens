@@ -27,8 +27,6 @@ in {
   networking.useDHCP = false;
   networking.interfaces.enp10s0.useDHCP = true;
   networking.interfaces.enp9s0.useDHCP = true;
-  networking.nameservers = [ "100.111.208.75" "1.1.1.1" ];
-  networking.search = [ "walkah.lab" ];
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -81,6 +79,8 @@ in {
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
+
+  walkah.coredns = { enable = true; };
 
   services = {
     grafana = {
@@ -136,6 +136,4 @@ in {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.09"; # Did you read the comment?
-
 }
-

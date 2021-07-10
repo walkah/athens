@@ -1,6 +1,6 @@
 $ORIGIN walkah.lab.
 @       3600 IN SOA plato.walkah.lab. walkah.walkah.net. (
-        2020042900 ; serial
+        2021070700 ; serial
         7200       ; refresh (2 hours)
         3600       ; retry (1 hour)
         1209600    ; expire (2 weeks)
@@ -15,5 +15,5 @@ form            IN A    100.87.220.71
 matter          IN A    100.126.255.109
 purpose         IN A    100.74.59.80
 
-parthenon       IN A    100.73.24.17
+parthenon       IN A    100.106.65.40
 epicurus        IN A    100.66.26.116

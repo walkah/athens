@@ -9,6 +9,7 @@ in {
     ./networking.nix # generated at runtime by nixos-infect
     <home-manager/nixos>
 
+    ../../modules/coredns
     ../../modules/matrix/nginx.nix
   ];
 
@@ -20,8 +21,6 @@ in {
   networking.hostName = "socrates";
   networking.firewall.allowPing = true;
   networking.firewall.allowedTCPPorts = [ 80 443 ];
-  networking.nameservers = [ "100.111.208.75" "1.1.1.1" ];
-  networking.search = [ "walkah.lab" ];
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -49,6 +48,11 @@ in {
 
   security.acme.acceptTerms = true;
   security.acme.email = "walkah@walkah.net";
+
+  walkah.coredns = {
+    enable = true;
+    addr = "100.103.57.96";
+  };
 
   services = {
     nginx = {
