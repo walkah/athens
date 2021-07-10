@@ -16,6 +16,15 @@
       ];
       extraConfig = {
         API = { HTTPHeaders = { Access-Control-Allow-Origin = [ "*" ]; }; };
+        Routing = { Type = "dhtclient"; };
+        Swarm = {
+          ConnMgr = {
+            Type = "basic";
+            LowWater = 25;
+            HighWater = 50;
+            GracePeriod = "1m0s";
+          };
+        };
       };
     };
   };
