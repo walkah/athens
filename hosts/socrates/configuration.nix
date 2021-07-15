@@ -10,6 +10,7 @@ in {
     <home-manager/nixos>
 
     ../../modules/coredns
+    ../../modules/home-assistant/nginx.nix
     ../../modules/matrix/nginx.nix
   ];
 
