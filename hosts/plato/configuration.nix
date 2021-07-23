@@ -49,6 +49,11 @@ in {
   system.autoUpgrade.enable = true;
   environment.systemPackages = with pkgs; [ weechat ];
 
+  fileSystems."/mnt/config" = {
+    device = "192.168.6.100:/volume1/Config";
+    fsType = "nfs";
+  };
+
   fileSystems."/mnt/downloads" = {
     device = "192.168.6.100:/volume1/Downloads";
     fsType = "nfs";

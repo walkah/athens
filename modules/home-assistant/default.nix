@@ -5,9 +5,9 @@
   virtualisation.oci-containers = {
     containers = {
       home-assistant = {
-        image = "ghcr.io/home-assistant/home-assistant:2021.7.2";
+        image = "ghcr.io/home-assistant/home-assistant:2021.7.4";
         volumes =
-          [ "/var/lib/hass:/config" "/etc/localtime:/etc/localtime:ro" ];
+          [ "/mnt/config/hass:/config" "/etc/localtime:/etc/localtime:ro" ];
         extraOptions = [ "--privileged" "--network=host" ];
       };
     };
