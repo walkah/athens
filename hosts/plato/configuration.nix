@@ -9,6 +9,7 @@ in {
     <home-manager/nixos>
 
     ../../modules/coredns
+    ../../modules/code-server
     ../../modules/home-assistant
     ../../modules/matrix
   ];
