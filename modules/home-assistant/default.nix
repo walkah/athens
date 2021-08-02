@@ -7,7 +7,7 @@
       home-assistant = {
         image = "ghcr.io/home-assistant/home-assistant:2021.7.4";
         volumes =
-          [ "/mnt/config/hass:/config" "/etc/localtime:/etc/localtime:ro" ];
+          [ "/var/lib/hass:/config" "/etc/localtime:/etc/localtime:ro" ];
         extraOptions = [ "--privileged" "--network=host" ];
       };
     };
