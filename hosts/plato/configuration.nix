@@ -47,7 +47,7 @@ in {
   };
   home-manager.users.walkah = import "${dotfiles}/home.nix";
 
-  system.autoUpgrade.enable = true;
+  system.autoUpgrade.enable = false;
   environment.systemPackages = with pkgs; [ weechat ];
 
   fileSystems."/mnt/downloads" = {
