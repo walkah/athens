@@ -74,7 +74,14 @@ in {
   services.tailscale.enable = true;
   services.keybase.enable = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    # Clean docker images periodically
+    autoPrune = {
+      enable = true;
+      flags = [ "--all" ];
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
