@@ -63,6 +63,16 @@ in {
     fsType = "nfs";
   };
 
+  power.ups = {
+    enable = true;
+    mode = "standalone";
+    ups."cyberpower" = {
+      description = "Cyberpower EC650LCD";
+      driver = "usbhid-ups";
+      port = "auto";
+    };
+  };
+
   programs.mosh.enable = true;
   programs.zsh = {
     enable = true;
