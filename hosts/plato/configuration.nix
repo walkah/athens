@@ -48,7 +48,7 @@ in {
   home-manager.users.walkah = import "${dotfiles}/home.nix";
 
   system.autoUpgrade.enable = false;
-  environment.systemPackages = with pkgs; [ weechat ];
+  environment.systemPackages = with pkgs; [ docker-compose weechat ];
 
   fileSystems."/mnt/downloads" = {
     device = "192.168.6.100:/volume1/Downloads";
