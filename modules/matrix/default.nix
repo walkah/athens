@@ -17,6 +17,7 @@
     matrix-synapse = {
       enable = true;
       server_name = "walkah.chat";
+      public_baseurl = "https://matrix.walkah.chat";
       enable_metrics = true;
       enable_registration = false;
       database_type = "psycopg2";
@@ -32,6 +33,11 @@
           names = [ "client" "federation" ];
         }];
       }];
+
+      account_threepid_delegates = {
+        email = "https://vector.im";
+        msisdn = "https://vector.im";
+      };
     };
   };
 }
