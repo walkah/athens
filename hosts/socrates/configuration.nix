@@ -11,6 +11,7 @@ in {
 
     ../../modules/coredns
     ../../modules/code-server/nginx.nix
+    ../../modules/gitea/nginx.nix
     ../../modules/home-assistant/nginx.nix
     ../../modules/matrix/nginx.nix
   ];
