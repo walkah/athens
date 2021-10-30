@@ -150,11 +150,6 @@ in {
             targets = [ "agent:5001" "form:5001" "matter:5001" "purpose:5001" ];
           }];
         }
-        {
-          job_name = "exportarr";
-          static_configs =
-            [{ targets = [ "plato:9707" "plato:9708" "plato:9709" ]; }];
-        }
       ];
     };
   };
