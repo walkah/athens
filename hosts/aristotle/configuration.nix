@@ -5,7 +5,7 @@
     ./hardware-configuration.nix
     ./rpi-poe.nix
 
-    ../../modules/ipfs
+    ../../modules/ipfs/cluster.nix
   ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)

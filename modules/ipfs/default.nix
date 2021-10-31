@@ -20,16 +20,6 @@
         API = { HTTPHeaders = { Access-Control-Allow-Origin = [ "*" ]; }; };
         Discovery = { MDNS = { Enabled = true; }; };
         Routing = { Type = "dht"; };
-        Peering = { Peers = [ ]; };
-        Swarm = {
-          AddrFilters = null;
-          ConnMgr = {
-            Type = "basic";
-            LowWater = 25;
-            HighWater = 50;
-            GracePeriod = "1m0s";
-          };
-        };
       };
     };
   };

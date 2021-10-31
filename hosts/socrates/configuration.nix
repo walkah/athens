@@ -13,6 +13,7 @@ in {
     ../../modules/code-server/nginx.nix
     ../../modules/gitea/nginx.nix
     ../../modules/home-assistant/nginx.nix
+    ../../modules/ipfs/gateway.nix
     ../../modules/matrix/nginx.nix
   ];
 
@@ -24,6 +25,7 @@ in {
   networking.hostName = "socrates";
   networking.firewall.allowPing = true;
   networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
   security.sudo.wheelNeedsPassword = false;
 
