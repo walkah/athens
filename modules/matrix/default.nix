@@ -22,7 +22,6 @@
       enable_registration = false;
       database_type = "psycopg2";
       database_args = { database = "matrix"; };
-
       listeners = [{
         port = 8008;
         type = "http";
@@ -33,11 +32,18 @@
           names = [ "client" "federation" ];
         }];
       }];
+      extraConfigFiles = [
+        config.sops.secrets.matrix_registration_secret.path
+      ];
 
       account_threepid_delegates = {
         email = "https://vector.im";
         msisdn = "https://vector.im";
       };
     };
+  };
+
+  sops.secrets.matrix_registration_secret = { 
+    owner = "matrix-synapse";
   };
 }

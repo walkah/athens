@@ -13,6 +13,7 @@ in {
     ../../modules/gitea
     ../../modules/home-assistant
     ../../modules/matrix
+    ../../modules/sops
   ];
 
   # Use the systemd-boot EFI boot loader.
