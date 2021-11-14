@@ -1,0 +1,9 @@
+keys:
+  - &walkah age16yv7atd8n880ja98pksqqvunu2yw00660lkh4n0sg39j5vt3dujshyu95j
+  - &plato age12m47c7xvqttncps0e79pwamzqa4nmnxekwumtwcv5ju6q74fufaqp9d0xh
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *walkah
+      - *plato
