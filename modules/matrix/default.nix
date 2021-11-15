@@ -33,7 +33,7 @@
         }];
       }];
       extraConfigFiles = [
-        config.sops.secrets.matrix_registration_secret.path
+        config.sops.secrets.matrix-registration-secret.path
       ];
 
       account_threepid_delegates = {
@@ -43,7 +43,7 @@
     };
   };
 
-  sops.secrets.matrix_registration_secret = { 
+  sops.secrets.matrix-registration-secret = { 
     owner = "matrix-synapse";
   };
 }
