@@ -1,7 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./default.nix ];
+  imports = [
+    ./default.nix
+    ../../services/ipfs-cluster.nix
+  ];
+
   services = {
     ipfs = {
       enable = true;
@@ -17,5 +21,15 @@
         };
       };
     };
+
+    ipfs-cluster = {
+      enable = true;
+      consensus = "crdt";
+      secretFile = config.sops.secrets.ipfs-cluster-secret.path;
+    };
+  };
+
+  sops.secrets.ipfs-cluster-secret = {
+    owner = "ipfs";
   };
 }
