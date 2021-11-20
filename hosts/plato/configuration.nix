@@ -23,6 +23,7 @@ in {
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ (import ../../overlays) ];
 
   # Set your time zone.
   time.timeZone = "America/Toronto";

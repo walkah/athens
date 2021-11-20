@@ -17,6 +17,8 @@ in {
     ../../modules/matrix/nginx.nix
   ];
 
+  nixpkgs.overlays = [ (import ../../overlays) ];
+
   boot.cleanTmpDir = true;
 
   # Set your time zone.
