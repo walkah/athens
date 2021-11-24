@@ -6,7 +6,7 @@
     networking.hostName = "plato";
     nixpkgs.system = "x86_64-linux";
 
-    deployment.targetHost = "192.168.6.102";
+    deployment.targetHost = "plato";
     deployment.targetUser = "root";
   };
 }

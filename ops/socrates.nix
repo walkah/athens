@@ -6,7 +6,7 @@
     networking.hostName = "socrates";
     nixpkgs.system = "x86_64-linux";
 
-    deployment.targetHost = "167.99.176.10";
+    deployment.targetHost = "socrates";
     deployment.targetUser = "root";
   };
 }

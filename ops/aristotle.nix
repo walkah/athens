@@ -6,7 +6,7 @@
     networking.hostName = "agent";
     nixpkgs.system = "aarch64-linux";
 
-    deployment.targetHost = "192.168.6.200";
+    deployment.targetHost = "agent";
     deployment.targetUser = "root";
   };
 
@@ -15,7 +15,7 @@
     networking.hostName = "form";
     nixpkgs.system = "aarch64-linux";
 
-    deployment.targetHost = "192.168.6.201";
+    deployment.targetHost = "form";
     deployment.targetUser = "root";
   };
 
@@ -24,7 +24,7 @@
     networking.hostName = "matter";
     nixpkgs.system = "aarch64-linux";
 
-    deployment.targetHost = "192.168.6.202";
+    deployment.targetHost = "matter";
     deployment.targetUser = "root";
   };
 
@@ -33,7 +33,7 @@
     networking.hostName = "purpose";
     nixpkgs.system = "aarch64-linux";
 
-    deployment.targetHost = "192.168.6.203";
+    deployment.targetHost = "purpose";
     deployment.targetUser = "root";
   };
 }
