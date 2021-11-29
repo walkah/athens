@@ -5,10 +5,10 @@
         "homepage": "https://nix-community.github.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "15ae861e1bfad90e0d14106551544e9e07cbcb10",
-        "sha256": "1sh30n2gzhfbxz8igl28qg65nxc1xk058m62bjm0sn141l0xydx9",
+        "rev": "3ec7f6fb43ff77cff429aba1a2541d28cc44d37c",
+        "sha256": "1s72cyk3hficv5sklw12cabrfppkr5wjbmxnh0d4bhbq3i8xbnh5",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/15ae861e1bfad90e0d14106551544e9e07cbcb10.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/3ec7f6fb43ff77cff429aba1a2541d28cc44d37c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "98747f27ecfee70c8c97b195cbb94df80a074dda",
-        "sha256": "04ss525ns5qqlggrdhvc6y4hqmshylda9yd0y99ddliyn15wmf27",
+        "rev": "78cb77b29d37a9663e05b61abb4fa09465da4b70",
+        "sha256": "0a6nv2wx82zgcw4rnvhjj0pqm0w4acbafnpj1imgjpzwss7v6w0i",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/98747f27ecfee70c8c97b195cbb94df80a074dda.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/78cb77b29d37a9663e05b61abb4fa09465da4b70.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "sops-nix": {
@@ -41,10 +41,10 @@
         "homepage": "",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "3c53d012ac77d4bd8428f9c847709e287c897ad9",
-        "sha256": "1ar7919if7cxcm1ny2rm84a5r8clvx1kgkqci74pi0rryv9ri1ph",
+        "rev": "871408582627f43d0ecc5e4595dcf20cfe2ee227",
+        "sha256": "0d2dp38iq1iwhgw43blf8nv00i5m2dqd4znz14mx7407yq8qabjl",
         "type": "tarball",
-        "url": "https://github.com/Mic92/sops-nix/archive/3c53d012ac77d4bd8428f9c847709e287c897ad9.tar.gz",
+        "url": "https://github.com/Mic92/sops-nix/archive/871408582627f43d0ecc5e4595dcf20cfe2ee227.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
