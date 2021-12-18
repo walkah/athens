@@ -3,8 +3,10 @@
 let
   dotfiles = builtins.fetchTarball
     "https://github.com/walkah/dotfiles/archive/main.tar.gz";
-in {
-  imports = [ # Include the results of the hardware scan.
+in
+{
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     <home-manager/nixos>
 
@@ -51,7 +53,7 @@ in {
   home-manager.users.walkah = import "${dotfiles}/home.nix";
 
   system.autoUpgrade.enable = false;
-  environment.systemPackages = with pkgs; [ docker-compose weechat ];
+  environment.systemPackages = with pkgs; [ docker-compose pinentry weechat ];
 
   fileSystems."/mnt/downloads" = {
     device = "192.168.6.100:/volume1/Downloads";
@@ -84,6 +86,7 @@ in {
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+    pinentryFlavor = "curses";
   };
 
   # Enable the OpenSSH daemon.
