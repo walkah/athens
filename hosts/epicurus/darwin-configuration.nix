@@ -4,7 +4,7 @@ let
     "https://github.com/walkah/dotfiles/archive/main.tar.gz";
 
 in {
-  imports = [ <home-manager/nix-darwin> ];
+  imports = [ <home-manager/nix-darwin> ./homebrew.nix ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
