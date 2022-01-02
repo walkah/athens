@@ -3,12 +3,13 @@ let
   dotfiles = builtins.fetchTarball
     "https://github.com/walkah/dotfiles/archive/main.tar.gz";
 
-in {
+in
+{
   imports = [ <home-manager/nix-darwin> ./homebrew.nix ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [ emacs-nox vim ghc stack ];
+  environment.systemPackages = with pkgs; [ emacs-nox vim ghc go gopls niv rustup stack ];
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
@@ -33,6 +34,16 @@ in {
       extra-platforms = x86_64-darwin aarch64-darwin
       experimental-features = nix-command flakes
     '';
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    haskellPackages = pkgs.haskellPackages.override {
+      overrides = self: super: {
+        niv = pkgs.haskell.lib.overrideCabal super.niv (drv: {
+          enableSeparateBinOutput = false;
+        });
+      };
+    };
   };
 
   programs = {
