@@ -5,7 +5,11 @@ let
 
 in
 {
-  imports = [ <home-manager/nix-darwin> ./homebrew.nix ];
+  imports = [
+    <home-manager/nix-darwin>
+    ./homebrew.nix
+    ../../modules/builder
+  ];
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -18,6 +22,7 @@ in
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
+  users.nix.configureBuildUsers = true;
   users.users.walkah = {
     home = "/Users/walkah";
     shell = pkgs.zsh;
@@ -45,6 +50,8 @@ in
       };
     };
   };
+
+  services.lorri.enable = true;
 
   programs = {
     zsh = {
