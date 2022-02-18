@@ -54,7 +54,7 @@ in {
   programs.zsh.enable = true;
 
   security.acme.acceptTerms = true;
-  security.acme.email = "walkah@walkah.net";
+  security.acme.defaults.email = "walkah@walkah.net";
 
   walkah.coredns = {
     enable = true;
