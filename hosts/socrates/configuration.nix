@@ -48,7 +48,7 @@ in {
   home-manager.users.walkah = import "${dotfiles}/home.nix";
 
   system.autoUpgrade.enable = false;
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [ ipfs-migrator ];
 
   programs.mosh.enable = true;
   programs.zsh.enable = true;

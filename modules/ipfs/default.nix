@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [ ipfs-migrator ];
+
   services = {
     ipfs = {
       enable = true;

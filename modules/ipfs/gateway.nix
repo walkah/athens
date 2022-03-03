@@ -25,6 +25,8 @@ let
 in {
   imports = [ ./default.nix ];
 
+  environment.systemPackages = with pkgs; [ ipfs-migrator ];
+
   networking.firewall = {
     allowedTCPPorts = [ 4001 ];
     allowedUDPPorts = [ 4001 ];
