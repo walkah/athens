@@ -16,34 +16,40 @@
 
     matrix-synapse = {
       enable = true;
-      server_name = "walkah.chat";
-      public_baseurl = "https://matrix.walkah.chat";
-      enable_metrics = true;
-      enable_registration = false;
-      database_type = "psycopg2";
-      database_args = { database = "matrix"; };
-      listeners = [{
-        port = 8008;
-        type = "http";
-        tls = false;
-        x_forwarded = true;
-        resources = [{
-          compress = false;
-          names = [ "client" "federation" ];
+      settings = {
+        server_name = "walkah.chat";
+        public_baseurl = "https://matrix.walkah.chat";
+        enable_metrics = true;
+        enable_registration = false;
+        database = {
+          name = "psycopg2";
+          args = { database = "matrix"; };
+        };
+        account_threepid_delegates = {
+          email = "https://vector.im";
+          msisdn = "https://vector.im";
+        };
+        listeners = [{
+          bind_addresses = [
+            "0.0.0.0"
+          ];
+          port = 8008;
+          type = "http";
+          tls = false;
+          x_forwarded = true;
+          resources = [{
+            compress = false;
+            names = [ "client" "federation" ];
+          }];
         }];
-      }];
+      };
       extraConfigFiles = [
         config.sops.secrets.matrix-registration-secret.path
       ];
-
-      account_threepid_delegates = {
-        email = "https://vector.im";
-        msisdn = "https://vector.im";
-      };
     };
   };
 
-  sops.secrets.matrix-registration-secret = { 
+  sops.secrets.matrix-registration-secret = {
     owner = "matrix-synapse";
   };
 }
