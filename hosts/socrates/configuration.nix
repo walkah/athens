@@ -3,7 +3,8 @@
 let
   dotfiles = builtins.fetchTarball
     "https://github.com/walkah/dotfiles/archive/main.tar.gz";
-in {
+in
+{
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
@@ -15,6 +16,7 @@ in {
     ../../modules/home-assistant/nginx.nix
     ../../modules/ipfs/gateway.nix
     ../../modules/matrix/nginx.nix
+    ../../modules/pleroma/nginx.nix
   ];
 
   nixpkgs.overlays = [ (import ../../overlays) ];

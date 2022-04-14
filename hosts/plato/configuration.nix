@@ -15,11 +15,13 @@ in
     ../../modules/gitea
     ../../modules/home-assistant
     ../../modules/matrix
+    ../../modules/pleroma
     ../../modules/sops
   ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 3;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.cleanTmpDir = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
