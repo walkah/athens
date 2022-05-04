@@ -1,14 +1,7 @@
-{ pkgs, ... }:
-
-let
-  dotfiles = builtins.fetchTarball
-    "https://github.com/walkah/dotfiles/archive/main.tar.gz";
-in
-{
+{ pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
-    <home-manager/nixos>
 
     ../../modules/coredns
     ../../modules/code-server/nginx.nix
@@ -47,7 +40,6 @@ in
       ];
     };
   };
-  home-manager.users.walkah = import "${dotfiles}/home.nix";
 
   system.autoUpgrade.enable = false;
   environment.systemPackages = with pkgs; [ ipfs-migrator ];

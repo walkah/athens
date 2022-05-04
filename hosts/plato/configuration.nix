@@ -1,14 +1,7 @@
-{ config, pkgs, ... }:
-
-let
-  dotfiles = builtins.fetchTarball
-    "https://github.com/walkah/dotfiles/archive/main.tar.gz";
-in
-{
+{ config, pkgs, home-manager, ... }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    <home-manager/nixos>
 
     ../../modules/coredns
     ../../modules/code-server
@@ -52,7 +45,6 @@ in
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM8YMax7PGIrcPNIHkpuNRFgn3HJK6Wepm+ycZWO6jfR walkah@walkah-ipadpro11"
     ];
   };
-  home-manager.users.walkah = import "${dotfiles}/home.nix";
 
   system.autoUpgrade.enable = false;
   environment.systemPackages = with pkgs; [ docker-compose pinentry weechat ];
