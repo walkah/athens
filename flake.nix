@@ -14,9 +14,18 @@
     };
   };
 
-  outputs = { self, nixpkgs, deploy-rs, flake-utils, home-manager, dotfiles, ... }@attrs:
+  outputs =
+    { self
+    , nixpkgs
+    , deploy-rs
+    , flake-utils
+    , home-manager
+    , dotfiles
+    , ...
+    }@attrs:
     let
       mkSystem = hostName: system: modules:
+
         nixpkgs.lib.nixosSystem {
           system = system;
           modules = [
@@ -26,29 +35,33 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
             })
-          ]
-          ++ modules;
+          ] ++ modules;
         };
     in
     flake-utils.lib.eachDefaultSystem
       (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          devShells.default = pkgs.mkShell {
-            buildInputs = [ deploy-rs.packages.${system}.deploy-rs pkgs.sops ];
-          };
-        }) // {
+      let pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = pkgs.mkShell {
+          buildInputs = [ deploy-rs.packages.${system}.deploy-rs pkgs.sops ];
+        };
+      }) // {
       nixosConfigurations = {
         # Aristotle
-        agent = mkSystem "agent" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
-        form = mkSystem "form" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
-        matter = mkSystem "matter" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
-        purpose = mkSystem "purpose" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
+        agent = mkSystem "agent" "aarch64-linux"
+          [ ./hosts/aristotle/configuration.nix ];
+        form = mkSystem "form" "aarch64-linux"
+          [ ./hosts/aristotle/configuration.nix ];
+        matter = mkSystem "matter" "aarch64-linux"
+          [ ./hosts/aristotle/configuration.nix ];
+        purpose = mkSystem "purpose" "aarch64-linux"
+          [ ./hosts/aristotle/configuration.nix ];
 
-        plato = mkSystem "plato" "x86_64-linux" [ ./hosts/plato/configuration.nix ];
-        socrates = mkSystem "socrates" "x86_64-linux" [ ./hosts/socrates/configuration.nix ];
+        plato =
+          mkSystem "plato" "x86_64-linux" [ ./hosts/plato/configuration.nix ];
+        socrates = mkSystem "socrates" "x86_64-linux"
+          [ ./hosts/socrates/configuration.nix ];
       };
 
       deploy.nodes = {

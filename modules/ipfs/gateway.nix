@@ -22,7 +22,8 @@ let
 
     }
   ];
-in {
+in
+{
   imports = [ ./default.nix ];
 
   environment.systemPackages = with pkgs; [ ipfs-migrator ];

@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
 let cfg = config.services.gitea;
-in {
+in
+{
   users.users.git = {
     description = "Gitea Service";
     home = cfg.stateDir;

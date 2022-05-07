@@ -10,7 +10,8 @@ let
     (optionalString (cfg.initPeers != [ ]) "--peers")
     (lib.strings.concatStringsSep "," cfg.initPeers)
   ];
-in {
+in
+{
 
   ###### interface
 
@@ -97,9 +98,9 @@ in {
         RemainAfterExit = true;
         User = cfg.user;
         Group = cfg.group;
-        } // optionalAttrs (cfg.secretFile != null) {
-          EnvironmentFile = cfg.secretFile;
-        };
+      } // optionalAttrs (cfg.secretFile != null) {
+        EnvironmentFile = cfg.secretFile;
+      };
       unitConfig.ConditionDirectoryNotEmpty = "!${cfg.dataDir}";
     };
 

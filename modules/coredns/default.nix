@@ -2,7 +2,8 @@
 with lib;
 
 let cfg = config.walkah.coredns;
-in {
+in
+{
   options.walkah.coredns = {
     enable = mkEnableOption "";
     addr = mkOption {
