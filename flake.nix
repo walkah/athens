@@ -7,6 +7,11 @@
     flake-utils.url = "github:numtide/flake-utils";
     deploy-rs.url = "github:serokell/deploy-rs";
 
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
+
     # My stuff
     dotfiles = {
       url = "github:walkah/dotfiles";
@@ -22,7 +27,7 @@
     , home-manager
     , dotfiles
     , ...
-    }@attrs:
+    }:
     let
       mkSystem = hostName: system: modules:
 
