@@ -1,9 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ sops-nix, ... }:
 
-let
-  sources = import ../../nix/sources.nix;
-in
 {
-  imports = [ "${sources.sops-nix}/modules/sops" ];
+  imports = [ sops-nix.nixosModules.sops ];
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
 }

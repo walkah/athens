@@ -12,6 +12,11 @@
       flake = false;
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # My stuff
     dotfiles = {
       url = "github:walkah/dotfiles";
@@ -25,9 +30,10 @@
     , deploy-rs
     , flake-utils
     , home-manager
+    , sops-nix
     , dotfiles
     , ...
-    }:
+    }@inputs:
     let
       mkSystem = hostName: system: modules:
 
@@ -41,6 +47,7 @@
               home-manager.useUserPackages = true;
             })
           ] ++ modules;
+          specialArgs = inputs;
         };
     in
     flake-utils.lib.eachDefaultSystem
@@ -128,7 +135,6 @@
 
         socrates = {
           hostname = "socrates";
-          sshUser = "root";
           profiles = {
             system = {
               user = "root";
