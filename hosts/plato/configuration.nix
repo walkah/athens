@@ -47,7 +47,7 @@
   };
 
   system.autoUpgrade.enable = false;
-  environment.systemPackages = with pkgs; [ docker-compose pinentry weechat ];
+  environment.systemPackages = with pkgs; [ pinentry weechat ];
 
   fileSystems."/mnt/downloads" = {
     device = "192.168.6.100:/volume1/Downloads";
