@@ -23,6 +23,11 @@
   networking.firewall.allowPing = true;
   networking.firewall.allowedTCPPorts = [ 80 443 ];
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
+  networking.firewall.checkReversePath = "loose";
+
+  nix = {
+    trustedUsers = [ "@wheel" "root" ];
+  };
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -80,4 +85,6 @@
     };
     tailscale = { enable = true; };
   };
+
+  system.stateVersion = "22.05";
 }

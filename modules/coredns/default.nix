@@ -35,10 +35,5 @@ in
         }
       '';
     };
-
-    networking = {
-      nameservers = [ "100.111.208.75" "100.103.57.96" ];
-      search = [ "walkah.lab" ];
-    };
   };
 }
