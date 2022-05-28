@@ -20,7 +20,7 @@
     # My stuff
     dotfiles = {
       url = "github:walkah/dotfiles";
-      inputs.nixpkgs.follows = "nixpkgs";
+      flake = false;
     };
   };
 
@@ -43,8 +43,6 @@
             home-manager.nixosModules.home-manager
             ({ config, ... }: {
               networking.hostName = hostName;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
             })
           ] ++ modules;
           specialArgs = inputs;
@@ -61,19 +59,13 @@
       }) // {
       nixosConfigurations = {
         # Aristotle
-        agent = mkSystem "agent" "aarch64-linux"
-          [ ./hosts/aristotle/configuration.nix ];
-        form = mkSystem "form" "aarch64-linux"
-          [ ./hosts/aristotle/configuration.nix ];
-        matter = mkSystem "matter" "aarch64-linux"
-          [ ./hosts/aristotle/configuration.nix ];
-        purpose = mkSystem "purpose" "aarch64-linux"
-          [ ./hosts/aristotle/configuration.nix ];
+        agent = mkSystem "agent" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
+        form = mkSystem "form" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
+        matter = mkSystem "matter" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
+        purpose = mkSystem "purpose" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
 
-        plato =
-          mkSystem "plato" "x86_64-linux" [ ./hosts/plato/configuration.nix ];
-        socrates = mkSystem "socrates" "x86_64-linux"
-          [ ./hosts/socrates/configuration.nix ];
+        plato = mkSystem "plato" "x86_64-linux" [ ./hosts/plato/configuration.nix ];
+        socrates = mkSystem "socrates" "x86_64-linux" [ ./hosts/socrates/configuration.nix ];
       };
 
       deploy.nodes = {
@@ -125,11 +117,6 @@
               path = deploy-rs.lib.x86_64-linux.activate.nixos
                 self.nixosConfigurations.plato;
             };
-            walkah = {
-              user = "walkah";
-              path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                dotfiles.homeConfigurations.x86_64-linux;
-            };
           };
         };
 
@@ -140,11 +127,6 @@
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos
                 self.nixosConfigurations.socrates;
-            };
-            walkah = {
-              user = "walkah";
-              path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                dotfiles.homeConfigurations.x86_64-linux;
             };
           };
         };

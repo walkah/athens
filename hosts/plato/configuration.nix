@@ -2,6 +2,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../users
 
     ../../modules/coredns
     ../../modules/code-server
@@ -22,6 +23,10 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [ (import ../../overlays) ];
 
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   # Set your time zone.
   time.timeZone = "America/Toronto";
 
@@ -36,15 +41,6 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC5spf4diguK+w7iYLFr565++6DjHukWfvpN2ru9dCRk nixbuild"
   ];
-  users.users.walkah = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ];
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM8YMax7PGIrcPNIHkpuNRFgn3HJK6Wepm+ycZWO6jfR walkah@walkah-ipadpro11"
-    ];
-  };
 
   system.autoUpgrade.enable = false;
   environment.systemPackages = with pkgs; [ pinentry weechat ];
