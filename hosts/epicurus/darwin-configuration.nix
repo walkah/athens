@@ -1,12 +1,6 @@
-{ config, lib, pkgs, ... }:
-let
-  dotfiles = builtins.fetchTarball
-    "https://github.com/walkah/dotfiles/archive/main.tar.gz";
-
-in
+{ config, lib, pkgs, dotfiles, ... }:
 {
   imports = [
-    <home-manager/nix-darwin>
     ./homebrew.nix
     ../../modules/builder
   ];
@@ -33,7 +27,7 @@ in
   nix = {
     package = pkgs.nix;
 
-    trustedUsers = [ "root" "@wheel" ];
+    trustedUsers = [ "root" "@admin" ];
 
     extraOptions = ''
       extra-platforms = x86_64-darwin aarch64-darwin

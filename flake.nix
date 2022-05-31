@@ -7,6 +7,11 @@
     flake-utils.url = "github:numtide/flake-utils";
     deploy-rs.url = "github:serokell/deploy-rs";
 
+    darwin = {
+      url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     flake-compat = {
       url = "github:edolstra/flake-compat";
       flake = false;
@@ -28,6 +33,7 @@
     { self
     , nixpkgs
     , deploy-rs
+    , darwin
     , flake-utils
     , home-manager
     , sops-nix
@@ -36,11 +42,21 @@
     }@inputs:
     let
       mkSystem = hostName: system: modules:
-
         nixpkgs.lib.nixosSystem {
           system = system;
           modules = [
             home-manager.nixosModules.home-manager
+            ({ config, ... }: {
+              networking.hostName = hostName;
+            })
+          ] ++ modules;
+          specialArgs = inputs;
+        };
+      mkDarwin = hostName: system: modules:
+        darwin.lib.darwinSystem {
+          system = system;
+          modules = [
+            home-manager.darwinModules.home-manager
             ({ config, ... }: {
               networking.hostName = hostName;
             })
@@ -66,6 +82,9 @@
 
         plato = mkSystem "plato" "x86_64-linux" [ ./hosts/plato/configuration.nix ];
         socrates = mkSystem "socrates" "x86_64-linux" [ ./hosts/socrates/configuration.nix ];
+      };
+      darwinConfigurations = {
+        epicurus = mkDarwin "epicurus" "aarch64-darwin" [ ./hosts/epicurus/darwin-configuration.nix ];
       };
 
       deploy.nodes = {
