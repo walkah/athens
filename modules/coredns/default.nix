@@ -18,6 +18,7 @@ in
       enable = true;
       config = ''
         . {
+          bind 127.0.0.1
           bind ${cfg.addr}
           prometheus ${cfg.addr}:9153
           log
@@ -34,6 +35,11 @@ in
           file ${./walkah.lab.zone}
         }
       '';
+    };
+
+    networking = {
+      nameservers = [ "127.0.0.1" ];
+      search = [ "walkah.lab" ];
     };
   };
 }
