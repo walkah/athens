@@ -70,6 +70,7 @@
       in
       {
         devShells.default = pkgs.mkShell {
+          name = "athens";
           buildInputs = [ deploy-rs.packages.${system}.deploy-rs pkgs.sops ];
         };
       }) // {
