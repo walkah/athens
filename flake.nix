@@ -71,7 +71,7 @@
       {
         devShells.default = pkgs.mkShell {
           name = "athens";
-          buildInputs = [ deploy-rs.packages.${system}.deploy-rs pkgs.sops ];
+          buildInputs = [ deploy-rs.packages.${system}.deploy-rs pkgs.nixpkgs-fmt pkgs.sops ];
         };
       }) // {
       nixosConfigurations = {
@@ -86,6 +86,7 @@
       };
       darwinConfigurations = {
         epicurus = mkDarwin "epicurus" "aarch64-darwin" [ ./hosts/epicurus/darwin-configuration.nix ];
+        heraclitus = mkDarwin "heraclitus" "aarch64-darwin" [ ./hosts/heraclitus/darwin-configuration.nix ];
       };
 
       deploy.nodes = {
