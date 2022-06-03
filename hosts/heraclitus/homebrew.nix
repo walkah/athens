@@ -38,6 +38,7 @@
       "google-chrome"
       "gpg-suite"
       "hazel"
+      "home-assistant"
       "ipfs"
       "iterm2"
       "keybase"

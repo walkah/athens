@@ -66,12 +66,18 @@
     in
     flake-utils.lib.eachDefaultSystem
       (system:
-      let pkgs = nixpkgs.legacyPackages.${system};
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        darwin-local = pkgs.writeScriptBin "darwin-local" ''
+          #!${pkgs.stdenv.shell}
+          nix build .#darwinConfigurations.$(hostname -s).system
+          ./result/sw/bin/darwin-rebuild switch --flake .
+        '';
       in
       {
         devShells.default = pkgs.mkShell {
           name = "athens";
-          buildInputs = [ deploy-rs.packages.${system}.deploy-rs pkgs.nixpkgs-fmt pkgs.sops ];
+          buildInputs = [ darwin-local deploy-rs.packages.${system}.deploy-rs pkgs.nixpkgs-fmt pkgs.sops ];
         };
       }) // {
       nixosConfigurations = {
