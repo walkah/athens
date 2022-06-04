@@ -13,5 +13,6 @@
         ensurePermissions = { "DATABASE pleroma" = "ALL PRIVILEGES"; };
       }];
     };
+    postgresqlBackup.databases = [ "pleroma" ];
   };
 }

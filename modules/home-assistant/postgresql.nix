@@ -9,5 +9,6 @@
         ensurePermissions = { "DATABASE hass" = "ALL PRIVILEGES"; };
       }];
     };
+    postgresqlBackup.databases = [ "hass" ];
   };
 }

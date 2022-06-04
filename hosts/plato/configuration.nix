@@ -10,6 +10,7 @@
     ../../modules/home-assistant
     ../../modules/matrix
     ../../modules/pleroma
+    ../../modules/postgresql
     ../../modules/sops
   ];
 

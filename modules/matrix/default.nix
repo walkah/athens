@@ -13,6 +13,7 @@
             LC_CTYPE = "C";
       '';
     };
+    postgresqlBackup.databases = [ "matrix" ];
 
     matrix-synapse = {
       enable = true;
