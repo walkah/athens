@@ -2,6 +2,7 @@
   services = {
     postgresql = {
       enable = true;
+      package = pkgs.postgresql_12;
     };
 
     postgresqlBackup = {
@@ -17,7 +18,7 @@
       systemctl stop postgresql
 
       # XXX replace `<new version>` with the psqlSchema here
-      export NEWDATA="/var/lib/postgresql/11.1"
+      export NEWDATA="/var/lib/postgresql/12"
 
       # XXX specify the postgresql package you'd like to upgrade to
       export NEWBIN="${pkgs.postgresql_12}/bin"
