@@ -8,7 +8,7 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://epicurus:8080";
+          proxyPass = "http://100.66.26.116:8080";
           proxyWebsockets = true;
         };
       };

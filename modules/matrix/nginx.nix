@@ -7,7 +7,7 @@
       "matrix.walkah.chat" = {
         forceSSL = true;
         enableACME = true;
-        locations."/" = { proxyPass = "http://plato:8008"; };
+        locations."/" = { proxyPass = "http://100.111.208.75:8008"; };
       };
 
       "walkah.chat" = {

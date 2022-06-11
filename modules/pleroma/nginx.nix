@@ -8,7 +8,7 @@
         forceSSL = true;
         enableACME = true;
         locations."/" = {
-          proxyPass = "http://plato:4000";
+          proxyPass = "http://100.111.208.75:4000";
           proxyWebsockets = true;
         };
       };
