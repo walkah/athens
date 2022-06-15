@@ -77,7 +77,7 @@
       {
         devShells.default = pkgs.mkShell {
           name = "athens";
-          buildInputs = [ darwin-local deploy-rs.packages.${system}.deploy-rs pkgs.nixpkgs-fmt pkgs.sops ];
+          buildInputs = [ darwin-local deploy-rs.packages.${system}.deploy-rs pkgs.nixpkgs-fmt pkgs.rnix-lsp pkgs.sops ];
         };
       }) // {
       nixosConfigurations = {

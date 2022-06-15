@@ -38,7 +38,6 @@
       "google-chrome"
       "gpg-suite"
       "hazel"
-      "home-assistant"
       "ipfs"
       "iterm2"
       "keybase"
@@ -61,6 +60,7 @@
       Bumpr = 1166066070;
       DayOne = 1055511498;
       Drafts = 1435957248;
+      HomeAssistant = 1099568401;
       Reeder = 1529448980;
       Tailscale = 1475387142;
       UlyssesMac = 1225570693;
