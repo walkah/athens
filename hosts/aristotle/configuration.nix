@@ -4,7 +4,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./rpi-poe.nix
 
     ../../modules/ipfs/cluster.nix
     ../../modules/sops

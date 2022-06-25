@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixos-hardware.url = github:NixOS/nixos-hardware/master;
     home-manager.url = "github:nix-community/home-manager";
     flake-utils.url = "github:numtide/flake-utils";
     deploy-rs.url = "github:serokell/deploy-rs";
@@ -32,6 +33,7 @@
   outputs =
     { self
     , nixpkgs
+    , nixos-hardware
     , deploy-rs
     , darwin
     , flake-utils
@@ -82,10 +84,10 @@
       }) // {
       nixosConfigurations = {
         # Aristotle
-        agent = mkSystem "agent" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
-        form = mkSystem "form" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
-        matter = mkSystem "matter" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
-        purpose = mkSystem "purpose" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
+        agent = mkSystem "agent" "aarch64-linux" [ nixos-hardware.nixosModules.raspberry-pi-4 ./hosts/aristotle/configuration.nix ];
+        form = mkSystem "form" "aarch64-linux" [ nixos-hardware.nixosModules.raspberry-pi-4 ./hosts/aristotle/configuration.nix ];
+        matter = mkSystem "matter" "aarch64-linux" [ nixos-hardware.nixosModules.raspberry-pi-4 ./hosts/aristotle/configuration.nix ];
+        purpose = mkSystem "purpose" "aarch64-linux" [ nixos-hardware.nixosModules.raspberry-pi-4 ./hosts/aristotle/configuration.nix ];
 
         plato = mkSystem "plato" "x86_64-linux" [ ./hosts/plato/configuration.nix ];
         socrates = mkSystem "socrates" "x86_64-linux" [ ./hosts/socrates/configuration.nix ];
