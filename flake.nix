@@ -84,10 +84,10 @@
       }) // {
       nixosConfigurations = {
         # Aristotle
-        agent = mkSystem "agent" "aarch64-linux" [ nixos-hardware.nixosModules.raspberry-pi-4 ./hosts/aristotle/configuration.nix ];
-        form = mkSystem "form" "aarch64-linux" [ nixos-hardware.nixosModules.raspberry-pi-4 ./hosts/aristotle/configuration.nix ];
-        matter = mkSystem "matter" "aarch64-linux" [ nixos-hardware.nixosModules.raspberry-pi-4 ./hosts/aristotle/configuration.nix ];
-        purpose = mkSystem "purpose" "aarch64-linux" [ nixos-hardware.nixosModules.raspberry-pi-4 ./hosts/aristotle/configuration.nix ];
+        agent = mkSystem "agent" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
+        form = mkSystem "form" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
+        matter = mkSystem "matter" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
+        purpose = mkSystem "purpose" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
 
         plato = mkSystem "plato" "x86_64-linux" [ ./hosts/plato/configuration.nix ];
         socrates = mkSystem "socrates" "x86_64-linux" [ ./hosts/socrates/configuration.nix ];

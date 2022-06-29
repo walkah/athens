@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, nixos-hardware, ... }:
 
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    nixos-hardware.nixosModules.raspberry-pi-4
 
     ../../modules/ipfs/cluster.nix
     ../../modules/sops
@@ -63,5 +64,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.03"; # Did you read the comment?
+  system.stateVersion = "22.05"; # Did you read the comment?
 }
