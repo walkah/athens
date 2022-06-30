@@ -6,6 +6,8 @@
 
     ../../modules/coredns
     ../../modules/code-server
+    ../../modules/drone
+    ../../modules/drone/runner-docker.nix
     ../../modules/gitea
     ../../modules/home-assistant
     ../../modules/matrix

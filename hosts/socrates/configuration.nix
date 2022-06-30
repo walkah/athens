@@ -6,6 +6,7 @@
 
     ../../modules/coredns
     ../../modules/code-server/nginx.nix
+    ../../modules/drone/nginx.nix
     ../../modules/gitea/nginx.nix
     ../../modules/home-assistant/nginx.nix
     ../../modules/ipfs/gateway.nix
