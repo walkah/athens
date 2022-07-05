@@ -106,6 +106,26 @@
   walkah.coredns = { enable = true; };
 
   services = {
+    borgbackup.jobs."borgbase" = {
+      paths = [
+        "/var/lib"
+        "/var/backup"
+      ];
+      exclude = [
+        # very large paths
+        "/var/lib/docker"
+        "/var/lib/postgresql"
+        "/var/lib/systemd"
+      ];
+      repo = "qxflzs92@qxflzs92.repo.borgbase.com:repo";
+      encryption = {
+        mode = "repokey-blake2";
+        passCommand = "cat /root/borgbackup/passphrase";
+      };
+      environment.BORG_RSH = "ssh -i /root/borgbackup/ssh_key";
+      compression = "auto,lzma";
+      startAt = "daily";
+    };
     grafana = {
       enable = true;
       domain = "plato.walkah.lab";
