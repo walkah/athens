@@ -28,7 +28,7 @@
   networking.firewall.checkReversePath = "loose";
 
   nix = {
-    trustedUsers = [ "@wheel" "root" ];
+    settings.trusted-users = [ "@wheel" "root" ];
   };
 
   security.sudo.wheelNeedsPassword = false;
