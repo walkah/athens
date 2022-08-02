@@ -43,6 +43,7 @@
       "keybase"
       "logi-options-plus"
       "logseq"
+      "minecraft"
       "obsidian"
       "raycast"
       "slack"
