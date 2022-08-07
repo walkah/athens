@@ -44,7 +44,7 @@ in
       virtualHosts."walkah.cloud" = {
         forceSSL = true;
         enableACME = true;
-       locations."/" = { proxyPass = "http://127.0.0.1:8080"; };
+        locations."/" = { proxyPass = "http://127.0.0.1:8080"; };
         serverAliases = [
           "walkah.net"
           "www.walkah.net"
