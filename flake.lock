@@ -44,11 +44,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1657665018,
-        "narHash": "sha256-m3OlyE2Of+gWRZiJJzZarIrMKQ+vlxNKCnzYl0XRTlY=",
+        "lastModified": 1660100561,
+        "narHash": "sha256-BRdwwAxAj4IkUc5aVRNd7Q9XVIW/FlPxdMjT0ipShCM=",
         "owner": "walkah",
         "repo": "dotfiles",
-        "rev": "9c94f13ffbf3a3750a5801f2e4a0174aed968b64",
+        "rev": "4534a5e1f6e8e3e71e8b5503c5bf68733bfef213",
         "type": "github"
       },
       "original": {
@@ -189,11 +189,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1660017629,
-        "narHash": "sha256-Koz6/k7c6hx4qVz/bboxdR2QsBdkxjRWpNmsOWJtXZE=",
+        "lastModified": 1660046142,
+        "narHash": "sha256-wt26AMl+vWOSf15bj9P9LASRSa21UAIJpHmHezL1ucY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9f15d6c3a74d2778c6e1af67947c95f100dc6fd2",
+        "rev": "65f39b913d0910907ea22be29f108402924644c2",
         "type": "github"
       },
       "original": {
