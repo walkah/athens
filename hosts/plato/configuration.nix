@@ -11,6 +11,7 @@
     ../../modules/gitea
     ../../modules/home-assistant
     ../../modules/matrix
+    ../../modules/minecraft
     ../../modules/pleroma
     ../../modules/postgresql
     ../../modules/sops
