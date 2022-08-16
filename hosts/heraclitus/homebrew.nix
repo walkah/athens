@@ -46,6 +46,7 @@
       "logseq"
       "minecraft"
       "obsidian"
+      "plexamp"
       "raycast"
       "slack"
       "sonos"
@@ -56,6 +57,7 @@
       "synology-drive"
       "todoist"
       "visual-studio-code"
+      "whalebird"
       "zoom"
     ];
 
