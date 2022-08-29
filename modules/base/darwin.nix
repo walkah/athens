@@ -1,4 +1,18 @@
 { pkgs, config, ... }: {
+
+  nix = {
+    configureBuildUsers = true;
+
+    extraOptions = ''
+      extra-platforms = x86_64-darwin aarch64-darwin
+      experimental-features = nix-command flakes
+    '';
+
+    settings = {
+      trusted-users = [ "root" "@admin" ];
+    };
+  };
+
   system.activationScripts.applications.text = pkgs.lib.mkForce (
     ''
       rm -rf /Applications/Nix

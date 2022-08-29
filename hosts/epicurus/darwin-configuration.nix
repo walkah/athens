@@ -2,6 +2,8 @@
 {
   imports = [
     ./homebrew.nix
+
+    ../../modules/base/darwin.nix
     ../../modules/builder
   ];
 
@@ -16,24 +18,12 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-  users.nix.configureBuildUsers = true;
   users.users.walkah = {
     home = "/Users/walkah";
     shell = pkgs.zsh;
   };
 
   home-manager.users.walkah = import "${dotfiles}/home.nix";
-
-  nix = {
-    package = pkgs.nix;
-
-    trustedUsers = [ "root" "@admin" ];
-
-    extraOptions = ''
-      extra-platforms = x86_64-darwin aarch64-darwin
-      experimental-features = nix-command flakes
-    '';
-  };
 
   nixpkgs.config.packageOverrides = pkgs: {
     haskellPackages = pkgs.haskellPackages.override {
