@@ -21,16 +21,15 @@ in
       rootUrl = "https://walkah.dev/";
       httpAddress = "0.0.0.0";
       httpPort = 8003;
-      log.level = "Error";
       lfs.enable = true;
 
-      disableRegistration = true;
-      cookieSecure = true;
-
       settings = {
+        log.LEVEL = "Error";
         other.SHOW_FOOTER_VERSION = false;
         repository.DEFAULT_BRANCH = "main";
         server.SSH_DOMAIN = "git.walkah.dev";
+        service.DISABLE_REGISTRATION = true;
+        session.COOKIE_SECURE = true;
       };
 
       dump.enable = false;
