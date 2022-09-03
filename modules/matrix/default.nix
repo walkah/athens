@@ -26,10 +26,6 @@
           name = "psycopg2";
           args = { database = "matrix"; };
         };
-        account_threepid_delegates = {
-          email = "https://vector.im";
-          msisdn = "https://vector.im";
-        };
         listeners = [{
           bind_addresses = [
             "0.0.0.0"
