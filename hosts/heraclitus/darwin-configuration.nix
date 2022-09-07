@@ -4,6 +4,7 @@
     ./homebrew.nix
 
     ../../modules/base/darwin.nix
+    ../../modules/dev
     ../../modules/builder
   ];
 
