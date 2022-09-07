@@ -13,6 +13,20 @@
     };
   };
 
+  homebrew = {
+    enable = true;
+    brewPrefix = "/opt/homebrew/bin";
+    global = {
+      brewfile = true;
+      lockfiles = false;
+    };
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "zap";
+      upgrade = true;
+    };
+  };
+
   system.activationScripts.applications.text = pkgs.lib.mkForce (
     ''
       rm -rf /Applications/Nix

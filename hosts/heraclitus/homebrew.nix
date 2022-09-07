@@ -2,15 +2,6 @@
 
 {
   homebrew = {
-    enable = true;
-    brewPrefix = "/opt/homebrew/bin";
-    autoUpdate = true;
-    cleanup = "zap";
-    global = {
-      brewfile = true;
-      noLock = true;
-    };
-
     taps = [
       "homebrew/cask"
       "homebrew/cask-drivers"
