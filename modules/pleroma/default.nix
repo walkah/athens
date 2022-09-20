@@ -4,7 +4,10 @@
   services = {
     pleroma = {
       enable = true;
-      configs = [ "import Config" ];
+      secretConfigFile = "/var/lib/pleroma/secrets.exs";
+      configs = [
+        (builtins.readFile ./config.exs)
+      ];
     };
     postgresql = {
       ensureDatabases = [ "pleroma" ];
