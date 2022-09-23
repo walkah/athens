@@ -44,11 +44,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1663544760,
-        "narHash": "sha256-rFdN+n2ns7l3OvLwLzjxrYOzsI/uwg9SkmesAfKvGko=",
+        "lastModified": 1663967156,
+        "narHash": "sha256-jWQjcsLCO4HmDSF/Ib5Lo56Z4v5E9eAXewwI6Qb0Sx0=",
         "owner": "walkah",
         "repo": "dotfiles",
-        "rev": "c5aae9f656f4a926a2801f86b9826a692ff234c6",
+        "rev": "4d05de816af0fc3732dcd01999f77f5d9f46afcb",
         "type": "github"
       },
       "original": {

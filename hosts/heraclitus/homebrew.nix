@@ -41,6 +41,7 @@
       "raycast"
       "slack"
       "sonos"
+      "soundsource"
       "spotify"
       "stats"
       "steam"

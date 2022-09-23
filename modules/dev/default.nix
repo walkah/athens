@@ -6,6 +6,7 @@
 
     # Elixir
     elixir
+    elixir_ls
 
     # Golang
     go
