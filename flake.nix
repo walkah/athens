@@ -2,8 +2,7 @@
   description = "walkah's little city state";
 
   inputs = {
-    #nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/684a9bc32a249f7a7f278e889a37e4fcd8ea965b";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager.url = "github:nix-community/home-manager";
     flake-utils.url = "github:numtide/flake-utils";
