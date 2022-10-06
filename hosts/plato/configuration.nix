@@ -105,6 +105,42 @@
   networking.firewall.enable = false;
 
   walkah.coredns = { enable = true; };
+  services.traefik = {
+    enable = true;
+    group = "docker";
+    staticConfigOptions = {
+      api = { };
+      certificatesResolvers = {
+        myresolver = {
+          acme = {
+            email = "walkah@walkah.net";
+            storage = "/var/lib/traefik/acme.json";
+            dnsChallenge = {
+              provider = "cloudflare";
+            };
+          };
+        };
+      };
+      entryPoints = {
+        web = {
+          address = ":80";
+
+        };
+        websecure = {
+          address = ":443";
+
+        };
+      };
+      providers = {
+        docker = { };
+      };
+    };
+  };
+  systemd.services.traefik = {
+    serviceConfig = {
+      EnvironmentFile = "/var/lib/traefik/env";
+    };
+  };
 
   services = {
     borgbackup.jobs."borgbase" = {
