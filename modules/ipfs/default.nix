@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [ ipfs-migrator ];
 
   services = {
-    ipfs = {
+    kubo = {
       enable = true;
       apiAddress = "/ip4/0.0.0.0/tcp/5001";
       gatewayAddress = "/ip4/0.0.0.0/tcp/8080";

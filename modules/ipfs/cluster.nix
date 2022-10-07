@@ -7,7 +7,7 @@
   ];
 
   services = {
-    ipfs = {
+    kubo = {
       enable = true;
       extraConfig = {
         Swarm = {

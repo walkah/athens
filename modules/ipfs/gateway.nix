@@ -33,7 +33,7 @@ in
     allowedUDPPorts = [ 4001 ];
   };
   services = {
-    ipfs = {
+    kubo = {
       enable = true;
       extraConfig = {
         Peering = { Peers = peers; };
