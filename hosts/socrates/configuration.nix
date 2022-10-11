@@ -11,6 +11,7 @@
     ../../modules/home-assistant/nginx.nix
     ../../modules/ipfs/gateway.nix
     ../../modules/matrix/nginx.nix
+    ../../modules/minecraft/proxy.nix
     ../../modules/pleroma/nginx.nix
   ];
 

@@ -8,6 +8,7 @@
     # see here for more info: https://minecraft.gamepedia.com/Server.properties#server.properties
     serverProperties = {
       server-port = 25565;
+      enable-query = true;
       gamemode = "survival";
       motd = "Vanilla Survival";
       max-players = 20;
