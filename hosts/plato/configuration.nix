@@ -9,7 +9,6 @@
     ../../modules/drone
     ../../modules/drone/runner-docker.nix
     ../../modules/gitea
-    ../../modules/home-assistant
     ../../modules/matrix
     ../../modules/minecraft
     ../../modules/pleroma
