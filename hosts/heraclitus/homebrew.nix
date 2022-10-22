@@ -17,6 +17,7 @@
       "bartender"
       "brave-browser"
       "bunch"
+      "descript"
       "diffusionbee"
       "discord"
       "docker"
