@@ -9,9 +9,7 @@
     deploy-rs.url = "github:serokell/deploy-rs";
 
     darwin = {
-      # url = "github:lnl7/nix-darwin/master";
-      # TODO remove when merged: https://github.com/LnL7/nix-darwin/pull/552
-      url = "github:Ma27/nix-darwin/fix-manual";
+      url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
