@@ -164,9 +164,13 @@
     };
     grafana = {
       enable = true;
-      domain = "plato.walkah.lab";
-      port = 2342;
-      addr = "0.0.0.0";
+      settings = {
+        server = {
+          domain = "plato.walkah.lab";
+          http_port = 2342;
+          http_addr = "0.0.0.0";
+        };
+      };
     };
     prometheus = {
       enable = true;
