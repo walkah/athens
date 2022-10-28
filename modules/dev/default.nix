@@ -20,5 +20,8 @@
     # Rust
     rustup
     rust-analyzer
+
+    # My stuff
+    workon
   ];
 }

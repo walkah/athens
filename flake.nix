@@ -28,6 +28,11 @@
       url = "github:walkah/dotfiles";
       flake = false;
     };
+
+    workon = {
+      url = "github:walkah/workon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -40,9 +45,16 @@
     , home-manager
     , sops-nix
     , dotfiles
+    , workon
     , ...
     }@inputs:
     let
+      overlays = [
+        (self: super: {
+          workon = workon.packages.${self.system}.default;
+        })
+      ];
+
       mkSystem = hostName: system: modules:
         nixpkgs.lib.nixosSystem {
           system = system;
@@ -50,6 +62,7 @@
             home-manager.nixosModules.home-manager
             ({ config, ... }: {
               networking.hostName = hostName;
+              nixpkgs.overlays = overlays;
             })
           ] ++ modules;
           specialArgs = inputs;
@@ -61,6 +74,7 @@
             home-manager.darwinModules.home-manager
             ({ config, ... }: {
               networking.hostName = hostName;
+              nixpkgs.overlays = overlays;
             })
           ] ++ modules;
           specialArgs = inputs;
