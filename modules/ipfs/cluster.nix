@@ -9,7 +9,7 @@
   services = {
     kubo = {
       enable = true;
-      extraConfig = {
+      settings = {
         Swarm = {
           AddrFilters = null;
           ConnMgr = {

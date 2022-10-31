@@ -35,7 +35,7 @@ in
   services = {
     kubo = {
       enable = true;
-      extraConfig = {
+      settings = {
         Peering = { Peers = peers; };
         Swarm = { AddrFilters = null; };
       };

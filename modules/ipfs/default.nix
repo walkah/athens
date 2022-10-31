@@ -6,18 +6,18 @@
   services = {
     kubo = {
       enable = true;
-      apiAddress = "/ip4/0.0.0.0/tcp/5001";
-      gatewayAddress = "/ip4/0.0.0.0/tcp/8080";
-      swarmAddress = [
-        "/ip4/0.0.0.0/tcp/4001"
-        "/ip6/::/tcp/4001"
-        "/ip4/0.0.0.0/udp/4001/quic"
-        "/ip6/::/udp/4001/quic"
-      ];
-      extraConfig = {
+      settings = {
         Addresses = {
           Announce = [ ];
+          API = "/ip4/0.0.0.0/tcp/5001";
+          Gateway = "/ip4/0.0.0.0/tcp/8080";
           NoAnnounce = [ ];
+          Swarm = [
+            "/ip4/0.0.0.0/tcp/4001"
+            "/ip6/::/tcp/4001"
+            "/ip4/0.0.0.0/udp/4001/quic"
+            "/ip6/::/udp/4001/quic"
+          ];
         };
         API = { HTTPHeaders = { Access-Control-Allow-Origin = [ "*" ]; }; };
         Discovery = { MDNS = { Enabled = true; }; };
