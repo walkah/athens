@@ -95,6 +95,8 @@
           name = "athens";
           buildInputs = [ darwin-local deploy-rs.packages.${system}.deploy-rs pkgs.nixpkgs-fmt pkgs.rnix-lsp pkgs.sops ];
         };
+
+        formatter = pkgs.nixpkgs-fmt;
       }) // {
       nixosConfigurations = {
         # Aristotle
