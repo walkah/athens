@@ -25,9 +25,15 @@ config :pleroma, Pleroma.Repo,
 config :web_push_encryption, :vapid_details, subject: "mailto:walkah@walkah.net"
 
 config :pleroma, :database, rum_enabled: false
-config :pleroma, :instance, static_dir: "/var/lib/pleroma/static"
+config :pleroma, :instance,
+  description: "Personal instance for James Walker. Running pleroma on NixOS",
+  static_dir: "/var/lib/pleroma/static"
+
+config :pleroma, :shout,
+  enabled: false
+
 config :pleroma, Pleroma.Uploaders.Local, uploads: "/var/lib/pleroma/uploads"
-config :pleroma, configurable_from_database: false
+config :pleroma, configurable_from_database: true
 
 config :pleroma, :frontend_configurations,
   pleroma_fe: %{
