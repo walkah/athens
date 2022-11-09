@@ -13,6 +13,12 @@
     };
   };
 
+  environment.etc = {
+    "sudoers.d/walkah".text = ''
+      walkah   ALL = (ALL) NOPASSWD: ALL
+    '';
+  };
+
   homebrew = {
     enable = true;
     brewPrefix = "/opt/homebrew/bin";
