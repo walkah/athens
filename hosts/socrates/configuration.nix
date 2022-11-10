@@ -4,6 +4,7 @@
     ./networking.nix # generated at runtime by nixos-infect
     ../../users
 
+    ../../modules/base
     ../../modules/coredns
     ../../modules/code-server/nginx.nix
     ../../modules/drone/nginx.nix

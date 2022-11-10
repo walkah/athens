@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
     ../../users
 
+    ../../modules/base
     ../../modules/coredns
     ../../modules/code-server
     ../../modules/drone

@@ -6,6 +6,7 @@
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.raspberry-pi-4
 
+    ../../modules/base
     ../../modules/ipfs/cluster.nix
     ../../modules/sops
   ];
