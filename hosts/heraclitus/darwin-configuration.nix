@@ -6,6 +6,8 @@
     ../../modules/base/darwin.nix
     ../../modules/dev
     ../../modules/builder
+
+    ../../services/ipfs-darwin.nix
   ];
 
   nixpkgs.config.allowBroken = true;
@@ -27,6 +29,7 @@
   home-manager.users.walkah = import "${dotfiles}/home.nix";
 
   services.lorri.enable = true;
+  services.ipfs.enable = true;
 
   programs = {
     zsh = {
