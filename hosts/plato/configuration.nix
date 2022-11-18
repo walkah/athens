@@ -109,7 +109,10 @@
     enable = true;
     group = "docker";
     staticConfigOptions = {
-      api = { };
+      api = {
+        dashboard = true;
+        insecure = true;
+      };
       certificatesResolvers = {
         myresolver = {
           acme = {
@@ -124,11 +127,17 @@
       entryPoints = {
         web = {
           address = ":80";
-
+          http = {
+            redirections = {
+              entryPoint = {
+                to = "websecure";
+                scheme = "https";
+              };
+            };
+          };
         };
         websecure = {
           address = ":443";
-
         };
       };
       providers = {
