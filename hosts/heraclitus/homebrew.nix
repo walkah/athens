@@ -41,6 +41,7 @@
       "obsidian"
       "plexamp"
       "raycast"
+      "signal"
       "slack"
       "sonos"
       "soundsource"
