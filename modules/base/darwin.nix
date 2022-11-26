@@ -8,6 +8,9 @@
       experimental-features = nix-command flakes
     '';
 
+    gc = {
+      automatic = true;
+    };
     settings = {
       trusted-users = [ "root" "@admin" ];
     };
