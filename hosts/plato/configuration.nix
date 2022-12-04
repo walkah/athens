@@ -15,6 +15,7 @@
     ../../modules/pleroma
     ../../modules/postgresql
     ../../modules/sops
+    ../../modules/traefik
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -105,52 +106,6 @@
   networking.firewall.enable = false;
 
   walkah.coredns = { enable = true; };
-  services.traefik = {
-    enable = true;
-    group = "docker";
-    staticConfigOptions = {
-      api = {
-        dashboard = true;
-        insecure = true;
-      };
-      certificatesResolvers = {
-        myresolver = {
-          acme = {
-            email = "walkah@walkah.net";
-            storage = "/var/lib/traefik/acme.json";
-            dnsChallenge = {
-              provider = "cloudflare";
-            };
-          };
-        };
-      };
-      entryPoints = {
-        web = {
-          address = ":80";
-          http = {
-            redirections = {
-              entryPoint = {
-                to = "websecure";
-                scheme = "https";
-              };
-            };
-          };
-        };
-        websecure = {
-          address = ":443";
-        };
-      };
-      providers = {
-        docker = { };
-      };
-    };
-  };
-  systemd.services.traefik = {
-    serviceConfig = {
-      EnvironmentFile = "/var/lib/traefik/env";
-    };
-  };
-
   services = {
     borgbackup.jobs."borgbase" = {
       paths = [
