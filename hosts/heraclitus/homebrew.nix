@@ -17,6 +17,7 @@
       "bartender"
       "brave-browser"
       "bunch"
+      "calibre"
       "descript"
       "diffusionbee"
       "discord"
