@@ -116,8 +116,10 @@ in
           [ "" "${pkgs.ipfs-cluster}/bin/ipfs-cluster-service daemon" ];
         User = cfg.user;
         Group = cfg.group;
+      } // optionalAttrs (cfg.secretFile != null) {
+        EnvironmentFile = cfg.secretFile;
       };
     };
-    networking.firewall.allowedTCPPorts = mkIf cfg.openSwarmPort [ 9096 ];
+    networking.firewall.allowedTCPPorts = mkIf cfg.openSwarmPort [ 9094 9096 ];
   };
 }
