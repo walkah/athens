@@ -41,24 +41,6 @@ in
       };
     };
     nginx = {
-
-      # IPFS Cluster REST API.
-      upstreams = {
-        "cluster_restapi" = {
-          servers = {
-            "100.95.167.126:9094" = { };
-            "100.87.220.71:9094" = { };
-            "100.126.255.109:9094" = { };
-            "100.74.59.80:9094" = { };
-          };
-        };
-      };
-      virtualHosts."cluster.walkah.cloud" = {
-        forceSSL = true;
-        enableACME = true;
-        locations."/" = { proxyPass = "http://cluster_restapi"; };
-      };
-
       # IPFS Gateway
       virtualHosts."walkah.cloud" = {
         forceSSL = true;
