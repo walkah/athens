@@ -87,16 +87,26 @@
       (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        darwin-local = pkgs.writeScriptBin "darwin-local" ''
-          #!${pkgs.stdenv.shell}
-          nix build .#darwinConfigurations.$(hostname -s).system
-          ./result/sw/bin/darwin-rebuild switch --flake .
-        '';
       in
       {
-        devShells.default = pkgs.mkShell {
-          name = "athens";
-          buildInputs = [ darwin-local deploy-rs.packages.${system}.deploy-rs pkgs.nixpkgs-fmt pkgs.rnix-lsp pkgs.sops ];
+        devShells.default = devenv.lib.mkShell {
+          inherit inputs pkgs;
+          modules = [
+            {
+              packages = [ deploy-rs.packages.${system}.deploy-rs pkgs.sops ];
+
+              scripts.darwin-local.exec = ''
+                nix build .#darwinConfigurations.$(hostname -s).system
+                ./result/sw/bin/darwin-rebuild switch --flake .
+              '';
+
+              languages.nix.enable = true;
+
+              pre-commit.hooks = {
+                nixpkgs-fmt.enable = true;
+              };
+            }
+          ];
         };
 
         formatter = pkgs.nixpkgs-fmt;
