@@ -27,8 +27,8 @@
 
   nixpkgs.config.packageOverrides = pkgs: {
     haskellPackages = pkgs.haskellPackages.override {
-      overrides = self: super: {
-        niv = pkgs.haskell.lib.overrideCabal super.niv (drv: {
+      overrides = _self: super: {
+        niv = pkgs.haskell.lib.overrideCabal super.niv (_drv: {
           enableSeparateBinOutput = false;
         });
       };

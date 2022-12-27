@@ -3,7 +3,6 @@
 with lib;
 let
   cfg = config.services.ipfs-cluster;
-  opt = options.services.ipfs-cluster;
 
   # secret is by envvar, not flag
   initFlags = toString [

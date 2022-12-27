@@ -39,31 +39,28 @@
   outputs =
     { self
     , nixpkgs
-    , nixos-hardware
     , deploy-rs
     , darwin
     , flake-utils
     , home-manager
-    , sops-nix
     , devenv
-    , dotfiles
     , workon
     , ...
     }@inputs:
     let
       overlays = [
-        (self: super: {
+        (self: _super: {
           workon = workon.packages.${self.system}.default;
-          devenv = devenv.packages.${self.system}.devenv;
+          inherit (devenv.packages.${self.system}) devenv;
         })
       ];
 
       mkSystem = hostName: system: modules:
         nixpkgs.lib.nixosSystem {
-          system = system;
+          inherit system;
           modules = [
             home-manager.nixosModules.home-manager
-            ({ config, ... }: {
+            (_: {
               networking.hostName = hostName;
               nixpkgs.overlays = overlays;
             })
@@ -72,10 +69,10 @@
         };
       mkDarwin = hostName: system: modules:
         darwin.lib.darwinSystem {
-          system = system;
+          inherit system;
           modules = [
             home-manager.darwinModules.home-manager
-            ({ config, ... }: {
+            (_: {
               networking.hostName = hostName;
               nixpkgs.overlays = overlays;
             })
@@ -103,7 +100,9 @@
               languages.nix.enable = true;
 
               pre-commit.hooks = {
+                deadnix.enable = true;
                 nixpkgs-fmt.enable = true;
+                statix.enable = true;
               };
             }
           ];

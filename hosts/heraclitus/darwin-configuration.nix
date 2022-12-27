@@ -1,4 +1,4 @@
-{ config, lib, pkgs, dotfiles, ... }:
+{ config, pkgs, dotfiles, ... }:
 {
   imports = [
     ./homebrew.nix

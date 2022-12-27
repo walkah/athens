@@ -1,4 +1,4 @@
-{ config, pkgs, home-manager, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix

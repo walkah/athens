@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   dest_ip = "100.111.208.75";
 in

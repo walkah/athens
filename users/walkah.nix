@@ -1,4 +1,4 @@
-{ config, lib, pkgs, dotfiles, ... }:
+{ pkgs, dotfiles, ... }:
 
 {
   users.users.walkah = {

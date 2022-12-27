@@ -1,7 +1,4 @@
-{ pkgs, config, lib, ... }:
-let
-  droneserver = config.users.users.droneserver.name;
-in
+{ pkgs, config, ... }:
 {
   nix.settings.allowed-users = [ "drone-runner-exec" ];
   systemd.services.drone-runner-exec = {
