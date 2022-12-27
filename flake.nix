@@ -7,6 +7,7 @@
     home-manager.url = "github:nix-community/home-manager";
     flake-utils.url = "github:numtide/flake-utils";
     deploy-rs.url = "github:serokell/deploy-rs";
+    devenv.url = "github:cachix/devenv/v0.5";
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -44,6 +45,7 @@
     , flake-utils
     , home-manager
     , sops-nix
+    , devenv
     , dotfiles
     , workon
     , ...
@@ -52,6 +54,7 @@
       overlays = [
         (self: super: {
           workon = workon.packages.${self.system}.default;
+          devenv = devenv.packages.${self.system}.devenv;
         })
       ];
 
