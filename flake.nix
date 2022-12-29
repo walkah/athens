@@ -7,7 +7,6 @@
     home-manager.url = "github:nix-community/home-manager";
     flake-utils.url = "github:numtide/flake-utils";
     deploy-rs.url = "github:serokell/deploy-rs";
-    devenv.url = "github:cachix/devenv/v0.5";
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -23,6 +22,13 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    devenv = {
+      url = "github:cachix/devenv";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+    };
+
 
     # My stuff
     dotfiles = {
