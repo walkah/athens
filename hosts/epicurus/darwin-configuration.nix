@@ -1,4 +1,4 @@
-{ config, lib, pkgs, dotfiles, ... }:
+{ pkgs, dotfiles, ... }:
 {
   imports = [
     ./homebrew.nix
@@ -9,7 +9,7 @@
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [ emacs-nox vim ghc go gopls niv rustup stack ];
+  environment.systemPackages = with pkgs; [ emacs-nox vim ghc go gopls rustup stack ];
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
@@ -24,16 +24,6 @@
   };
 
   home-manager.users.walkah = import "${dotfiles}/home.nix";
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    haskellPackages = pkgs.haskellPackages.override {
-      overrides = _self: super: {
-        niv = pkgs.haskell.lib.overrideCabal super.niv (_drv: {
-          enableSeparateBinOutput = false;
-        });
-      };
-    };
-  };
 
   services.lorri.enable = true;
 

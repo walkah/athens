@@ -35,4 +35,14 @@ _: {
       upgrade = true;
     };
   };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    haskellPackages = pkgs.haskellPackages.override {
+      overrides = _self: super: {
+        niv = pkgs.haskell.lib.overrideCabal super.niv (_drv: {
+          enableSeparateBinOutput = false;
+        });
+      };
+    };
+  };
 }
