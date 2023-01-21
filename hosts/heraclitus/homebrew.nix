@@ -10,7 +10,7 @@ _:
       "homebrew/services"
     ];
 
-    brews = [ "coreutils" ];
+    brews = [ "coreutils" "fontconfig" ];
 
     casks = [
       "1password"
@@ -45,7 +45,6 @@ _:
       "signal"
       "slack"
       "sonos"
-      "soundsource"
       "spotify"
       "stats"
       "steam"
