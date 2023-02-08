@@ -96,7 +96,12 @@
           inherit inputs pkgs;
           modules = [
             {
-              packages = [ deploy-rs.packages.${system}.deploy-rs pkgs.sops ];
+              packages = with pkgs; [
+                deploy-rs.packages.${system}.deploy-rs
+                nodePackages.typescript-language-server
+                pulumi-bin
+                sops
+              ];
 
               scripts.darwin-local.exec = ''
                 nix build .#darwinConfigurations.$(hostname -s).system
@@ -110,6 +115,8 @@
                 nixpkgs-fmt.enable = true;
                 statix.enable = true;
               };
+
+              env.PULUMI_SKIP_UPDATE_CHECK = true;
             }
           ];
         };
