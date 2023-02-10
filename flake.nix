@@ -29,6 +29,10 @@
       inputs.flake-compat.follows = "flake-compat";
     };
 
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # My stuff
     dotfiles = {
@@ -48,6 +52,7 @@
     , deploy-rs
     , darwin
     , flake-utils
+    , nixos-generators
     , home-manager
     , devenv
     , workon
@@ -92,6 +97,14 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
+
+        packages = {
+          digitalocean = nixos-generators.nixosGenerate {
+            system = "x86_64-linux";
+            format = "do";
+          };
+        };
+
         devShells.default = devenv.lib.mkShell {
           inherit inputs pkgs;
           modules = [
