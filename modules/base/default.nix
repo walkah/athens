@@ -9,6 +9,7 @@
   nix = {
     gc = {
       persistent = true;
+      dates = "weekly";
     };
 
     settings = {

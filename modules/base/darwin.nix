@@ -10,7 +10,11 @@ _: {
     '';
 
     gc = {
-      automatic = true;
+      interval = {
+        Hour = 3;
+        Minute = 16;
+        Weekday = 6;
+      };
     };
     settings = {
       trusted-users = [ "root" "@admin" ];
