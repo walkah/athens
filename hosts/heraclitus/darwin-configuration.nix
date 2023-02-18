@@ -1,4 +1,4 @@
-{ config, pkgs, dotfiles, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./homebrew.nix
@@ -23,10 +23,6 @@
     home = "/Users/walkah";
     shell = pkgs.zsh;
   };
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.users.walkah = import "${dotfiles}/home.nix";
 
   services.lorri.enable = true;
   services.ipfs.enable = true;

@@ -37,7 +37,9 @@
     # My stuff
     dotfiles = {
       url = "github:walkah/dotfiles";
-      flake = false;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     workon = {
@@ -55,6 +57,7 @@
     , nixos-generators
     , home-manager
     , devenv
+    , dotfiles
     , workon
     , ...
     }@inputs:
@@ -74,6 +77,8 @@
             (_: {
               networking.hostName = hostName;
               nixpkgs.overlays = overlays;
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
             })
           ] ++ modules;
           specialArgs = inputs;
@@ -86,6 +91,8 @@
             (_: {
               networking.hostName = hostName;
               nixpkgs.overlays = overlays;
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
             })
           ] ++ modules;
           specialArgs = inputs;
@@ -119,6 +126,7 @@
               scripts.darwin-local.exec = ''
                 nix build .#darwinConfigurations.$(hostname -s).system
                 ./result/sw/bin/darwin-rebuild switch --flake .
+                home-manager switch --flake .
               '';
 
               languages.nix.enable = true;
@@ -149,6 +157,10 @@
       darwinConfigurations = {
         epicurus = mkDarwin "epicurus" "aarch64-darwin" [ ./hosts/epicurus/darwin-configuration.nix ];
         heraclitus = mkDarwin "heraclitus" "aarch64-darwin" [ ./hosts/heraclitus/darwin-configuration.nix ];
+      };
+      homeConfigurations = {
+        "walkah@epicurus" = dotfiles.homeConfigurations.aarch64-darwin.walkah;
+        "walkah@heraclitus" = dotfiles.homeConfigurations.aarch64-darwin.walkah;
       };
 
       deploy.nodes = {
@@ -200,6 +212,11 @@
               path = deploy-rs.lib.x86_64-linux.activate.nixos
                 self.nixosConfigurations.plato;
             };
+            walkah = {
+              user = "walkah";
+              path = deploy-rs.lib.x86_64-linux.activate.home-manager
+                dotfiles.homeConfigurations.x86_64-linux;
+            };
           };
         };
 
@@ -210,6 +227,11 @@
               user = "root";
               path = deploy-rs.lib.x86_64-linux.activate.nixos
                 self.nixosConfigurations.socrates;
+            };
+            walkah = {
+              user = "walkah";
+              path = deploy-rs.lib.x86_64-linux.activate.home-manager
+                dotfiles.homeConfigurations.x86_64-linux;
             };
           };
         };
