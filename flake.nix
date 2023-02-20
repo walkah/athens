@@ -109,6 +109,10 @@
           digitalocean = nixos-generators.nixosGenerate {
             system = "x86_64-linux";
             format = "do";
+            modules = [
+              ./modules/base
+              ./users
+            ];
           };
         };
 
@@ -238,4 +242,3 @@
       };
     };
 }
-

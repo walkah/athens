@@ -16,4 +16,6 @@
       trusted-users = [ "root" "walkah" ];
     };
   };
+
+  system.stateVersion = "23.05";
 }
