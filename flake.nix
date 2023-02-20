@@ -215,7 +215,7 @@
             walkah = {
               user = "walkah";
               path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                dotfiles.homeConfigurations.x86_64-linux;
+                dotfiles.homeConfigurations.x86_64-linux.walkah;
             };
           };
         };
@@ -231,7 +231,7 @@
             walkah = {
               user = "walkah";
               path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                dotfiles.homeConfigurations.x86_64-linux;
+                dotfiles.homeConfigurations.x86_64-linux.walkah;
             };
           };
         };
