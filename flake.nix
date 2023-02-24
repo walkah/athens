@@ -142,6 +142,7 @@
               };
 
               env.PULUMI_SKIP_UPDATE_CHECK = true;
+              env.GC_DONT_GC = if pkgs.stdenv.isDarwin then 1 else 0;
             }
           ];
         };
