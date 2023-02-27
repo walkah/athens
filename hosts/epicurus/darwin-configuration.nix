@@ -5,6 +5,7 @@
 
     ../../modules/base/darwin.nix
     ../../modules/builder
+    ../../modules/dev
   ];
 
   # List packages installed in system profile. To search by name, run:
