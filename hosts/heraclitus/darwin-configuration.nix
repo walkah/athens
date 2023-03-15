@@ -25,7 +25,10 @@
   };
 
   services.lorri.enable = true;
-  services.ipfs.enable = true;
+  services.ipfs = {
+    enable = true;
+    package = pkgs.kubo_carmirror;
+  };
 
   programs = {
     zsh = {

@@ -46,6 +46,8 @@
       url = "github:walkah/workon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    fission.url = "github:fission-codes/nix-overlay";
   };
 
   outputs =
@@ -59,6 +61,7 @@
     , devenv
     , dotfiles
     , workon
+    , fission
     , ...
     }@inputs:
     let
@@ -67,6 +70,7 @@
           workon = workon.packages.${self.system}.default;
           inherit (devenv.packages.${self.system}) devenv;
         })
+        fission.overlay
       ];
 
       mkSystem = hostName: system: modules:

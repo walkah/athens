@@ -40,5 +40,7 @@
 
     # My stuff
     workon
+    fission-cli
+    carmirror
   ];
 }
