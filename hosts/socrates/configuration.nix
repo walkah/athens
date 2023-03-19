@@ -3,8 +3,10 @@
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
     ../../users
-
     ../../modules/base
+
+    ../../modules/akkoma
+    ../../modules/akkoma/nginx.nix
     ../../modules/coredns
     ../../modules/code-server/nginx.nix
     ../../modules/drone/nginx.nix
@@ -13,7 +15,7 @@
     ../../modules/ipfs/gateway.nix
     ../../modules/matrix/nginx.nix
     ../../modules/minecraft/proxy.nix
-    ../../modules/pleroma/nginx.nix
+    ../../modules/sops
   ];
 
   nixpkgs.overlays = [ (import ../../overlays) ];

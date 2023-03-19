@@ -5,13 +5,15 @@ keys:
   - &form age1ulmzprdmcd8r0w47a0nrrlg8melkjk6evl2rc54yh6lxkcfas36q6wrsv9
   - &matter age1lfjkch3pqaq3uwmjxyucpm2tws6llxqqjglj4yn49jkwkf50xvmqrl974e
   - &purpose age1jnf94uq5ap96vk7nfk3qkr38ylhletc6pskj0ypc470d7gmt0qeqskdy5z
+  - &socrates age12wakcnv487c5rkgv7z6umzywrqwcy6dgguq0dug6lxp64scjsq6sspkmgz
 creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:
-    - age:
-      - *walkah
-      - *plato
-      - *agent
-      - *form
-      - *matter
-      - *purpose
+      - age:
+          - *walkah
+          - *plato
+          - *agent
+          - *form
+          - *matter
+          - *purpose
+          - *socrates

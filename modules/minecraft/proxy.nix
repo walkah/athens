@@ -9,6 +9,6 @@ in
   networking.firewall.extraCommands = ''
     IPTABLES=${pkgs.iptables}/bin/iptables
     "$IPTABLES" -t nat -A PREROUTING -p tcp --dport 25565 -j DNAT --to-destination ${dest_ip}:25565
-    "$IPTABLES" -t nat -A POSTROUTING -j MASQUERADE
+    "$IPTABLES" -t nat -A POSTROUTING -o tailscale0 -j MASQUERADE
   '';
 }

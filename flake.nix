@@ -129,6 +129,7 @@
                 nodePackages.typescript-language-server
                 pulumi-bin
                 sops
+                ssh-to-age
               ];
 
               scripts.darwin-local.exec = ''
