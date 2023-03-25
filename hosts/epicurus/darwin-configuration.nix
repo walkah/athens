@@ -19,17 +19,5 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-  users.users.walkah = {
-    home = "/Users/walkah";
-    shell = pkgs.zsh;
-  };
-
   services.lorri.enable = true;
-
-  programs = {
-    zsh = {
-      enable = true;
-      promptInit = "";
-    };
-  };
 }

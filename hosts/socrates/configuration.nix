@@ -44,9 +44,6 @@
   system.autoUpgrade.enable = false;
   environment.systemPackages = with pkgs; [ ipfs-migrator ];
 
-  programs.mosh.enable = true;
-  programs.zsh.enable = true;
-
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "walkah@walkah.net";
 

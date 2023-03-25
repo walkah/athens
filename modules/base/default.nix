@@ -6,6 +6,7 @@
     inetutils
     vim
   ];
+
   nix = {
     gc = {
       persistent = true;
@@ -15,6 +16,10 @@
     settings = {
       trusted-users = [ "root" "walkah" ];
     };
+  };
+
+  programs = {
+    mosh.enable = true;
   };
 
   system.stateVersion = "23.05";

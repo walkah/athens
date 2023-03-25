@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ... }: {
 
   imports = [ ./common.nix ];
 
@@ -49,6 +49,11 @@ _: {
         });
       };
     };
+  };
+
+  users.users.walkah = {
+    home = "/Users/walkah";
+    shell = pkgs.zsh;
   };
 
   system.stateVersion = 4;
