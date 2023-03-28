@@ -62,6 +62,7 @@ in
 
     postgresqlBackup = {
       enable = true;
+      databases = [ "akkoma" ];
     };
   };
 

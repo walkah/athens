@@ -11,7 +11,6 @@
     ../../modules/gitea
     ../../modules/matrix
     ../../modules/minecraft
-    ../../modules/pleroma
     ../../modules/postgresql
     ../../modules/sops
     ../../modules/traefik
