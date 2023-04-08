@@ -44,6 +44,9 @@
   environment.systemPackages = with pkgs; [ libraspberrypi ];
 
   services = {
+    kubo = {
+      package = pkgs.kubo_carmirror;
+    };
     prometheus = {
       enable = true;
       port = 9090;
