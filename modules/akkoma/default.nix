@@ -1,8 +1,9 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 let
   inherit (config.services) akkoma;
   inherit (config.sops) secrets;
+  inherit ((pkgs.formats.elixirConf { }).lib) mkRaw;
 in
 {
   services = {
@@ -28,6 +29,17 @@ in
             enabled = false;
             redirect_on_failure = true;
           };
+
+          "Pleroma.Repo" = {
+            adapter = mkRaw "Ecto.Adapters.Postgres";
+            socket_dir = "/run/postgresql";
+            username = config.services.akkoma.user;
+            database = "akkoma";
+
+            prepare = mkRaw ":named";
+            parameters.plan_cache_mode = "force_custom_plan";
+          };
+
           "Pleroma.Web.Endpoint" = {
             secret_key_base = { _secret = secrets.akkoma-secret-key-base.path; };
             signing_salt = { _secret = secrets.akkoma-signing-salt.path; };
