@@ -23,12 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    devenv = {
-      url = "github:cachix/devenv";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-    };
-
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +52,6 @@
     , flake-utils
     , nixos-generators
     , home-manager
-    , devenv
     , dotfiles
     , workon
     , fission
@@ -68,7 +61,6 @@
       overlays = [
         (self: _super: {
           workon = workon.packages.${self.system}.default;
-          inherit (devenv.packages.${self.system}) devenv;
         })
         fission.overlay
       ];
@@ -106,6 +98,12 @@
       (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        darwin-local = pkgs.writeScriptBin "darwin-local" ''
+          #!${pkgs.stdenv.shell}
+          nix build .#darwinConfigurations.$(hostname -s).system
+          ./result/sw/bin/darwin-rebuild switch --flake .
+        '';
+
       in
       {
 
@@ -120,36 +118,9 @@
           };
         };
 
-        devShells.default = devenv.lib.mkShell {
-          inherit inputs pkgs;
-          modules = [
-            {
-              packages = with pkgs; [
-                deploy-rs.packages.${system}.deploy-rs
-                nodePackages.typescript-language-server
-                pulumi-bin
-                sops
-                ssh-to-age
-              ];
-
-              scripts.darwin-local.exec = ''
-                nix build .#darwinConfigurations.$(hostname -s).system
-                ./result/sw/bin/darwin-rebuild switch --flake .
-                home-manager switch --flake .
-              '';
-
-              languages.nix.enable = true;
-
-              pre-commit.hooks = {
-                deadnix.enable = true;
-                nixpkgs-fmt.enable = true;
-                statix.enable = true;
-              };
-
-              env.PULUMI_SKIP_UPDATE_CHECK = true;
-              env.GC_DONT_GC = if pkgs.stdenv.isDarwin then 1 else 0;
-            }
-          ];
+        devShells.default = pkgs.mkShell {
+          name = "athens";
+          buildInputs = [ darwin-local deploy-rs.packages.${system}.deploy-rs pkgs.nixpkgs-fmt pkgs.rnix-lsp pkgs.sops ];
         };
 
         formatter = pkgs.nixpkgs-fmt;
