@@ -18,8 +18,6 @@ _:
       "brave-browser"
       "bunch"
       "calibre"
-      "descript"
-      "diffusionbee"
       "discord"
       "docker"
       "element"
@@ -29,12 +27,10 @@ _:
       "firefox-developer-edition"
       "font-jetbrains-mono"
       "font-jetbrains-mono-nerd-font"
-      "gather"
       "google-chrome"
       "gpg-suite"
       "hazel"
       "iterm2"
-      "keybase"
       "logi-options-plus"
       "logseq"
       "loom"
@@ -52,7 +48,6 @@ _:
       "synology-drive"
       "todoist"
       "visual-studio-code"
-      "whalebird"
       "zoom"
     ];
 
@@ -62,9 +57,7 @@ _:
       DayOne = 1055511498;
       Drafts = 1435957248;
       HomeAssistant = 1099568401;
-      Reeder = 1529448980;
       Tailscale = 1475387142;
-      UlyssesMac = 1225570693;
       Xcode = 497799835;
     };
   };

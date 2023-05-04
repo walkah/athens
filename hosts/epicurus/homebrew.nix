@@ -13,13 +13,10 @@ _:
 
     casks = [
       "1password"
-      "alfred"
       "docker"
       "font-jetbrains-mono"
       "font-jetbrains-mono-nerd-font"
       "gpg-suite"
-      "ipfs"
-      "keybase"
       "plex-media-server"
       "stats"
       "syncthing"
@@ -27,8 +24,6 @@ _:
     ];
 
     masApps = {
-      Bumpr = 1166066070;
-      Magnet = 441258766;
       Tailscale = 1475387142;
       Xcode = 497799835;
     };

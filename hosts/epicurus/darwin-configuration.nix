@@ -10,7 +10,7 @@
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [ emacs-nox vim ghc go gopls rustup stack ];
+  environment.systemPackages = with pkgs; [ emacs-nox ];
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix

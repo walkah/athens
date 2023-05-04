@@ -84,7 +84,6 @@
     enable = true;
     useRoutingFeatures = "server";
   };
-  services.keybase.enable = true;
 
   virtualisation.docker = {
     enable = true;
