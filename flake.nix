@@ -28,6 +28,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    devenv.url = "github:cachix/devenv/latest";
+
     # My stuff
     dotfiles = {
       url = "github:walkah/dotfiles";
@@ -52,6 +54,7 @@
     , flake-utils
     , nixos-generators
     , home-manager
+    , devenv
     , dotfiles
     , workon
     , fission
@@ -61,6 +64,7 @@
       overlays = [
         (self: _super: {
           workon = workon.packages.${self.system}.default;
+          devenv = devenv.packages.${self.system}.devenv;
         })
         fission.overlay
       ];

@@ -23,6 +23,7 @@
 
     # Nix
     cachix
+    devenv
     niv
     nixfmt
     nixpkgs-fmt
