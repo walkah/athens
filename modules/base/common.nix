@@ -11,8 +11,6 @@ _:
     };
 
     settings = {
-      auto-optimise-store = true;
-
       substituters = [
         "https://walkah.cachix.org"
       ];
