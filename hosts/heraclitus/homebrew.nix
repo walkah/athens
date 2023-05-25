@@ -15,6 +15,7 @@ _:
     casks = [
       "1password"
       "bartender"
+      "beeper"
       "brave-browser"
       "bunch"
       "calibre"
@@ -34,6 +35,7 @@ _:
       "logi-options-plus"
       "logseq"
       "loom"
+      "microsoft-edge"
       "minecraft"
       "obsidian"
       "plexamp"
