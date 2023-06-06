@@ -4,6 +4,9 @@
   services.traefik = {
     enable = true;
     group = "docker";
+    environmentFiles = [
+      config.sops.secrets.traefik.path
+    ];
     staticConfigOptions = {
       api = {
         dashboard = true;
@@ -39,11 +42,6 @@
       providers = {
         docker = { };
       };
-    };
-  };
-  systemd.services.traefik = {
-    serviceConfig = {
-      EnvironmentFile = config.sops.secrets.traefik.path;
     };
   };
 
