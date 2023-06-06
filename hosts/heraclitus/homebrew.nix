@@ -14,6 +14,7 @@ _:
 
     casks = [
       "1password"
+      "android-studio"
       "bartender"
       "beeper"
       "brave-browser"
@@ -40,7 +41,6 @@ _:
       "obsidian"
       "plexamp"
       "raycast"
-      "signal"
       "slack"
       "sonos"
       "spotify"
