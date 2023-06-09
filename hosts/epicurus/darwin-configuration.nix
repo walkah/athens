@@ -20,4 +20,8 @@
   services.nix-daemon.enable = true;
 
   services.lorri.enable = true;
+
+  users.users.walkah.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
+  ];
 }
