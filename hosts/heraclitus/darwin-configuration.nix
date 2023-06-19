@@ -6,8 +6,6 @@
     ../../modules/base/darwin.nix
     ../../modules/dev
     ../../modules/builder
-
-    ../../services/ipfs-darwin.nix
   ];
 
   nixpkgs.config.allowBroken = true;
@@ -20,10 +18,7 @@
   services.nix-daemon.enable = true;
 
   services.lorri.enable = true;
-  services.ipfs = {
-    enable = true;
-    package = pkgs.kubo_carmirror;
-  };
+  services.ipfs.enable = true;
 
   system = {
     defaults = {
