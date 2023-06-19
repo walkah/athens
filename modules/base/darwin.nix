@@ -15,6 +15,7 @@
         Minute = 16;
         Weekday = 6;
       };
+      options = "--delete-older-than 30d";
     };
     settings = {
       trusted-users = [ "root" "@admin" ];
