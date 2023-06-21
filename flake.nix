@@ -220,6 +220,20 @@
             };
           };
         };
+
+        epicurus = {
+          hostname = "epicurus";
+          profiles = {
+            system = {
+              user = "root";
+              path = deploy-rs.lib.aarch64-darwin.activate.darwin self.darwinConfigurations.epicurus;
+            };
+            walkah = {
+              user = "walkah";
+              path = deploy-rs.lib.aarch64-darwin.activate.home-manager dotfiles.homeConfigurations.aarch64-darwin.walkah;
+            };
+          };
+        };
       };
     };
 }
