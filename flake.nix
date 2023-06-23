@@ -6,7 +6,11 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager.url = "github:nix-community/home-manager";
     flake-utils.url = "github:numtide/flake-utils";
-    deploy-rs.url = "github:serokell/deploy-rs";
+
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -28,7 +32,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    devenv.url = "github:cachix/devenv/latest";
 
     # My stuff
     dotfiles = {
@@ -42,8 +45,6 @@
       url = "github:walkah/workon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    fission.url = "github:fission-codes/nix-overlay";
   };
 
   outputs =
@@ -54,19 +55,15 @@
     , flake-utils
     , nixos-generators
     , home-manager
-    , devenv
     , dotfiles
     , workon
-    , fission
     , ...
     }@inputs:
     let
       overlays = [
         (self: _super: {
           workon = workon.packages.${self.system}.default;
-          devenv = devenv.packages.${self.system}.devenv;
         })
-        fission.overlay
       ];
 
       mkSystem = hostName: system: modules:

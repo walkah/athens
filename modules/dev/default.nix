@@ -23,7 +23,6 @@
 
     # Nix
     cachix
-    devenv
     niv
     nixfmt
     nixpkgs-fmt
@@ -39,7 +38,5 @@
 
     # My stuff
     workon
-    fission-cli
-    carmirror
   ];
 }
