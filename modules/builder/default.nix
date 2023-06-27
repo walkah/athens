@@ -21,19 +21,20 @@ in
   nix.distributedBuilds = true;
   nix.buildMachines = [
     {
-      hostName = "ssh://builder";
-      systems = [ "x86_64-linux" "aarch64-linux" ];
+      hostName = "builder";
+      systems = [ "aarch64-linux" "x86_64-linux" ];
       maxJobs = 4;
       speedFactor = 2;
       supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
     }
     {
-      hostName = "ssh://plato";
+      hostName = "plato";
       systems = [ "x86_64-linux" "aarch64-linux" ];
       maxJobs = 6;
-      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      supportedFeatures = [ "benchmark" "big-parallel" "kvm" ];
     }
   ];
+  nix.settings.builders-use-substitutes = true;
 
   # We can't/want to edit /var/root/.ssh/config so instead we create the config at another location and tell ssh to use that instead by modifying NIX_SSHOPTS
   environment.etc."nix/ssh_config".text = ''
