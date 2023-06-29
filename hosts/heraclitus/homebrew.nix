@@ -8,12 +8,14 @@ _:
       "homebrew/cask-fonts"
       "homebrew/cask-versions"
       "homebrew/services"
+      "1password/tap"
     ];
 
     brews = [ "coreutils" "fontconfig" ];
 
     casks = [
       "1password"
+      "1password-cli"
       "android-studio"
       "bartender"
       "beeper"
@@ -49,6 +51,7 @@ _:
       "syncthing"
       "synology-drive"
       "todoist"
+      "unity-hub"
       "visual-studio-code"
       "zoom"
     ];
