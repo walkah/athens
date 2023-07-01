@@ -8,7 +8,6 @@ let
     modules = [
       "${nixpkgs}/nixos/modules/profiles/macos-builder.nix"
       {
-        boot.binfmt.emulatedSystems = [ "x86_64-linux" ];
         system.nixos.revision = nixpkgs.lib.mkForce null;
         virtualisation.host.pkgs = pkgs;
         virtualisation.darwin-builder.hostPort = port;
@@ -22,14 +21,14 @@ in
   nix.buildMachines = [
     {
       hostName = "builder";
-      systems = [ "aarch64-linux" "x86_64-linux" ];
+      systems = [ "aarch64-linux" ];
       maxJobs = 4;
       speedFactor = 2;
       supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
     }
     {
       hostName = "plato";
-      systems = [ "x86_64-linux" "aarch64-linux" ];
+      systems = [ "x86_64-linux" ];
       maxJobs = 6;
       supportedFeatures = [ "benchmark" "big-parallel" "kvm" ];
     }
