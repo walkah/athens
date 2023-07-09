@@ -19,10 +19,6 @@
   boot.loader.generic-extlinux-compatible.enable = false;
 
   boot.kernelPackages = pkgs.linuxPackages_rpi4;
-  boot.loader.raspberryPi = {
-    enable = true;
-    version = 4;
-  };
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
