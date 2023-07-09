@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../../services/matrix-sliding-sync.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     matrix-synapse-tools.synadm
   ];
@@ -17,7 +21,7 @@
             LC_CTYPE = "C";
       '';
     };
-    postgresqlBackup.databases = [ "matrix" ];
+    postgresqlBackup.databases = [ "matrix" "matrix-syncv3" ];
 
     matrix-synapse = {
       enable = true;
@@ -48,6 +52,8 @@
         config.sops.secrets.matrix-registration-secret.path
       ];
     };
+
+    matrix-syncv3.enable = true;
   };
 
   sops.secrets.matrix-registration-secret = {
