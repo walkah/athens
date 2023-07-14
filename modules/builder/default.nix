@@ -1,4 +1,4 @@
-{ config, nixpkgs, pkgs, ... }: {
+_: {
   nix.distributedBuilds = true;
   nix.buildMachines = [
     {

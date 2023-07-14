@@ -22,13 +22,18 @@
       flake = false;
     };
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -53,8 +58,9 @@
     , deploy-rs
     , darwin
     , flake-utils
-    , nixos-generators
     , home-manager
+    , nixos-generators
+    , pre-commit-hooks
     , dotfiles
     , workon
     , ...
@@ -107,6 +113,16 @@
 
       in
       {
+        checks = {
+          pre-commit-check = pre-commit-hooks.lib.${system}.run {
+            src = ./.;
+            hooks = {
+              deadnix.enable = true;
+              nixpkgs-fmt.enable = true;
+              statix.enable = true;
+            };
+          };
+        };
 
         packages = {
           digitalocean = nixos-generators.nixosGenerate {
@@ -121,7 +137,17 @@
 
         devShells.default = pkgs.mkShell {
           name = "athens";
-          buildInputs = [ darwin-local deploy-rs.packages.${system}.deploy-rs pkgs.nixpkgs-fmt pkgs.rnix-lsp pkgs.sops ];
+          buildInputs = with pkgs; [
+            darwin-local
+            deploy-rs.packages.${system}.deploy-rs
+            deadnix
+            nixpkgs-fmt
+            statix
+            rnix-lsp
+            sops
+          ];
+
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
         };
 
         formatter = pkgs.nixpkgs-fmt;
