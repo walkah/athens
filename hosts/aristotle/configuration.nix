@@ -17,7 +17,11 @@
   boot.loader.grub.enable = false;
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_rpi4;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
+
+  hardware.enableRedistributableFirmware = true;
+  hardware.raspberry-pi."4".poe-hat.enable = true;
+
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -36,7 +40,7 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
   ];
 
-  environment.systemPackages = with pkgs; [ libraspberrypi ];
+  environment.systemPackages = with pkgs; [ libraspberrypi raspberrypi-eeprom ];
 
   services = {
     prometheus = {
