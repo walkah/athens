@@ -3,10 +3,13 @@ _: {
   nix.buildMachines = [
     {
       hostName = "plato";
-      systems = [ "x86_64-linux" ];
+      systems = [ "x86_64-linux" "aarch64-linux" ];
       maxJobs = 6;
       supportedFeatures = [ "benchmark" "big-parallel" "kvm" ];
     }
   ];
-  nix.linux-builder.enable = true;
+
+  # TODO: waiting on fix for https://github.com/NixOS/nixpkgs/issues/243685
+  # nix.linux-builder.enable = true;
 }
+ 
