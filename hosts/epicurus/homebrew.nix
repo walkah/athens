@@ -4,7 +4,6 @@ _:
   homebrew = {
     taps = [
       "homebrew/cask"
-      "homebrew/cask-drivers"
       "homebrew/cask-fonts"
       "homebrew/services"
     ];
