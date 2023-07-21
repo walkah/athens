@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ../../services/matrix-sliding-sync.nix
-  ];
-
   environment.systemPackages = with pkgs; [
     matrix-synapse-tools.synadm
   ];
@@ -51,12 +47,22 @@
       extraConfigFiles = [
         config.sops.secrets.matrix-registration-secret.path
       ];
-    };
 
-    matrix-syncv3.enable = true;
+      sliding-sync = {
+        enable = true;
+        settings = {
+          SYNCV3_SERVER = "https://matrix.walkah.chat";
+          SYNCV3_BINDADDR = "0.0.0.0:8088";
+        };
+        environmentFile = config.sops.secrets.matrix-sliding-sync-secret.path;
+      };
+
+    };
   };
 
   sops.secrets.matrix-registration-secret = {
     owner = "matrix-synapse";
   };
+
+  sops.secrets.matrix-sliding-sync-secret = { };
 }
