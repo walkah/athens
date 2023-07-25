@@ -35,6 +35,7 @@ _:
       "hazel"
       "iterm2"
       "logi-options-plus"
+      "logitech-camera-settings"
       "logseq"
       "loom"
       "microsoft-edge"

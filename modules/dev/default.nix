@@ -2,11 +2,10 @@
 
 {
   environment.systemPackages = with pkgs; [
-    emacs
+    emacs29
 
-    # Cloud 
+    # Cloud
     awscli2
-    pulumi-bin
 
     # Elixir
     elixir
@@ -23,10 +22,10 @@
 
     # Nix
     cachix
+    nil
     niv
     nixfmt
     nixpkgs-fmt
-    rnix-lsp
 
     # Node/JS
     deno

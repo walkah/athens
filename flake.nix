@@ -141,9 +141,9 @@
             darwin-local
             deploy-rs.packages.${system}.deploy-rs
             deadnix
+            nil
             nixpkgs-fmt
             statix
-            rnix-lsp
             sops
           ];
 
