@@ -9,7 +9,5 @@ _: {
     }
   ];
 
-  # TODO: waiting on fix for https://github.com/NixOS/nixpkgs/issues/243685
-  # nix.linux-builder.enable = true;
+  nix.linux-builder.enable = true;
 }
- 
