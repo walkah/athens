@@ -10,7 +10,8 @@ let
         home-manager.nixosModules.home-manager
         (_: {
           networking.hostName = hostName;
-          nixpkgs.pkgs = self.pkgs.${hostSystem};
+          nixpkgs.overlays = [ self.overlays.default ];
+          nixpkgs.config.allowUnfree = true;
         })
       ] ++ modules;
       specialArgs = { inherit dotfiles nixos-hardware sops-nix; };

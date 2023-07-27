@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -22,9 +22,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.tmp.cleanOnBoot = true;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
-
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ (import ../../overlays) ];
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes

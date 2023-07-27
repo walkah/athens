@@ -1,5 +1,4 @@
-{ self, system, pre-commit-hooks, ... }:
-with self.pkgs.${system};
+{ self, pkgs, system, pre-commit-hooks, ... }:
 {
   pre-commit-check = pre-commit-hooks.lib.${system}.run {
     src = ./.;
@@ -9,4 +8,4 @@ with self.pkgs.${system};
       statix.enable = true;
     };
   };
-} // (deploy-rs.lib.deployChecks self.deploy)
+} // (pkgs.deploy-rs.lib.deployChecks self.deploy)

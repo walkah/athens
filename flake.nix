@@ -37,7 +37,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     # My stuff
     dotfiles = {
       url = "github:walkah/dotfiles";
@@ -55,16 +54,18 @@
 
   outputs = { self, nixpkgs, flake-utils, deploy-rs, pre-commit-hooks, workon, ... }@inputs:
     flake-utils.lib.eachDefaultSystem
-      (system: {
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ self.overlays.default ];
-          config.allowUnfree = true;
-        };
-        checks = import ./nix/checks.nix { inherit self system pre-commit-hooks; };
-        devShells = import ./nix/shells.nix { inherit self system; };
-        formatter = self.pkgs.nixpkgs-fmt;
-      })
+      (system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ self.overlays.default ];
+          };
+        in
+        {
+          checks = import ./nix/checks.nix { inherit self pkgs system pre-commit-hooks; };
+          devShells = import ./nix/shells.nix { inherit self pkgs system; };
+          formatter = pkgs.nixpkgs-fmt;
+        })
     // {
       hosts = import ./nix/hosts.nix;
       overlays.default = nixpkgs.lib.composeManyExtensions [

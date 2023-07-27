@@ -10,7 +10,7 @@ let
         home-manager.darwinModules.home-manager
         (_: {
           networking.hostName = hostName;
-          nixpkgs.pkgs = self.pkgs.${hostSystem};
+          nixpkgs.overlays = [ self.overlays.default ];
         })
       ] ++ modules;
       specialArgs = { inherit dotfiles home-manager; };

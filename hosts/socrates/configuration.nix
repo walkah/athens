@@ -18,8 +18,6 @@
     ../../modules/sops
   ];
 
-  nixpkgs.overlays = [ (import ../../overlays) ];
-
   boot.tmp.cleanOnBoot = true;
 
   # Set your time zone.
