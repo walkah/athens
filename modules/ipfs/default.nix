@@ -1,8 +1,6 @@
-{ pkgs, ... }:
+_:
 
 {
-  environment.systemPackages = with pkgs; [ ipfs-migrator ];
-
   services = {
     kubo = {
       enable = true;
@@ -20,7 +18,6 @@
           ];
         };
         API = { HTTPHeaders = { Access-Control-Allow-Origin = [ "*" ]; }; };
-        Discovery = { MDNS = { Enabled = true; }; };
         Routing = { Type = "dht"; };
       };
     };

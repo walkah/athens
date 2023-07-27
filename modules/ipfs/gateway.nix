@@ -36,6 +36,7 @@ in
     kubo = {
       enable = true;
       settings = {
+        Discovery = { MDNS = { Enabled = false; }; };
         Peering = { Peers = peers; };
         Swarm = { AddrFilters = null; };
       };
