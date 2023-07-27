@@ -24,7 +24,6 @@
     cachix
     nil
     niv
-    nixfmt
     nixpkgs-fmt
 
     # Node/JS

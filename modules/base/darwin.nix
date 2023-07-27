@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, dotfiles, ... }: {
 
   imports = [ ./common.nix ];
 
@@ -41,6 +41,11 @@
       upgrade = true;
     };
   };
+
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.users.walkah = import "${dotfiles}/home.nix";
+
 
   nixpkgs.config.packageOverrides = pkgs: {
     haskellPackages = pkgs.haskellPackages.override {

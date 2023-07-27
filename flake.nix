@@ -44,6 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
       inputs.flake-utils.follows = "flake-utils";
+      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
     };
 
     workon = {
@@ -52,211 +53,28 @@
     };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , deploy-rs
-    , darwin
-    , flake-utils
-    , home-manager
-    , nixos-generators
-    , pre-commit-hooks
-    , dotfiles
-    , workon
-    , ...
-    }@inputs:
-    let
-      overlays = [
-        (self: _super: {
-          workon = workon.packages.${self.system}.default;
-        })
+  outputs = { self, nixpkgs, flake-utils, deploy-rs, pre-commit-hooks, workon, ... }@inputs:
+    flake-utils.lib.eachDefaultSystem
+      (system: {
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ self.overlays.default ];
+          config.allowUnfree = true;
+        };
+        checks = import ./nix/checks.nix { inherit self system pre-commit-hooks; };
+        devShells = import ./nix/shells.nix { inherit self system; };
+        formatter = self.pkgs.nixpkgs-fmt;
+      })
+    // {
+      hosts = import ./nix/hosts.nix;
+      overlays.default = nixpkgs.lib.composeManyExtensions [
+        deploy-rs.overlay
+        workon.overlays.default
       ];
 
-      mkSystem = hostName: system: modules:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            home-manager.nixosModules.home-manager
-            (_: {
-              networking.hostName = hostName;
-              nixpkgs.overlays = overlays;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            })
-          ] ++ modules;
-          specialArgs = inputs;
-        };
-      mkDarwin = hostName: system: modules:
-        darwin.lib.darwinSystem {
-          inherit system;
-          modules = [
-            home-manager.darwinModules.home-manager
-            (_: {
-              networking.hostName = hostName;
-              nixpkgs.overlays = overlays;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            })
-          ] ++ modules;
-          specialArgs = inputs;
-        };
-    in
-    flake-utils.lib.eachDefaultSystem
-      (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-        darwin-local = pkgs.writeScriptBin "darwin-local" ''
-          #!${pkgs.stdenv.shell}
-          nix build .#darwinConfigurations.$(hostname -s).system
-          ./result/sw/bin/darwin-rebuild switch --flake .
-        '';
-
-      in
-      {
-        checks = {
-          pre-commit-check = pre-commit-hooks.lib.${system}.run {
-            src = ./.;
-            hooks = {
-              deadnix.enable = true;
-              nixpkgs-fmt.enable = true;
-              statix.enable = true;
-            };
-          };
-        };
-
-        packages = {
-          digitalocean = nixos-generators.nixosGenerate {
-            system = "x86_64-linux";
-            format = "do";
-            modules = [
-              ./modules/base
-              ./users
-            ];
-          };
-        };
-
-        devShells.default = pkgs.mkShell {
-          name = "athens";
-          buildInputs = with pkgs; [
-            darwin-local
-            deploy-rs.packages.${system}.deploy-rs
-            deadnix
-            nil
-            nixpkgs-fmt
-            statix
-            sops
-          ];
-
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-        };
-
-        formatter = pkgs.nixpkgs-fmt;
-      }) // {
-      nixosConfigurations = {
-        # Aristotle
-        agent = mkSystem "agent" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
-        form = mkSystem "form" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
-        matter = mkSystem "matter" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
-        purpose = mkSystem "purpose" "aarch64-linux" [ ./hosts/aristotle/configuration.nix ];
-
-        plato = mkSystem "plato" "x86_64-linux" [ ./hosts/plato/configuration.nix ];
-        socrates = mkSystem "socrates" "x86_64-linux" [ ./hosts/socrates/configuration.nix ];
-      };
-      darwinConfigurations = {
-        epicurus = mkDarwin "epicurus" "aarch64-darwin" [ ./hosts/epicurus/darwin-configuration.nix ];
-        heraclitus = mkDarwin "heraclitus" "aarch64-darwin" [ ./hosts/heraclitus/darwin-configuration.nix ];
-      };
-      homeConfigurations = {
-        "walkah@epicurus" = dotfiles.homeConfigurations.aarch64-darwin.walkah;
-        "walkah@heraclitus" = dotfiles.homeConfigurations.aarch64-darwin.walkah;
-      };
-
-      deploy.nodes = {
-        agent = {
-          hostname = "agent";
-          sshUser = "root";
-          profiles.system = {
-            user = "root";
-            path = deploy-rs.lib.aarch64-linux.activate.nixos
-              self.nixosConfigurations.agent;
-          };
-        };
-
-        form = {
-          hostname = "form";
-          sshUser = "root";
-          profiles.system = {
-            user = "root";
-            path = deploy-rs.lib.aarch64-linux.activate.nixos
-              self.nixosConfigurations.form;
-          };
-        };
-
-        matter = {
-          hostname = "matter";
-          sshUser = "root";
-          profiles.system = {
-            user = "root";
-            path = deploy-rs.lib.aarch64-linux.activate.nixos
-              self.nixosConfigurations.matter;
-          };
-        };
-
-        purpose = {
-          hostname = "purpose";
-          sshUser = "root";
-          profiles.system = {
-            user = "root";
-            path = deploy-rs.lib.aarch64-linux.activate.nixos
-              self.nixosConfigurations.purpose;
-          };
-        };
-
-        plato = {
-          hostname = "plato";
-          profiles = {
-            system = {
-              user = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos
-                self.nixosConfigurations.plato;
-            };
-            walkah = {
-              user = "walkah";
-              path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                dotfiles.homeConfigurations.x86_64-linux.walkah;
-            };
-          };
-        };
-
-        socrates = {
-          hostname = "socrates";
-          profiles = {
-            system = {
-              user = "root";
-              path = deploy-rs.lib.x86_64-linux.activate.nixos
-                self.nixosConfigurations.socrates;
-            };
-            walkah = {
-              user = "walkah";
-              path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                dotfiles.homeConfigurations.x86_64-linux.walkah;
-            };
-          };
-        };
-
-        epicurus = {
-          hostname = "epicurus";
-          profiles = {
-            system = {
-              user = "root";
-              path = deploy-rs.lib.aarch64-darwin.activate.darwin self.darwinConfigurations.epicurus;
-            };
-            walkah = {
-              user = "walkah";
-              path = deploy-rs.lib.aarch64-darwin.activate.home-manager dotfiles.homeConfigurations.aarch64-darwin.walkah;
-            };
-          };
-        };
-      };
+      darwinConfigurations = import ./nix/darwin.nix inputs;
+      homeConfigurations = import ./nix/home.nix inputs;
+      nixosConfigurations = import ./nix/nixos.nix inputs;
+      deploy = import ./nix/deploy.nix inputs;
     };
 }
