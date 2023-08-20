@@ -2,3 +2,6 @@
 /result
 /.pre-commit-config.yaml
 /node_modules/
+.terraform
+*.tfvars
+*.tfstate
