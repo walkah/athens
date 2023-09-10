@@ -39,10 +39,8 @@
 
   security = {
     sudo.wheelNeedsPassword = false;
-    security = {
-      acme.acceptTerms = true;
-      acme.defaults.email = "walkah@walkah.net";
-    };
+    acme.acceptTerms = true;
+    acme.defaults.email = "walkah@walkah.net";
   };
 
   users.users.root.openssh.authorizedKeys.keys = [

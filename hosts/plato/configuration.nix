@@ -1,4 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }:
+let
+  automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+  inherit (config.sops) secrets;
+in
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -16,26 +21,21 @@
     ../../modules/traefik
   ];
   boot = {
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
     loader = {
-      binfmt.emulatedSystems = [ "aarch64-linux" ];
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         # Use the systemd-boot EFI boot loader.
         enable = true;
         configurationLimit = 3;
       };
-      tmp.cleanOnBoot = true;
     };
+    tmp.cleanOnBoot = true;
   };
-
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
 
   # Set your time zone.
   time.timeZone = "America/Toronto";
   networking = {
-
     hostName = "plato"; # Define your hostname.
     useDHCP = false;
     interfaces = {
@@ -58,21 +58,33 @@
   ];
 
   system.autoUpgrade.enable = false;
-  environment.systemPackages = with pkgs; [ pinentry weechat ];
+  environment.systemPackages = with pkgs; [ cifs-utils pinentry weechat ];
   fileSystems = {
     "/mnt/downloads" = {
-      device = "192.168.6.100:/volume1/Downloads";
-      fsType = "nfs";
+      device = "//parthenon/Downloads";
+      fsType = "cifs";
+      options = [
+        "${automount_opts},credentials=${secrets.filesystems-parthenon.path}"
+      ];
     };
+
     "/mnt/music" = {
-      device = "192.168.6.100:/volume1/Music";
-      fsType = "nfs";
+      device = "//parthenon/Music";
+      fsType = "cifs";
+      options = [
+        "${automount_opts},credentials=${secrets.filesystems-parthenon.path}"
+      ];
     };
     "/mnt/video" = {
-      device = "192.168.6.100:/volume1/Video";
-      fsType = "nfs";
+      device = "//parthenon/Video";
+      fsType = "cifs";
+      options = [
+        "${automount_opts},credentials=${secrets.filesystems-parthenon.path}"
+      ];
     };
   };
+  sops.secrets.filesystems-parthenon = { };
+
 
   power.ups = {
     enable = true;
