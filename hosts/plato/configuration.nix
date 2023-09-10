@@ -15,13 +15,18 @@
     ../../modules/sops
     ../../modules/traefik
   ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 3;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.tmp.cleanOnBoot = true;
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot = {
+    loader = {
+      binfmt.emulatedSystems = [ "aarch64-linux" ];
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        # Use the systemd-boot EFI boot loader.
+        enable = true;
+        configurationLimit = 3;
+      };
+      tmp.cleanOnBoot = true;
+    };
+  };
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -29,11 +34,21 @@
 
   # Set your time zone.
   time.timeZone = "America/Toronto";
+  networking = {
 
-  networking.hostName = "plato"; # Define your hostname.
-  networking.useDHCP = false;
-  networking.interfaces.enp10s0.useDHCP = true;
-  networking.interfaces.enp9s0.useDHCP = true;
+    hostName = "plato"; # Define your hostname.
+    useDHCP = false;
+    interfaces = {
+      enp10s0.useDHCP = true;
+      enp9s0.useDHCP = true;
+    };
+
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    firewall.enable = false;
+  };
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -44,18 +59,19 @@
 
   system.autoUpgrade.enable = false;
   environment.systemPackages = with pkgs; [ pinentry weechat ];
-
-  fileSystems."/mnt/downloads" = {
-    device = "192.168.6.100:/volume1/Downloads";
-    fsType = "nfs";
-  };
-  fileSystems."/mnt/music" = {
-    device = "192.168.6.100:/volume1/Music";
-    fsType = "nfs";
-  };
-  fileSystems."/mnt/video" = {
-    device = "192.168.6.100:/volume1/Video";
-    fsType = "nfs";
+  fileSystems = {
+    "/mnt/downloads" = {
+      device = "192.168.6.100:/volume1/Downloads";
+      fsType = "nfs";
+    };
+    "/mnt/music" = {
+      device = "192.168.6.100:/volume1/Music";
+      fsType = "nfs";
+    };
+    "/mnt/video" = {
+      device = "192.168.6.100:/volume1/Video";
+      fsType = "nfs";
+    };
   };
 
   power.ups = {
@@ -74,31 +90,8 @@
     pinentryFlavor = "curses";
   };
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "server";
-  };
-
-  virtualisation.docker = {
-    enable = true;
-    # Clean docker images periodically
-    autoPrune = {
-      enable = true;
-      flags = [ "--all" ];
-    };
-  };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = false;
-
-  walkah.coredns = { enable = true; };
   services = {
+    openssh.enable = true;
     borgbackup.jobs."borgbase" = {
       paths = [
         "/var/lib"
@@ -166,6 +159,21 @@
           }];
         }
       ];
+    };
+    tailscale = {
+      enable = true;
+      useRoutingFeatures = "server";
+    };
+  };
+
+  walkah.coredns = { enable = true; };
+
+  virtualisation.docker = {
+    enable = true;
+    # Clean docker images periodically
+    autoPrune = {
+      enable = true;
+      flags = [ "--all" ];
     };
   };
 }

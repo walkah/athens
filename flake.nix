@@ -40,10 +40,12 @@
     # My stuff
     dotfiles = {
       url = "github:walkah/dotfiles";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        flake-utils.follows = "flake-utils";
+        pre-commit-hooks.follows = "pre-commit-hooks";
+      };
     };
 
     workon = {

@@ -77,24 +77,23 @@ in
       databases = [ "akkoma" ];
     };
   };
-
-  sops.secrets.akkoma-secret-key-base = {
-    owner = akkoma.user;
-  };
-
-  sops.secrets.akkoma-signing-salt = {
-    owner = akkoma.user;
-  };
-
-  sops.secrets.akkoma-vapid-private-key = {
-    owner = akkoma.user;
-  };
-
-  sops.secrets.akkoma-vapid-public-key = {
-    owner = akkoma.user;
-  };
-
-  sops.secrets.akkoma-joken-signer = {
-    owner = akkoma.user;
+  sops = {
+    secrets = {
+      akkoma-secret-key-base = {
+        owner = akkoma.user;
+      };
+      akkoma-signing-salt = {
+        owner = akkoma.user;
+      };
+      akkoma-vapid-private-key = {
+        owner = akkoma.user;
+      };
+      akkoma-vapid-public-key = {
+        owner = akkoma.user;
+      };
+      akkoma-joken-signer = {
+        owner = akkoma.user;
+      };
+    };
   };
 }

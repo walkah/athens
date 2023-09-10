@@ -7,9 +7,11 @@ let
     in
     {
       hostname = address;
-      profiles.system.user = "root";
-      profiles.system.sshUser = sshUser;
-      profiles.system.path = activate.${type} self."${type}Configurations".${hostName};
+      profiles.system = {
+        user = "root";
+        inherit sshUser;
+        path = activate.${type} self."${type}Configurations".${hostName};
+      };
     };
 in
 {

@@ -11,26 +11,31 @@
     ../../modules/sops
   ];
 
-  # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
-  boot.loader.grub.enable = false;
-  # Enables the generation of /boot/extlinux/extlinux.conf
-  boot.loader.generic-extlinux-compatible.enable = true;
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
+  boot = {
+    # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
+    loader.grub.enable = false;
+    # Enables the generation of /boot/extlinux/extlinux.conf
+    loader.generic-extlinux-compatible.enable = true;
+    kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
+  };
 
-  hardware.enableRedistributableFirmware = true;
-  hardware.raspberry-pi."4".poe-hat.enable = true;
+  hardware = {
+    enableRedistributableFirmware = true;
+    raspberry-pi."4".poe-hat.enable = true;
+  };
 
+  networking = {
+    # networking.hostName = "nixos"; # Define your hostname.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.eth0.useDHCP = true;
-  networking.interfaces.wlan0.useDHCP = true;
-  networking.firewall.enable = false;
+    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+    # Per-interface useDHCP will be mandatory in the future, so this generated config
+    # replicates the default behaviour.
+    useDHCP = false;
+    interfaces.eth0.useDHCP = true;
+    interfaces.wlan0.useDHCP = true;
+    firewall.enable = false;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

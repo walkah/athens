@@ -23,17 +23,27 @@
   # Set your time zone.
   time.timeZone = "America/Toronto";
 
-  networking.hostName = "socrates";
-  networking.firewall.allowPing = true;
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
-  networking.firewall.trustedInterfaces = [ "tailscale0" ];
-  networking.firewall.checkReversePath = "loose";
+  networking = {
+    hostName = "socrates";
+    firewall = {
+      allowPing = true;
+      allowedTCPPorts = [ 80 443 ];
+      trustedInterfaces = [ "tailscale0" ];
+      checkReversePath = "loose";
+    };
+  };
 
   nix = {
     settings.trusted-users = [ "@wheel" "root" ];
   };
 
-  security.sudo.wheelNeedsPassword = false;
+  security = {
+    sudo.wheelNeedsPassword = false;
+    security = {
+      acme.acceptTerms = true;
+      acme.defaults.email = "walkah@walkah.net";
+    };
+  };
 
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
@@ -41,9 +51,6 @@
 
   system.autoUpgrade.enable = false;
   environment.systemPackages = with pkgs; [ ipfs-migrator ];
-
-  security.acme.acceptTerms = true;
-  security.acme.defaults.email = "walkah@walkah.net";
 
   walkah.coredns = {
     enable = true;
