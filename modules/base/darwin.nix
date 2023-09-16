@@ -48,16 +48,6 @@
     users.walkah = import "${dotfiles}/home.nix";
   };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    haskellPackages = pkgs.haskellPackages.override {
-      overrides = _self: super: {
-        niv = pkgs.haskell.lib.overrideCabal super.niv (_drv: {
-          enableSeparateBinOutput = false;
-        });
-      };
-    };
-  };
-
   users.users.walkah = {
     home = "/Users/walkah";
     shell = pkgs.zsh;

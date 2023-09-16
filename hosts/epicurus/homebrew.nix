@@ -18,7 +18,6 @@ _:
       "gpg-suite"
       "plex-media-server"
       "stats"
-      "syncthing"
       "synology-drive"
     ];
 

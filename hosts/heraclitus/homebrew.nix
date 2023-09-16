@@ -48,10 +48,8 @@ _:
       "spotify"
       "stats"
       "steam"
-      "syncthing"
       "synology-drive"
       "todoist"
-      "unity-hub"
       "visual-studio-code"
       "zoom"
     ];
