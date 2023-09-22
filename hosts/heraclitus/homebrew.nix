@@ -41,6 +41,7 @@ _:
       "microsoft-edge"
       "minecraft"
       "obsidian"
+      "opal"
       "plexamp"
       "raycast"
       "slack"
