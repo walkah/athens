@@ -106,16 +106,9 @@ in
     openssh.enable = true;
     borgbackup.jobs."borgbase" = {
       paths = [
-        "/var/lib"
         "/var/backup"
       ];
-      exclude = [
-        # very large paths
-        "/var/lib/docker"
-        "/var/lib/postgresql"
-        "/var/lib/systemd"
-      ];
-      repo = "qxflzs92@qxflzs92.repo.borgbase.com:repo";
+      repo = "ssh://fk0o7077@fk0o7077.repo.borgbase.com/./repo";
       encryption = {
         mode = "repokey-blake2";
         passCommand = "cat /root/borgbackup/passphrase";
