@@ -7,9 +7,9 @@
       doctl
       nil
       nixpkgs-fmt
+      opentofu
       statix
       sops
-      terraform
     ];
 
     inherit (self.checks.${system}.pre-commit-check) shellHook;
