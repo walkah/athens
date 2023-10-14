@@ -2,8 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    emacs29
-
     # Cloud
     awscli2
 
