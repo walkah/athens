@@ -8,9 +8,10 @@ _:
       "homebrew/cask-versions"
       "homebrew/services"
       "1password/tap"
+      "fission-codes/fission"
     ];
 
-    brews = [ "coreutils" "fontconfig" ];
+    brews = [ "coreutils" "fontconfig" "ipfs" ];
 
     casks = [
       "1password"
@@ -33,6 +34,7 @@ _:
       "google-chrome"
       "gpg-suite"
       "hazel"
+      "ipfs"
       "iterm2"
       "logi-options-plus"
       "logitech-camera-settings"
@@ -41,7 +43,7 @@ _:
       "microsoft-edge"
       "minecraft"
       "obsidian"
-      "opal"
+      "opal-composer"
       "plexamp"
       "raycast"
       "slack"
