@@ -9,9 +9,7 @@
       ensureUsers = [
         {
           name = "drone";
-          ensurePermissions = {
-            "DATABASE drone" = "ALL PRIVILEGES";
-          };
+          ensureDBOwnership = true;
         }
       ];
     };

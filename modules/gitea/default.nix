@@ -37,9 +37,20 @@ in
       dump.enable = false;
 
       database = {
+        createDatabase = false;
         type = "postgres";
+        name = "gitea";
+        socket = "/run/postgresql";
         user = "git";
       };
+    };
+    postgresql = {
+      ensureDatabases = [ "gitea" ];
+      ensureUsers = [
+        {
+          name = "git";
+        }
+      ];
     };
     postgresqlBackup.databases = [ "gitea" ];
   };
