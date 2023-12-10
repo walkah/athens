@@ -88,13 +88,26 @@ in
 
   power.ups = {
     enable = true;
-    mode = "standalone";
+    mode = "netserver";
     ups."cyberpower" = {
       description = "Cyberpower EC650LCD";
       driver = "usbhid-ups";
       port = "auto";
     };
+    upsd = {
+      enable = true;
+      listen = [
+        { address = "0.0.0.0"; }
+      ];
+    };
+    users.upsmon = {
+      passwordFile = secrets.upsmon.path;
+      upsmon = "master";
+    };
+
+    upsmon.monitor."cyberpower".user = "upsmon";
   };
+  sops.secrets.upsmon = { };
 
   programs.gnupg.agent = {
     enable = true;
