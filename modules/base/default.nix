@@ -1,11 +1,6 @@
-{ pkgs, ... }: {
+_: {
 
   imports = [ ./common.nix ];
-
-  environment.systemPackages = with pkgs; [
-    inetutils
-    vim
-  ];
 
   nix = {
     gc = {

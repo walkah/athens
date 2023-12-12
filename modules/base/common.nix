@@ -1,6 +1,13 @@
-_:
+{ pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [
+    dogdns
+    htop
+    inetutils
+    vim
+  ];
+
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
