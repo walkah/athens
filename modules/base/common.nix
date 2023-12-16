@@ -20,10 +20,12 @@
     settings = {
       substituters = [
         "https://walkah.cachix.org"
+        "https://cache.garnix.io"
       ];
 
       trusted-public-keys = [
         "walkah.cachix.org-1:D8cO78JoJC6UPV1ZMgd1V5znpk3jNUERGIeAKN15hxo="
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
       ];
     };
   };

@@ -1,4 +1,4 @@
-_: {
+{ config, ... }: {
 
   imports = [ ./common.nix ];
 
@@ -20,5 +20,13 @@ _: {
     mosh.enable = true;
   };
 
-  system.stateVersion = "23.05";
+  system = {
+    autoUpgrade = {
+      enable = true;
+      flake = "github:walkah/athens#${config.networking.hostName}";
+      dates = "daily";
+      randomizedDelaySec = "5m";
+    };
+    stateVersion = "23.05";
+  };
 }

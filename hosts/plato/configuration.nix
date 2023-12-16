@@ -8,8 +8,8 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../users
+    ../../modules/base/nixos.nix
 
-    ../../modules/base
     ../../modules/coredns
     ../../modules/drone
     ../../modules/drone/runner-docker.nix
@@ -57,7 +57,6 @@ in
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC5spf4diguK+w7iYLFr565++6DjHukWfvpN2ru9dCRk nixbuild"
   ];
 
-  system.autoUpgrade.enable = false;
   environment.systemPackages = with pkgs; [ cifs-utils pinentry weechat ];
   fileSystems = {
     "/mnt/downloads" = {

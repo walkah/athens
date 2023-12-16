@@ -5,8 +5,8 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.raspberry-pi-4
+    ../../modules/base/nixos.nix
 
-    ../../modules/base
     ../../modules/ipfs/cluster.nix
     ../../modules/sops
   ];

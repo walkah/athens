@@ -3,7 +3,7 @@
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
     ../../users
-    ../../modules/base
+    ../../modules/base/nixos.nix
 
     ../../modules/akkoma
     ../../modules/akkoma/nginx.nix
@@ -47,7 +47,6 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
   ];
 
-  system.autoUpgrade.enable = false;
   environment.systemPackages = with pkgs; [ ipfs-migrator ];
 
   walkah.coredns = {
