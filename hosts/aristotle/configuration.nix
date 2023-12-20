@@ -24,6 +24,7 @@
     raspberry-pi."4".poe-hat.enable = true;
   };
 
+  time.timeZone = "America/Toronto";
   networking = {
     # networking.hostName = "nixos"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
