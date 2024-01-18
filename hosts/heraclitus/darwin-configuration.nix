@@ -1,4 +1,4 @@
-{ config, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./homebrew.nix
@@ -13,6 +13,7 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   # environment.systemPackages = with pkgs; [ emacs ];
+  environment.systemPackages = with pkgs; [ emacs-macport ];
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
