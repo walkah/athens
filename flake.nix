@@ -64,14 +64,13 @@
           };
         in
         {
-          checks = import ./nix/checks.nix { inherit self pkgs system pre-commit-hooks; };
+          checks = import ./nix/checks.nix { inherit self pkgs deploy-rs system pre-commit-hooks; };
           devShells = import ./nix/shells.nix { inherit self pkgs system; };
           formatter = pkgs.nixpkgs-fmt;
         })
     // {
       hosts = import ./nix/hosts.nix;
       overlays.default = nixpkgs.lib.composeManyExtensions [
-        deploy-rs.overlay
         workon.overlays.default
       ];
 

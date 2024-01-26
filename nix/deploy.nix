@@ -1,9 +1,21 @@
-{ self, deploy-rs, ... }:
+{ self, nixpkgs, deploy-rs, ... }:
 let
   mkDeploy = hostName:
     let
       inherit (self.hosts.${hostName}) type address system sshUser;
-      inherit (deploy-rs.lib.${system}) activate;
+      pkgs = import nixpkgs { inherit system; };
+      deployPkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          deploy-rs.overlay
+          (_self: super: {
+            deploy-rs = {
+              inherit (pkgs) deploy-rs; inherit (super.deploy-rs) lib;
+            };
+          })
+        ];
+      };
+      inherit (deployPkgs.deploy-rs.lib) activate;
     in
     {
       hostname = address;
