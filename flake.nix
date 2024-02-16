@@ -37,6 +37,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Fission packages
+    fission = {
+      url = "github:fission-codes/nix-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # My stuff
     dotfiles = {
       url = "github:walkah/dotfiles";
@@ -54,7 +60,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, deploy-rs, pre-commit-hooks, workon, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, deploy-rs, pre-commit-hooks, fission, workon, ... }@inputs:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
@@ -71,6 +77,7 @@
     // {
       hosts = import ./nix/hosts.nix;
       overlays.default = nixpkgs.lib.composeManyExtensions [
+        fission.overlay
         workon.overlays.default
       ];
 

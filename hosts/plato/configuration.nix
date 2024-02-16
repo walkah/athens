@@ -19,6 +19,8 @@ in
     ../../modules/postgresql
     ../../modules/sops
     ../../modules/traefik
+
+    ../../services/homestar.nix
   ];
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -128,6 +130,15 @@ in
       environment.BORG_RSH = "ssh -i /root/borgbackup/ssh_key";
       compression = "auto,lzma";
       startAt = "daily";
+    };
+
+    homestar = {
+      enable = true;
+      settings = {
+        node.network.rpc = {
+          port = 9820;
+        };
+      };
     };
     grafana = {
       enable = true;
