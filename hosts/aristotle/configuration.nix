@@ -11,16 +11,7 @@
     ../../modules/sops
   ];
 
-  boot = {
-    # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
-    loader.grub.enable = false;
-    # Enables the generation of /boot/extlinux/extlinux.conf
-    loader.generic-extlinux-compatible.enable = true;
-    kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
-  };
-
   hardware = {
-    enableRedistributableFirmware = true;
     raspberry-pi."4".poe-hat.enable = true;
   };
 
