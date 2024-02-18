@@ -117,7 +117,6 @@ in
   };
 
   services = {
-    openssh.enable = true;
     borgbackup.jobs."borgbase" = {
       paths = [
         "/var/backup"
@@ -151,16 +150,6 @@ in
       };
     };
     prometheus = {
-      enable = true;
-      port = 9090;
-      exporters = {
-        node = {
-          enable = true;
-          enabledCollectors = [ "systemd" ];
-          port = 9100;
-        };
-      };
-
       scrapeConfigs = [
         {
           job_name = "node";
@@ -189,7 +178,6 @@ in
       ];
     };
     tailscale = {
-      enable = true;
       useRoutingFeatures = "server";
     };
   };

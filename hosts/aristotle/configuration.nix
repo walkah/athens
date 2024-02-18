@@ -29,27 +29,9 @@
     firewall.enable = false;
   };
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
   ];
 
   environment.systemPackages = with pkgs; [ libraspberrypi raspberrypi-eeprom ];
-
-  services = {
-    prometheus = {
-      enable = true;
-      port = 9090;
-      exporters = {
-        node = {
-          enable = true;
-          enabledCollectors = [ "systemd" ];
-          openFirewall = true;
-          port = 9100;
-        };
-      };
-    };
-    tailscale = { enable = true; };
-  };
 }

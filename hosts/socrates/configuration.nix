@@ -62,21 +62,5 @@
       recommendedGzipSettings = true;
       recommendedProxySettings = true;
     };
-    openssh = { enable = true; };
-    prometheus = {
-      enable = true;
-      port = 9090;
-      listenAddress = "100.103.57.96";
-      exporters = {
-        node = {
-          enable = true;
-          enabledCollectors = [ "systemd" ];
-          openFirewall = true;
-          port = 9100;
-          listenAddress = "100.103.57.96";
-        };
-      };
-    };
-    tailscale = { enable = true; };
   };
 }

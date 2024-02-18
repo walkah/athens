@@ -1,6 +1,6 @@
 { config, ... }: {
 
-  imports = [ ./common.nix ];
+  imports = [ ./common.nix ../monitoring ];
 
   nix = {
     gc = {
@@ -18,6 +18,11 @@
 
   programs = {
     mosh.enable = true;
+  };
+
+  services = {
+    openssh.enable = true;
+    tailscale.enable = true;
   };
 
   system = {
