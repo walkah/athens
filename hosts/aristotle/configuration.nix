@@ -37,5 +37,5 @@
 
   environment.systemPackages = with pkgs; [ libraspberrypi raspberrypi-eeprom ];
 
-  # services.homestar.enable = true;
+  services.homestar.enable = true;
 }
