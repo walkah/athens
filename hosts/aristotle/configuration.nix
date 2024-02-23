@@ -9,6 +9,8 @@
 
     ../../modules/ipfs/cluster.nix
     ../../modules/sops
+
+    ../../services/homestar.nix
   ];
 
   hardware = {
@@ -34,4 +36,6 @@
   ];
 
   environment.systemPackages = with pkgs; [ libraspberrypi raspberrypi-eeprom ];
+
+  # services.homestar.enable = true;
 }
