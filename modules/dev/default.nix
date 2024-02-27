@@ -10,12 +10,16 @@
     mr
     tea
 
+    # NodeJS
+    nodejs
+
     # Nix
     cachix
     nil
     nixpkgs-fmt
 
     # My stuff
+    homestar
     workon
   ];
 }
