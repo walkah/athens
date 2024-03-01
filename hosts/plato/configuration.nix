@@ -134,8 +134,15 @@ in
     homestar = {
       enable = true;
       settings = {
-        node.network.rpc = {
-          port = 9820;
+        node.network = {
+          libp2p = {
+            node_addresses = [
+              "/dns4/homestar.fission.dev/tcp/7001/p2p/16Uiu2HAmTq9LA2fLFzyLXVstac4AFk4jTwboTcJgVMBNRg3sBP9V"
+            ];
+          };
+          rpc = {
+            port = 9820;
+          };
         };
       };
     };
