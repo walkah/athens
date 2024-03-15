@@ -84,7 +84,6 @@ in
       ];
     };
   };
-  sops.secrets.filesystems-parthenon = { };
 
 
   power.ups = {
@@ -108,11 +107,18 @@ in
 
     upsmon.monitor."cyberpower".user = "upsmon";
   };
-  sops.secrets.upsmon = { };
 
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+  };
+
+  sops.secrets = {
+    filesystems-parthenon = { };
+    plato-homestar = {
+      owner = "homestar";
+    };
+    upsmon = { };
   };
 
   services = {
@@ -134,6 +140,12 @@ in
       enable = true;
       settings = {
         node.network = {
+          keypair_config = {
+            existing = {
+              key_type = "ed25519";
+              inherit (secrets.plato-homestar) path;
+            };
+          };
           libp2p = {
             node_addresses = [
               "/dns4/homestar.fission.dev/tcp/7001/p2p/16Uiu2HAmTq9LA2fLFzyLXVstac4AFk4jTwboTcJgVMBNRg3sBP9V"

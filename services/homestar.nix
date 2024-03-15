@@ -40,7 +40,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ cfg.package ];
+    environment.systemPackages = [ cfg.package pkgs.sqlite ];
     networking.firewall = {
       allowPing = true;
       allowedTCPPorts = [
