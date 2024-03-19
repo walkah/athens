@@ -148,7 +148,7 @@ in
           };
           libp2p = {
             node_addresses = [
-              "/dns4/homestar.fission.dev/tcp/7001/p2p/16Uiu2HAmTq9LA2fLFzyLXVstac4AFk4jTwboTcJgVMBNRg3sBP9V"
+              "/dns4/homestar.fission.dev/tcp/7001/p2p/12D3KooWGvhfR6UF1sxqMiGLHS17STtAz9wdwjg7huq28scqJxHz"
             ];
           };
           rpc = {
