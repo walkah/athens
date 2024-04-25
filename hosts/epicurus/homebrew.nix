@@ -6,10 +6,9 @@ _:
       "homebrew/cask"
       "homebrew/cask-fonts"
       "homebrew/services"
-      "fission-codes/fission"
     ];
 
-    brews = [ "code-server" "coreutils" "homestar" "mosh" ];
+    brews = [ "code-server" "coreutils" "mosh" ];
 
     casks = [
       "1password"

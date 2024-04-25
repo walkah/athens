@@ -41,6 +41,7 @@ _:
       "logseq"
       "loom"
       "microsoft-edge"
+      "microsoft-office"
       "minecraft"
       "obsidian"
       "opal-composer"
