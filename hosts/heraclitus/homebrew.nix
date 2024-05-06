@@ -34,7 +34,6 @@ _:
       "google-chrome"
       "gpg-suite"
       "hazel"
-      "ipfs"
       "iterm2"
       "logi-options-plus"
       "logitech-camera-settings"
