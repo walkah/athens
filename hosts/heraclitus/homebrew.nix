@@ -17,7 +17,6 @@ _:
       "1password"
       "1password-cli"
       "android-studio"
-      "bartender"
       "beeper"
       "brave-browser"
       "bunch"
