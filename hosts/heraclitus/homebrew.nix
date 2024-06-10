@@ -36,8 +36,6 @@ _:
       "iterm2"
       "logi-options-plus"
       "logitech-camera-settings"
-      "logseq"
-      "loom"
       "microsoft-edge"
       "microsoft-office"
       "minecraft"
