@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
     # Cloud
     awscli2
+    doppler
 
     # Git / CI
     drone-cli
@@ -12,6 +13,9 @@
 
     # NodeJS
     nodejs
+
+    # Golang
+    go
 
     # Nix
     cachix
