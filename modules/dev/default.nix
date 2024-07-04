@@ -17,6 +17,13 @@
     # Golang
     go
 
+    # k8s
+    chart-testing
+    k9s
+    kind
+    kubectl
+    kubernetes-helm
+
     # Nix
     cachix
     nil
