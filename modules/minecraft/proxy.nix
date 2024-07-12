@@ -1,14 +1,32 @@
-{ pkgs, ... }:
+_:
 let
   dest_ip = "100.111.208.75";
+  dest_port = 25565;
 in
 {
-  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
-  networking.firewall.allowedTCPPorts = [ 25565 ];
+  networking = {
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ dest_port ];
+    };
+    nat = {
+      enable = true;
+      internalInterfaces = [ "tailscale0" ];
+      externalInterface = "eth0";
+      forwardPorts = [
+        {
+          sourcePort = dest_port;
+          proto = "tcp";
+          destination = "${dest_ip}:${toString dest_port}";
+        }
+      ];
+    };
+  };
 
-  networking.firewall.extraCommands = ''
-    IPTABLES=${pkgs.iptables}/bin/iptables
-    "$IPTABLES" -t nat -A PREROUTING -p tcp --dport 25565 -j DNAT --to-destination ${dest_ip}:25565
-    "$IPTABLES" -t nat -A POSTROUTING -o tailscale0 -j MASQUERADE
-  '';
+  services = {
+    tailscale = {
+      useRoutingFeatures = "server";
+      extraUpFlags = [ "--stateful-filtering=false" ];
+    };
+  };
 }
