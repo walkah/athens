@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     # Cloud
     awscli2
-    doppler
+    # doppler TODO: waiting on https://github.com/NixOS/nixpkgs/pull/326008
 
     # Git / CI
     drone-cli

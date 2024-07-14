@@ -11,7 +11,7 @@ _:
       "fission-codes/fission"
     ];
 
-    brews = [ "coreutils" "fontconfig" "ipfs" ];
+    brews = [ "coreutils" "doppler" "fontconfig" "ipfs" ];
 
     casks = [
       "1password"
