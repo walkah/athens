@@ -28,6 +28,10 @@ in
 
   environment.systemPackages = with pkgs; [ ipfs-migrator ];
 
+  environment.etc = {
+    "ipfs/denylists/badbits.deny".source = ./badbits.deny;
+  };
+
   networking.firewall = {
     allowedTCPPorts = [ 4001 ];
     allowedUDPPorts = [ 4001 ];
