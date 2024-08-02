@@ -5,7 +5,8 @@
       deploy-rs
       deadnix
       doctl
-      nil
+      nixd
+      nixf
       nixpkgs-fmt
       opentofu
       statix

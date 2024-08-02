@@ -26,7 +26,8 @@
 
     # Nix
     cachix
-    nil
+    nixd
+    nixf
     nixpkgs-fmt
 
     # My stuff
