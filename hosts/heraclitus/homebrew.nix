@@ -11,7 +11,7 @@ _:
       "fission-codes/fission"
     ];
 
-    brews = [ "coreutils" "doppler" "fontconfig" "ipfs" ];
+    brews = [ "coreutils" "fontconfig" "ipfs" ];
 
     casks = [
       "1password"
@@ -33,6 +33,7 @@ _:
       "gpg-suite"
       "hazel"
       "iterm2"
+      "jordanbaird-ice"
       "logi-options-plus"
       "logitech-camera-settings"
       "microsoft-edge"
