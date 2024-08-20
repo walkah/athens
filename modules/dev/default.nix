@@ -13,7 +13,9 @@
     tea
 
     # NodeJS
+    bun
     nodejs
+    pnpm
 
     # Golang
     go
