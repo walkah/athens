@@ -18,8 +18,6 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
-  services.lorri.enable = true;
-
   system = {
     defaults = {
       dock = {
