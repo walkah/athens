@@ -35,7 +35,7 @@ _:
       "hazel"
       "iterm2"
       "jordanbaird-ice"
-      "logi-options-plus"
+      "logi-options+"
       "logitech-camera-settings"
       "microsoft-edge"
       "microsoft-office"
