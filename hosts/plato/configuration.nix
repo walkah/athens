@@ -19,8 +19,6 @@ in
     ../../modules/postgresql
     ../../modules/sops
     ../../modules/traefik
-
-    ../../services/homestar.nix
   ];
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" ];
@@ -115,9 +113,6 @@ in
 
   sops.secrets = {
     filesystems-parthenon = { };
-    plato-homestar = {
-      owner = "homestar";
-    };
     upsmon = { };
   };
 
@@ -136,27 +131,6 @@ in
       startAt = "daily";
     };
 
-    homestar = {
-      enable = true;
-      settings = {
-        node.network = {
-          keypair_config = {
-            existing = {
-              key_type = "ed25519";
-              inherit (secrets.plato-homestar) path;
-            };
-          };
-          libp2p = {
-            node_addresses = [
-              "/dns4/homestar.fission.dev/tcp/7001/p2p/12D3KooWGvhfR6UF1sxqMiGLHS17STtAz9wdwjg7huq28scqJxHz"
-            ];
-          };
-          rpc = {
-            port = 9820;
-          };
-        };
-      };
-    };
     grafana = {
       enable = true;
       settings = {

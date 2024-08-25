@@ -34,7 +34,6 @@
     nixpkgs-fmt
 
     # My stuff
-    homestar
     workon
   ];
 }
