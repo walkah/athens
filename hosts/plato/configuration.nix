@@ -100,7 +100,7 @@ in
     };
     users.upsmon = {
       passwordFile = secrets.upsmon.path;
-      upsmon = "master";
+      upsmon = "primary";
     };
 
     upsmon.monitor."cyberpower".user = "upsmon";
