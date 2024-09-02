@@ -19,11 +19,11 @@ let
 in
 {
   # Aristotle
-  agent = mkSystem "agent" [ ../hosts/aristotle/configuration.nix ];
-  form = mkSystem "form" [ ../hosts/aristotle/configuration.nix ];
-  matter = mkSystem "matter" [ ../hosts/aristotle/configuration.nix ];
-  purpose = mkSystem "purpose" [ ../hosts/aristotle/configuration.nix ];
+  agent = mkSystem "agent" [ ./hosts/aristotle/configuration.nix ];
+  form = mkSystem "form" [ ./hosts/aristotle/configuration.nix ];
+  matter = mkSystem "matter" [ ./hosts/aristotle/configuration.nix ];
+  purpose = mkSystem "purpose" [ ./hosts/aristotle/configuration.nix ];
 
-  plato = mkSystem "plato" [ ../hosts/plato/configuration.nix ];
-  socrates = mkSystem "socrates" [ ../hosts/socrates/configuration.nix ];
+  plato = mkSystem "plato" [ ./hosts/plato/configuration.nix ];
+  socrates = mkSystem "socrates" [ ./hosts/socrates/configuration.nix ];
 }
