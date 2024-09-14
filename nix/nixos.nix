@@ -1,4 +1,4 @@
-{ self, dotfiles, nixpkgs, home-manager, nixos-hardware, sops-nix, ... }:
+{ self, nixpkgs, home-manager, nixos-hardware, sops-nix, ... }:
 let
   mkSystem = hostName: modules:
     let
@@ -14,7 +14,7 @@ let
           nixpkgs.config.allowUnfree = true;
         })
       ] ++ modules;
-      specialArgs = { inherit dotfiles nixos-hardware sops-nix; };
+      specialArgs = { inherit nixos-hardware sops-nix; };
     };
 in
 {

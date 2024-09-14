@@ -1,6 +1,6 @@
-{ pkgs, dotfiles, ... }: {
+{ ... }: {
 
-  imports = [ ./common.nix ];
+  imports = [ ./common.nix ../../users ];
 
   nix = {
     configureBuildUsers = true;
@@ -40,17 +40,6 @@
       cleanup = "zap";
       upgrade = true;
     };
-  };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.walkah = import "${dotfiles}/home.nix";
-  };
-
-  users.users.walkah = {
-    home = "/Users/walkah";
-    shell = pkgs.zsh;
   };
 
   system.stateVersion = 4;

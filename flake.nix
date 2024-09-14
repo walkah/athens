@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    home-manager.url = "github:nix-community/home-manager";
     flake-utils.url = "github:numtide/flake-utils";
 
     deploy-rs = {
@@ -14,6 +13,11 @@
 
     darwin = {
       url = "github:lnl7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -36,25 +40,9 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # My stuff
-    dotfiles = {
-      url = "github:walkah/dotfiles";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-        flake-utils.follows = "flake-utils";
-        pre-commit-hooks.follows = "pre-commit-hooks";
-      };
-    };
-
-    workon = {
-      url = "github:walkah/workon";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, deploy-rs, pre-commit-hooks, workon, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, deploy-rs, pre-commit-hooks, ... }@inputs:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
@@ -70,12 +58,9 @@
         })
     // {
       hosts = import ./nix/hosts.nix;
-      overlays.default = nixpkgs.lib.composeManyExtensions [
-        workon.overlays.default
-      ];
+      overlays.default = nixpkgs.lib.composeManyExtensions [ ];
 
       darwinConfigurations = import ./nix/darwin.nix inputs;
-      homeConfigurations = import ./nix/home.nix inputs;
       nixosConfigurations = import ./nix/nixos.nix inputs;
       deploy = import ./nix/deploy.nix inputs;
     };

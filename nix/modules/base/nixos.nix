@@ -1,6 +1,12 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
 
-  imports = [ ./common.nix ../monitoring ];
+  imports = [ ./common.nix ../monitoring ../../users ];
+
+  environment.systemPackages = with pkgs; [
+    htop
+    inetutils
+    vim
+  ];
 
   nix = {
     gc = {

@@ -1,13 +1,6 @@
-{ pkgs, ... }:
+_:
 
 {
-  environment.systemPackages = with pkgs; [
-    dogdns
-    htop
-    inetutils
-    vim
-  ];
-
   nix = {
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -30,10 +23,5 @@
     };
   };
 
-  programs = {
-    zsh = {
-      enable = true;
-      promptInit = "";
-    };
-  };
+  programs.zsh.enable = true;
 }

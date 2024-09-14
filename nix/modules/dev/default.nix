@@ -32,8 +32,5 @@
     nixd
     nixf
     nixpkgs-fmt
-
-    # My stuff
-    workon
   ];
 }

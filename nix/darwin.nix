@@ -1,4 +1,4 @@
-{ self, darwin, home-manager, dotfiles, ... }:
+{ self, darwin, home-manager, ... }:
 let
   mkDarwin = hostName: modules:
     let
@@ -13,7 +13,7 @@ let
           nixpkgs.overlays = [ self.overlays.default ];
         })
       ] ++ modules;
-      specialArgs = { inherit dotfiles home-manager; };
+      specialArgs = { inherit home-manager; };
     };
 in
 {

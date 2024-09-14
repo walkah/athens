@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./walkah.nix ];
+  imports = [ ./walkah ];
 }
