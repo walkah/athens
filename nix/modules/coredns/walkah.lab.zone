@@ -10,7 +10,7 @@ $ORIGIN walkah.lab.
 socrates        IN A    100.103.57.96
 plato           IN A    100.111.208.75
 ; aristotle
-agent           IN A    100.95.167.126
+agent           IN A    100.103.219.26
 form            IN A    100.104.247.27
 matter          IN A    100.95.77.67
 purpose         IN A    100.117.49.15

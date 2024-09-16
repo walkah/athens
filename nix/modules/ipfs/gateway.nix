@@ -3,8 +3,8 @@
 let
   peers = [
     {
-      ID = "12D3KooWMQSgdfa4tUrDhkFx4zP3ZpgT1ryj9KH5RGUae62Vsc7y";
-      Addrs = [ "/ip4/100.95.167.126/tcp/4001" ];
+      ID = "12D3KooWEVoGdqsakyi3bgE8ivvRzcgTjiirFNS2FbUMw6HSjZF9";
+      Addrs = [ "/ip4/100.103.219.26/tcp/4001" ];
     }
     {
       ID = "12D3KooWC5ncgKeJV2G6QBdGMkT2gLbeviaDxpYR7V6NVTsma3C5";

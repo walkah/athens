@@ -13,7 +13,7 @@
   };
   agent = {
     type = "nixos";
-    address = "100.95.167.126";
+    address = "100.103.219.26";
     system = "aarch64-linux";
     sshUser = "root";
   };
