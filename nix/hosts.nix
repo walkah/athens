@@ -19,19 +19,19 @@
   };
   form = {
     type = "nixos";
-    address = "100.87.220.71";
+    address = "100.104.247.27";
     system = "aarch64-linux";
     sshUser = "root";
   };
   matter = {
     type = "nixos";
-    address = "100.126.255.109";
+    address = "100.95.77.67";
     system = "aarch64-linux";
     sshUser = "root";
   };
   purpose = {
     type = "nixos";
-    address = "100.74.59.80";
+    address = "100.117.49.15";
     system = "aarch64-linux";
     sshUser = "root";
   };

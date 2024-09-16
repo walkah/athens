@@ -1,4 +1,4 @@
-{ self, nixpkgs, home-manager, nixos-hardware, sops-nix, ... }:
+{ self, nixpkgs, home-manager, raspberry-pi-nix, sops-nix, ... }:
 let
   mkSystem = hostName: modules:
     let
@@ -14,7 +14,7 @@ let
           nixpkgs.config.allowUnfree = true;
         })
       ] ++ modules;
-      specialArgs = { inherit nixos-hardware sops-nix; };
+      specialArgs = { inherit raspberry-pi-nix sops-nix; };
     };
 in
 {

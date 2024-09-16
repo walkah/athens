@@ -1,6 +1,10 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
 
   imports = [ ./common.nix ../monitoring ../../users ];
+
+  documentation = {
+    enable = false;
+  };
 
   environment.systemPackages = with pkgs; [
     htop
@@ -32,12 +36,6 @@
   };
 
   system = {
-    autoUpgrade = {
-      enable = true;
-      flake = "github:walkah/athens#${config.networking.hostName}";
-      dates = "daily";
-      randomizedDelaySec = "5m";
-    };
     stateVersion = "23.05";
   };
 }

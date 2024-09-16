@@ -7,18 +7,18 @@ let
       Addrs = [ "/ip4/100.95.167.126/tcp/4001" ];
     }
     {
-      ID = "12D3KooWMqSiDukubKNKrK7J4PaF3mfNnZFVAd3Lh7qj3Y3e5bcN";
-      Addrs = [ "/ip4/100.87.220.71/tcp/4001" ];
+      ID = "12D3KooWC5ncgKeJV2G6QBdGMkT2gLbeviaDxpYR7V6NVTsma3C5";
+      Addrs = [ "/ip4/100.104.247.27/tcp/4001" ];
 
     }
     {
-      ID = "12D3KooWGmNRyqP969QbyP8NLVRZNK2i6yCcP6N6N2r2DCG4H34v";
-      Addrs = [ "/ip4/100.126.255.109/tcp/4001" ];
+      ID = "12D3KooW9xeqfnnNWafiDkLXWjC5YdUnBrG5tJDd3tnm86kqVwhA";
+      Addrs = [ "/ip4/100.95.77.67/tcp/4001" ];
 
     }
     {
-      ID = "12D3KooWFkR8nsG5pzffoAfMzmwBcSakXxnogVa6inRxUbpfN5ua";
-      Addrs = [ "/ip4/100.74.59.80/tcp/4001" ];
+      ID = "12D3KooWLYPckqA4JACJ4vioWc4tYuPjmfLMbgviECnWqazjSgK9";
+      Addrs = [ "/ip4/100.117.49.15/tcp/4001" ];
 
     }
   ];

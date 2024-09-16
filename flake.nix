@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix/v0.4.0";
     flake-utils.url = "github:numtide/flake-utils";
 
     deploy-rs = {
@@ -63,5 +63,16 @@
       darwinConfigurations = import ./nix/darwin.nix inputs;
       nixosConfigurations = import ./nix/nixos.nix inputs;
       deploy = import ./nix/deploy.nix inputs;
+
+      nixConfig = {
+        extra-substituters = [
+          "https://walkah.cachix.org"
+          "https://nix-community.cachix.org"
+        ];
+        extra-trusted-public-keys = [
+          "walkah.cachix.org-1:D8cO78JoJC6UPV1ZMgd1V5znpk3jNUERGIeAKN15hxo="
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        ];
+      };
     };
 }

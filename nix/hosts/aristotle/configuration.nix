@@ -1,18 +1,26 @@
-{ pkgs, nixos-hardware, ... }:
+{ pkgs, raspberry-pi-nix, ... }:
 
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    nixos-hardware.nixosModules.raspberry-pi-4
     ../../modules/base/nixos.nix
-
+    raspberry-pi-nix.nixosModules.raspberry-pi
     ../../modules/ipfs/cluster.nix
     ../../modules/sops
   ];
 
-  hardware = {
-    raspberry-pi."4".poe-hat.enable = true;
+  raspberry-pi-nix.board = "bcm2711";
+  hardware.raspberry-pi.config = {
+    all = {
+      dt-overlays = {
+        rpi-poe = {
+          enable = true;
+          params = { };
+        };
+
+      };
+    };
   };
 
   time.timeZone = "America/Toronto";
@@ -34,4 +42,5 @@
   ];
 
   environment.systemPackages = with pkgs; [ libraspberrypi raspberrypi-eeprom ];
+  security.sudo.wheelNeedsPassword = false;
 }
