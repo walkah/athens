@@ -8,10 +8,31 @@ _:
       "homebrew/cask-versions"
       "homebrew/services"
       "1password/tap"
-      "fission-codes/fission"
+      "d12frosted/emacs-plus"
     ];
 
-    brews = [ "coreutils" "fontconfig" "ipfs" ];
+    brews = [
+      {
+        name = "emacs-plus";
+        args = [ "with-native-comp" ];
+      }
+      "awscli"
+      "cmake"
+      "coreutils"
+      "drone-cli"
+      "doppler"
+      "fd"
+      "fontconfig"
+      "gcc"
+      "gh"
+      "helm"
+      "ipfs"
+      "kind"
+      "kubernetes-cli"
+      "mr"
+      "ripgrep"
+      "tea"
+    ];
 
     casks = [
       "1password"
@@ -31,6 +52,7 @@ _:
       "font-jetbrains-mono"
       "font-jetbrains-mono-nerd-font"
       "google-chrome"
+      "google-cloud-sdk"
       "gpg-suite"
       "hazel"
       "iterm2"
