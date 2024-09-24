@@ -16,9 +16,25 @@
       dt-overlays = {
         rpi-poe = {
           enable = true;
-          params = { };
+          params = {
+            poe_fan_temp0 = {
+              enable = true;
+              value = 50000;
+            };
+            poe_fan_temp1 = {
+              enable = true;
+              value = 60000;
+            };
+            poe_fan_temp2 = {
+              enable = true;
+              value = 70000;
+            };
+            poe_fan_temp3 = {
+              enable = true;
+              value = 80000;
+            };
+          };
         };
-
       };
     };
   };
