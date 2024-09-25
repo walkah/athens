@@ -2,11 +2,14 @@
   home = {
     packages = with pkgs; [
       chezmoi
+      bat
       direnv
       eza
+      fd
       fzf
       git
       htop
+      jq
       starship
       tmux
     ];

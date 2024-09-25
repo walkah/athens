@@ -21,7 +21,6 @@ _:
       "coreutils"
       "drone-cli"
       "doppler"
-      "fd"
       "fontconfig"
       "gcc"
       "gh"
