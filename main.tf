@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.3.0"
+  required_version = ">= 1.8.0"
 
   required_providers {
     digitalocean = {
@@ -10,7 +10,8 @@ terraform {
 }
 
 variable "do_token" {}
-
-provider "digitalocean" {
-  token = var.do_token
+module "digitalocean" {
+  source   = "./terraform/digitalocean"
+  do_token = var.do_token
 }
+
