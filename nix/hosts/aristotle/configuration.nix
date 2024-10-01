@@ -10,6 +10,9 @@
     ../../modules/sops
   ];
 
+  # See: https://github.com/NixOS/nixos-hardware/issues/858
+  boot.initrd.systemd.tpm2.enable = false;
+
   raspberry-pi-nix.board = "bcm2711";
   hardware.raspberry-pi.config = {
     all = {

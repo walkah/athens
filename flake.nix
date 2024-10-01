@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix/v0.4.0";
+    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
     flake-utils.url = "github:numtide/flake-utils";
 
     deploy-rs = {
