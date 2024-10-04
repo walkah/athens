@@ -16,7 +16,9 @@
 
     activation.chezmoi = lib.hm.dag.entryAfter [ "installPackages" ] ''
       export PATH="${pkgs.git}/bin:$PATH"
-      $DRY_RUN_CMD ${pkgs.chezmoi}/bin/chezmoi init --apply walkah/dotfiles
+      if [ ! -d $HOME/.local/share/chezmoi ]; then
+        $DRY_RUN_CMD ${pkgs.chezmoi}/bin/chezmoi init --apply walkah/dotfiles
+      fi
     '';
 
     stateVersion = "24.05";
