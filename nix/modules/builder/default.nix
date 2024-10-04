@@ -12,19 +12,5 @@ _: {
     extraOptions = ''
       builders-use-substitutes = true
     '';
-    linux-builder = {
-      enable = true;
-      ephemeral = true;
-      maxJobs = 4;
-      speedFactor = 2;
-      config = {
-        virtualisation = {
-          darwin-builder = {
-            memorySize = 8 * 1024;
-          };
-          cores = 4;
-        };
-      };
-    };
   };
 }
