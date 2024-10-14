@@ -28,6 +28,7 @@ _:
       "ipfs"
       "kind"
       "kubernetes-cli"
+      "libtool"
       "mr"
       "ripgrep"
       "tea"

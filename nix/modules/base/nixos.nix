@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
 
   imports = [ ./common.nix ../monitoring ../../users ];
 
@@ -36,6 +36,12 @@
   };
 
   system = {
+    autoUpgrade = {
+      enable = true;
+      flake = "github:walkah/athens#${config.networking.hostName}";
+      dates = "hourly";
+      flags = [ "--option" "tarball-ttl" "0" ];
+    };
     stateVersion = "23.05";
   };
 }
