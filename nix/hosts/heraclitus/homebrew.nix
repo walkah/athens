@@ -32,6 +32,7 @@ _:
       "mr"
       "ripgrep"
       "tea"
+      "watchman"
     ];
 
     casks = [
