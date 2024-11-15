@@ -7,8 +7,10 @@ _:
       "homebrew/cask-fonts"
       "homebrew/cask-versions"
       "homebrew/services"
+      "walkah/tap"
       "1password/tap"
       "d12frosted/emacs-plus"
+      "heroku/brew"
     ];
 
     brews = [
@@ -25,6 +27,7 @@ _:
       "gcc"
       "gh"
       "helm"
+      "heroku"
       "ipfs"
       "kind"
       "kubernetes-cli"
