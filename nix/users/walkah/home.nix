@@ -15,6 +15,7 @@
     ];
 
     activation.chezmoi = lib.hm.dag.entryAfter [ "installPackages" ] ''
+      export SSL_CERT_FILE="${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
       export PATH="${pkgs.git}/bin:${pkgs.openssh}/bin:$PATH"
       if [ ! -d $HOME/.local/share/chezmoi ]; then
         $DRY_RUN_CMD ${pkgs.chezmoi}/bin/chezmoi init --apply walkah/dotfiles
