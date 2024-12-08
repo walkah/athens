@@ -6,6 +6,6 @@
     cachix
     nixd
     nixf
-    nixpkgs-fmt
+    nixfmt-rfc-style
   ];
 }

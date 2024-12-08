@@ -1,7 +1,8 @@
 { config, lib, ... }:
 with lib;
 
-let cfg = config.walkah.coredns;
+let
+  cfg = config.walkah.coredns;
 in
 {
   options.walkah.coredns = {

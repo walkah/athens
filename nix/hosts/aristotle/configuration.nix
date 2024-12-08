@@ -60,6 +60,9 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
   ];
 
-  environment.systemPackages = with pkgs; [ libraspberrypi raspberrypi-eeprom ];
+  environment.systemPackages = with pkgs; [
+    libraspberrypi
+    raspberrypi-eeprom
+  ];
   security.sudo.wheelNeedsPassword = false;
 }

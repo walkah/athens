@@ -1,5 +1,10 @@
 ## From https://github.com/NixOS/nixpkgs/pull/100871
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 let
   cfg = config.services.ipfs-cluster;
@@ -14,8 +19,7 @@ in
   ###### interface
   options = {
     services.ipfs-cluster = {
-      enable = mkEnableOption
-        "Pinset orchestration for IPFS - requires ipfs daemon to be useful";
+      enable = mkEnableOption "Pinset orchestration for IPFS - requires ipfs daemon to be useful";
 
       user = mkOption {
         type = types.str;
@@ -30,7 +34,10 @@ in
       };
 
       consensus = mkOption {
-        type = types.enum [ "raft" "crdt" ];
+        type = types.enum [
+          "raft"
+          "crdt"
+        ];
         description = "Consensus protocol - 'raft' or 'crdt'. https://cluster.ipfs.io/documentation/guides/consensus/";
       };
 
@@ -74,27 +81,31 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [ pkgs.ipfs-cluster ];
     systemd = {
-      tmpfiles.rules =
-        [ "d '${cfg.dataDir}' - ${cfg.user} ${cfg.group} - -" ];
+      tmpfiles.rules = [ "d '${cfg.dataDir}' - ${cfg.user} ${cfg.group} - -" ];
 
       services.ipfs-cluster-init = {
-        path = [ "/run/wrappers" pkgs.ipfs-cluster ];
+        path = [
+          "/run/wrappers"
+          pkgs.ipfs-cluster
+        ];
         environment.IPFS_CLUSTER_PATH = cfg.dataDir;
         wantedBy = [ "default.target" ];
 
-        serviceConfig = {
-          # "" clears exec list (man systemd.service -> execStart)
-          ExecStart = [
-            ""
-            "${pkgs.ipfs-cluster}/bin/ipfs-cluster-service init --consensus ${cfg.consensus} ${initFlags}"
-          ];
-          Type = "oneshot";
-          RemainAfterExit = true;
-          User = cfg.user;
-          Group = cfg.group;
-        } // optionalAttrs (cfg.secretFile != null) {
-          EnvironmentFile = cfg.secretFile;
-        };
+        serviceConfig =
+          {
+            # "" clears exec list (man systemd.service -> execStart)
+            ExecStart = [
+              ""
+              "${pkgs.ipfs-cluster}/bin/ipfs-cluster-service init --consensus ${cfg.consensus} ${initFlags}"
+            ];
+            Type = "oneshot";
+            RemainAfterExit = true;
+            User = cfg.user;
+            Group = cfg.group;
+          }
+          // optionalAttrs (cfg.secretFile != null) {
+            EnvironmentFile = cfg.secretFile;
+          };
         unitConfig.ConditionDirectoryNotEmpty = "!${cfg.dataDir}";
       };
 
@@ -105,16 +116,23 @@ in
         wants = [ "ipfs-cluster-init.service" ];
         after = [ "ipfs-cluster-init.service" ];
 
-        serviceConfig = {
-          ExecStart =
-            [ "" "${pkgs.ipfs-cluster}/bin/ipfs-cluster-service daemon" ];
-          User = cfg.user;
-          Group = cfg.group;
-        } // optionalAttrs (cfg.secretFile != null) {
-          EnvironmentFile = cfg.secretFile;
-        };
+        serviceConfig =
+          {
+            ExecStart = [
+              ""
+              "${pkgs.ipfs-cluster}/bin/ipfs-cluster-service daemon"
+            ];
+            User = cfg.user;
+            Group = cfg.group;
+          }
+          // optionalAttrs (cfg.secretFile != null) {
+            EnvironmentFile = cfg.secretFile;
+          };
       };
     };
-    networking.firewall.allowedTCPPorts = mkIf cfg.openSwarmPort [ 9094 9096 ];
+    networking.firewall.allowedTCPPorts = mkIf cfg.openSwarmPort [
+      9094
+      9096
+    ];
   };
 }

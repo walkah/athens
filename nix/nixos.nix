@@ -1,6 +1,14 @@
-{ self, nixpkgs, home-manager, raspberry-pi-nix, sops-nix, ... }:
+{
+  self,
+  nixpkgs,
+  home-manager,
+  raspberry-pi-nix,
+  sops-nix,
+  ...
+}:
 let
-  mkSystem = hostName: modules:
+  mkSystem =
+    hostName: modules:
     let
       hostSystem = self.hosts.${hostName}.system;
     in

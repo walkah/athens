@@ -56,7 +56,11 @@ in
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC5spf4diguK+w7iYLFr565++6DjHukWfvpN2ru9dCRk nixbuild"
   ];
 
-  environment.systemPackages = with pkgs; [ cifs-utils pinentry weechat ];
+  environment.systemPackages = with pkgs; [
+    cifs-utils
+    pinentry
+    weechat
+  ];
   fileSystems = {
     "/mnt/downloads" = {
       device = "//parthenon/Downloads";
@@ -81,7 +85,6 @@ in
       ];
     };
   };
-
 
   power.ups = {
     enable = true;
@@ -144,27 +147,36 @@ in
       scrapeConfigs = [
         {
           job_name = "node";
-          static_configs = [{
-            targets = [
-              "plato:9100"
-              "agent:9100"
-              "form:9100"
-              "matter:9100"
-              "purpose:9100"
-              "socrates:9100"
-            ];
-          }];
+          static_configs = [
+            {
+              targets = [
+                "plato:9100"
+                "agent:9100"
+                "form:9100"
+                "matter:9100"
+                "purpose:9100"
+                "socrates:9100"
+              ];
+            }
+          ];
         }
         {
           job_name = "coredns";
-          static_configs = [{ targets = [ "plato:9153" ]; }];
+          static_configs = [ { targets = [ "plato:9153" ]; } ];
         }
         {
           job_name = "ipfs";
           metrics_path = "/debug/metrics/prometheus";
-          static_configs = [{
-            targets = [ "agent:5001" "form:5001" "matter:5001" "purpose:5001" ];
-          }];
+          static_configs = [
+            {
+              targets = [
+                "agent:5001"
+                "form:5001"
+                "matter:5001"
+                "purpose:5001"
+              ];
+            }
+          ];
         }
       ];
     };
@@ -173,7 +185,9 @@ in
     };
   };
 
-  walkah.coredns = { enable = true; };
+  walkah.coredns = {
+    enable = true;
+  };
 
   virtualisation.docker = {
     enable = true;

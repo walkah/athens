@@ -1,6 +1,10 @@
-{ ... }: {
+{ ... }:
+{
 
-  imports = [ ./common.nix ../../users ];
+  imports = [
+    ./common.nix
+    ../../users
+  ];
 
   nix = {
     configureBuildUsers = true;
@@ -18,7 +22,10 @@
       options = "--delete-older-than 30d";
     };
     settings = {
-      trusted-users = [ "root" "@admin" ];
+      trusted-users = [
+        "root"
+        "@admin"
+      ];
     };
   };
 

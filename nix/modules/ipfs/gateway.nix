@@ -40,9 +40,17 @@ in
     kubo = {
       enable = true;
       settings = {
-        Discovery = { MDNS = { Enabled = false; }; };
-        Peering = { Peers = peers; };
-        Swarm = { AddrFilters = null; };
+        Discovery = {
+          MDNS = {
+            Enabled = false;
+          };
+        };
+        Peering = {
+          Peers = peers;
+        };
+        Swarm = {
+          AddrFilters = null;
+        };
       };
     };
     nginx = {
@@ -50,14 +58,18 @@ in
       virtualHosts."walkah.cloud" = {
         forceSSL = true;
         enableACME = true;
-        locations."/" = { proxyPass = "http://127.0.0.1:8080"; };
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8080";
+        };
       };
 
       # Hosted Sites
       virtualHosts."walkah.net" = {
         forceSSL = true;
         enableACME = true;
-        locations."/" = { proxyPass = "http://127.0.0.1:8080"; };
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8080";
+        };
         serverAliases = [
           "www.walkah.net"
         ];

@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   sops.secrets.drone = {
     owner = "drone";
   };

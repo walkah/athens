@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   systemd.services.drone-runner-docker = {
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {

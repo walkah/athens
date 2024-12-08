@@ -1,6 +1,7 @@
 { config, ... }:
 
-let cfg = config.services.gitea;
+let
+  cfg = config.services.gitea;
 in
 {
   users.users.git = {
@@ -20,9 +21,15 @@ in
       lfs.enable = true;
 
       settings = {
-        log = { LEVEL = "Error"; };
-        other = { SHOW_FOOTER_VERSION = false; };
-        repository = { DEFAULT_BRANCH = "main"; };
+        log = {
+          LEVEL = "Error";
+        };
+        other = {
+          SHOW_FOOTER_VERSION = false;
+        };
+        repository = {
+          DEFAULT_BRANCH = "main";
+        };
         server = {
           DOMAIN = "walkah.dev";
           HTTP_ADDR = "0.0.0.0";
@@ -30,8 +37,12 @@ in
           ROOT_URL = "https://walkah.dev/";
           SSH_DOMAIN = "git.walkah.dev";
         };
-        service = { DISABLE_REGISTRATION = true; };
-        session = { COOKIE_SECURE = true; };
+        service = {
+          DISABLE_REGISTRATION = true;
+        };
+        session = {
+          COOKIE_SECURE = true;
+        };
       };
 
       dump.enable = false;

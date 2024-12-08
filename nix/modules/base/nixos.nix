@@ -1,6 +1,11 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
 
-  imports = [ ./common.nix ../monitoring ../../users ];
+  imports = [
+    ./common.nix
+    ../monitoring
+    ../../users
+  ];
 
   documentation = {
     enable = false;
@@ -22,7 +27,10 @@
     settings = {
       auto-optimise-store = true;
 
-      trusted-users = [ "root" "walkah" ];
+      trusted-users = [
+        "root"
+        "walkah"
+      ];
     };
   };
 
@@ -40,7 +48,11 @@
       enable = true;
       flake = "github:walkah/athens#${config.networking.hostName}";
       dates = "hourly";
-      flags = [ "--option" "tarball-ttl" "0" ];
+      flags = [
+        "--option"
+        "tarball-ttl"
+        "0"
+      ];
     };
     stateVersion = "23.05";
   };

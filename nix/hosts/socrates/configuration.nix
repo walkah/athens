@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
@@ -26,14 +27,20 @@
     hostName = "socrates";
     firewall = {
       allowPing = true;
-      allowedTCPPorts = [ 80 443 ];
+      allowedTCPPorts = [
+        80
+        443
+      ];
       trustedInterfaces = [ "tailscale0" ];
       checkReversePath = "loose";
     };
   };
 
   nix = {
-    settings.trusted-users = [ "@wheel" "root" ];
+    settings.trusted-users = [
+      "@wheel"
+      "root"
+    ];
   };
 
   security = {

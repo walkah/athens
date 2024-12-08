@@ -4,9 +4,16 @@ _: {
     buildMachines = [
       {
         hostName = "plato";
-        systems = [ "x86_64-linux" "aarch64-linux" ];
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
         maxJobs = 6;
-        supportedFeatures = [ "benchmark" "big-parallel" "kvm" ];
+        supportedFeatures = [
+          "benchmark"
+          "big-parallel"
+          "kvm"
+        ];
       }
     ];
     extraOptions = ''

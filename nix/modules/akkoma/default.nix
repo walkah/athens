@@ -41,9 +41,15 @@ in
           };
 
           "Pleroma.Web.Endpoint" = {
-            secret_key_base = { _secret = secrets.akkoma-secret-key-base.path; };
-            signing_salt = { _secret = secrets.akkoma-signing-salt.path; };
-            live_view.signing_salt = { _secret = secrets.akkoma-signing-salt.path; };
+            secret_key_base = {
+              _secret = secrets.akkoma-secret-key-base.path;
+            };
+            signing_salt = {
+              _secret = secrets.akkoma-signing-salt.path;
+            };
+            live_view.signing_salt = {
+              _secret = secrets.akkoma-signing-salt.path;
+            };
             url = {
               host = "walkah.social";
               scheme = "https";
@@ -57,12 +63,18 @@ in
         };
         ":web_push_encryption" = {
           ":vapid_details" = {
-            private_key = { _secret = secrets.akkoma-vapid-private-key.path; };
-            public_key = { _secret = secrets.akkoma-vapid-public-key.path; };
+            private_key = {
+              _secret = secrets.akkoma-vapid-private-key.path;
+            };
+            public_key = {
+              _secret = secrets.akkoma-vapid-public-key.path;
+            };
           };
         };
         ":joken" = {
-          ":default_signer" = { _secret = secrets.akkoma-joken-signer.path; };
+          ":default_signer" = {
+            _secret = secrets.akkoma-joken-signer.path;
+          };
         };
       };
       nginx = null; # doing this manually

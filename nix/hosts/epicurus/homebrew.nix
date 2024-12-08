@@ -8,7 +8,11 @@ _:
       "homebrew/services"
     ];
 
-    brews = [ "code-server" "coreutils" "mosh" ];
+    brews = [
+      "code-server"
+      "coreutils"
+      "mosh"
+    ];
 
     casks = [
       "1password"

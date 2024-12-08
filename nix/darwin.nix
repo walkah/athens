@@ -1,6 +1,12 @@
-{ self, darwin, home-manager, ... }:
+{
+  self,
+  darwin,
+  home-manager,
+  ...
+}:
 let
-  mkDarwin = hostName: modules:
+  mkDarwin =
+    hostName: modules:
     let
       hostSystem = self.hosts.${hostName}.system;
     in

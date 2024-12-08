@@ -42,20 +42,37 @@
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, deploy-rs, pre-commit-hooks, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem
-      (system:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = [ self.overlays.default ];
-          };
-        in
-        {
-          checks = import ./nix/checks.nix { inherit self pkgs deploy-rs system pre-commit-hooks; };
-          devShells = import ./nix/shells.nix { inherit self pkgs system; };
-          formatter = pkgs.nixpkgs-fmt;
-        })
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      deploy-rs,
+      pre-commit-hooks,
+      ...
+    }@inputs:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ self.overlays.default ];
+        };
+      in
+      {
+        checks = import ./nix/checks.nix {
+          inherit
+            self
+            pkgs
+            deploy-rs
+            system
+            pre-commit-hooks
+            ;
+        };
+        devShells = import ./nix/shells.nix { inherit self pkgs system; };
+        formatter = pkgs.nixfmt-rfc-style;
+      }
+    )
     // {
       hosts = import ./nix/hosts.nix;
       overlays.default = nixpkgs.lib.composeManyExtensions [ ];

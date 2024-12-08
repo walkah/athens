@@ -1,4 +1,10 @@
-{ system, pkgs, self, ... }: {
+{
+  system,
+  pkgs,
+  self,
+  ...
+}:
+{
   default = pkgs.mkShell {
     name = "athens";
     buildInputs = with pkgs; [

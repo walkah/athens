@@ -17,8 +17,14 @@ _:
             "/ip6/::/udp/4001/quic"
           ];
         };
-        API = { HTTPHeaders = { Access-Control-Allow-Origin = [ "*" ]; }; };
-        Routing = { Type = "dht"; };
+        API = {
+          HTTPHeaders = {
+            Access-Control-Allow-Origin = [ "*" ];
+          };
+        };
+        Routing = {
+          Type = "dht";
+        };
       };
     };
   };

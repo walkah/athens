@@ -17,7 +17,10 @@
             LC_CTYPE = "C";
       '';
     };
-    postgresqlBackup.databases = [ "matrix" "matrix-syncv3" ];
+    postgresqlBackup.databases = [
+      "matrix"
+      "matrix-syncv3"
+    ];
 
     matrix-synapse = {
       enable = true;
@@ -28,21 +31,30 @@
         enable_registration = false;
         database = {
           name = "psycopg2";
-          args = { database = "matrix"; };
+          args = {
+            database = "matrix";
+          };
         };
-        listeners = [{
-          bind_addresses = [
-            "0.0.0.0"
-          ];
-          port = 8008;
-          type = "http";
-          tls = false;
-          x_forwarded = true;
-          resources = [{
-            compress = false;
-            names = [ "client" "federation" ];
-          }];
-        }];
+        listeners = [
+          {
+            bind_addresses = [
+              "0.0.0.0"
+            ];
+            port = 8008;
+            type = "http";
+            tls = false;
+            x_forwarded = true;
+            resources = [
+              {
+                compress = false;
+                names = [
+                  "client"
+                  "federation"
+                ];
+              }
+            ];
+          }
+        ];
       };
       extraConfigFiles = [
         config.sops.secrets.matrix-registration-secret.path

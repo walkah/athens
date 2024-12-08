@@ -18,7 +18,10 @@
       "sr_mod"
     ];
     initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-intel" "wl" ];
+    kernelModules = [
+      "kvm-intel"
+      "wl"
+    ];
     extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
   };
 
@@ -32,7 +35,6 @@
     fsType = "vfat";
   };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/3a812874-3def-4e46-b20d-cd55fa7bdd5f"; }];
+  swapDevices = [ { device = "/dev/disk/by-uuid/3a812874-3def-4e46-b20d-cd55fa7bdd5f"; } ];
 
 }

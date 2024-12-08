@@ -10,7 +10,11 @@
     kubo = {
       enable = true;
       settings = {
-        Discovery = { MDNS = { Enabled = true; }; };
+        Discovery = {
+          MDNS = {
+            Enabled = true;
+          };
+        };
         Swarm = {
           AddrFilters = null;
           ConnMgr = {
