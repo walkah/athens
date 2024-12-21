@@ -47,6 +47,7 @@ _:
       "brave-browser"
       "bunch"
       "calibre"
+      "cursor"
       "discord"
       "docker"
       "element"
