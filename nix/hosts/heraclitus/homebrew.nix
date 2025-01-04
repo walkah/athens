@@ -18,6 +18,7 @@ _:
         name = "emacs-plus";
         args = [ "with-native-comp" ];
       }
+      "asdf"
       "awscli"
       "cmake"
       "coreutils"
