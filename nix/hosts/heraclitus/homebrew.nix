@@ -48,7 +48,6 @@ _:
       "brave-browser"
       "bunch"
       "calibre"
-      "cursor"
       "discord"
       "docker"
       "element"
@@ -78,6 +77,7 @@ _:
       "stats"
       "steam"
       "synology-drive"
+      "tailscale"
       "todoist"
       "visual-studio-code"
       "zoom"
@@ -89,7 +89,6 @@ _:
       DayOne = 1055511498;
       Drafts = 1435957248;
       HomeAssistant = 1099568401;
-      Tailscale = 1475387142;
       Xcode = 497799835;
     };
   };
