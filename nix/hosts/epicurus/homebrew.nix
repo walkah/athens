@@ -23,10 +23,10 @@ _:
       "plex-media-server"
       "stats"
       "synology-drive"
+      "tailscale"
     ];
 
     masApps = {
-      Tailscale = 1475387142;
       Xcode = 497799835;
     };
   };

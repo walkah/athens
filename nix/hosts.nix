@@ -37,13 +37,13 @@
   };
   epicurus = {
     type = "darwin";
-    address = "100.66.26.116";
+    address = "100.75.26.104";
     system = "aarch64-darwin";
     sshUser = "walkah";
   };
   heraclitus = {
     type = "darwin";
-    address = "100.107.57.128";
+    address = "100.72.149.31";
     system = "aarch64-darwin";
   };
 }
