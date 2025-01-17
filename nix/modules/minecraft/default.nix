@@ -21,6 +21,7 @@ _: {
       puffpuffpassion = "72e0d040-fa54-47e8-a6e7-162fdaa0cac5";
       rafadoodle = "9a7c860e-e269-4c38-b2f7-ca5533c27e98";
       camylamb = "c9fcbfa1-89da-4cf9-97fe-b9e5290a4eb4";
+      shortychark = "3f420f61-867f-4651-a849-d2e54f8c220d";
     };
   };
 }
