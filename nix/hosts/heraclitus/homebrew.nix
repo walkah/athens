@@ -34,8 +34,11 @@ _:
       "kubernetes-cli"
       "libtool"
       "mr"
+      "ollama"
+      "opentofu"
       "ripgrep"
       "tea"
+      "terraform"
       "watchman"
     ];
 
