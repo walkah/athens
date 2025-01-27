@@ -38,7 +38,6 @@ _:
       "opentofu"
       "ripgrep"
       "tea"
-      "terraform"
       "watchman"
     ];
 
