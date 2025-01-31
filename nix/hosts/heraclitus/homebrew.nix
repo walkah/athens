@@ -4,8 +4,6 @@ _:
   homebrew = {
     taps = [
       "homebrew/cask"
-      "homebrew/cask-fonts"
-      "homebrew/cask-versions"
       "homebrew/services"
       "walkah/tap"
       "1password/tap"
