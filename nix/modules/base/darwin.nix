@@ -7,7 +7,7 @@
   ];
 
   nix = {
-    configureBuildUsers = true;
+    enable = true;
 
     extraOptions = ''
       extra-platforms = x86_64-darwin aarch64-darwin
