@@ -40,7 +40,10 @@
 
   services = {
     openssh.enable = true;
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      extraSetFlags = [ "--webclient" ];
+    };
   };
 
   system = {
