@@ -19,6 +19,7 @@ _:
       "asdf"
       "awscli"
       "cmake"
+      "cocoapods"
       "coreutils"
       "drone-cli"
       "doppler"
@@ -81,6 +82,7 @@ _:
       "todoist"
       "visual-studio-code"
       "zoom"
+      "zulu@17"
     ];
 
     masApps = {
