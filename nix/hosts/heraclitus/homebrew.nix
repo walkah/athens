@@ -12,10 +12,6 @@ _:
     ];
 
     brews = [
-      {
-        name = "emacs-plus";
-        args = [ "with-native-comp" ];
-      }
       "asdf"
       "awscli"
       "cmake"
@@ -23,6 +19,7 @@ _:
       "coreutils"
       "drone-cli"
       "doppler"
+      "emacs-plus"
       "fontconfig"
       "gcc"
       "gh"
