@@ -44,6 +44,7 @@ _:
       "balenaetcher"
       "beeper"
       "brave-browser"
+      "bruno"
       "bunch"
       "calibre"
       "discord"
