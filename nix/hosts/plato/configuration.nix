@@ -13,6 +13,7 @@ in
     ../../modules/drone
     ../../modules/drone/runner-docker.nix
     ../../modules/gitea
+    ../../modules/k3s/server.nix
     ../../modules/matrix
     ../../modules/minecraft
     ../../modules/postgresql
