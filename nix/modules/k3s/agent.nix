@@ -3,6 +3,6 @@
 
   services.k3s = {
     role = "agent";
-    serverAddr = "https://<ip of first node>:6443";
+    serverAddr = "https://100.111.208.75:6443";
   };
 }
