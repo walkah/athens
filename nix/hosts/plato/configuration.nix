@@ -18,7 +18,6 @@ in
     ../../modules/minecraft
     ../../modules/postgresql
     ../../modules/sops
-    ../../modules/traefik
   ];
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" ];
