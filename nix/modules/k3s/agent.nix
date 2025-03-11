@@ -1,8 +1,12 @@
+_:
+let
+  hosts = import ../../hosts.nix;
+in
 {
   imports = [ ./common.nix ];
 
   services.k3s = {
     role = "agent";
-    serverAddr = "https://100.111.208.75:6443";
+    serverAddr = "https://${hosts.plato.address}:6443";
   };
 }

@@ -14,6 +14,12 @@
   # See: https://github.com/NixOS/nixos-hardware/issues/858
   boot.initrd.systemd.tpm2.enable = false;
 
+  boot.kernelParams = [
+    "cgroup_enable=memory"
+    "cgroup_enable=cpuset"
+    "cgroup_memory=1"
+  ];
+
   raspberry-pi-nix.board = "bcm2711";
   hardware.raspberry-pi.config = {
     all = {
