@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    matrix-synapse-tools.synadm
-  ];
-
   services = {
     postgresql = {
       enable = true;

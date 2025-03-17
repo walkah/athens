@@ -33,6 +33,7 @@ _:
       "ollama"
       "opentofu"
       "ripgrep"
+      "sentry-cli"
       "tea"
       "watchman"
     ];
