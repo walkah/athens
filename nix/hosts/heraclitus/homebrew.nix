@@ -8,6 +8,7 @@ _:
       "walkah/tap"
       "1password/tap"
       "d12frosted/emacs-plus"
+      "dracula/install"
       "heroku/brew"
     ];
 
@@ -28,6 +29,7 @@ _:
       "ipfs"
       "kind"
       "kubernetes-cli"
+      "kustomize"
       "libtool"
       "mr"
       "ollama"
@@ -35,6 +37,7 @@ _:
       "ripgrep"
       "sentry-cli"
       "tea"
+      "terminal-notifier"
       "watchman"
     ];
 
@@ -50,6 +53,7 @@ _:
       "calibre"
       "discord"
       "docker"
+      "dracula-xcode"
       "element"
       "fantastical"
       "figma"
