@@ -3,7 +3,6 @@
 {
   imports = [
     ./default.nix
-    ../../services/ipfs-cluster.nix
   ];
 
   services = {
