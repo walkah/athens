@@ -15,6 +15,7 @@ _:
     brews = [
       "asdf"
       "awscli"
+      "btop"
       "cmake"
       "cocoapods"
       "coreutils"

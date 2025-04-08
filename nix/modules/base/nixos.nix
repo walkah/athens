@@ -12,6 +12,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    btop
     htop
     inetutils
     vim

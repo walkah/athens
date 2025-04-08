@@ -15,6 +15,7 @@ _:
 
     casks = [
       "1password"
+      "btop"
       "docker"
       "font-jetbrains-mono"
       "font-jetbrains-mono-nerd-font"
