@@ -70,7 +70,7 @@
             ;
         };
         devShells = import ./nix/shells.nix { inherit self pkgs system; };
-        formatter = pkgs.nixfmt-rfc-style;
+        formatter = pkgs.nixfmt-tree;
       }
     )
     // {
