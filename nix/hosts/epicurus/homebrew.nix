@@ -8,6 +8,7 @@ _:
     ];
 
     brews = [
+      "btop"
       "code-server"
       "coreutils"
       "mosh"
@@ -15,7 +16,6 @@ _:
 
     casks = [
       "1password"
-      "btop"
       "docker"
       "font-jetbrains-mono"
       "font-jetbrains-mono-nerd-font"
