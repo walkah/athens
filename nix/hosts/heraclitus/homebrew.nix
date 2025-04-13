@@ -32,6 +32,7 @@ _:
       "kubernetes-cli"
       "kustomize"
       "libtool"
+      "mas"
       "mr"
       "ollama"
       "opentofu"
@@ -89,14 +90,13 @@ _:
       "zulu@17"
     ];
 
-    # TODO: re-enable when https://github.com/nix-darwin/nix-darwin/issues/1323 is resolved
-    # masApps = {
-    # OnePasswordSafari = 1569813296;
-    # Bumpr = 1166066070;
-    # DayOne = 1055511498;
-    # Drafts = 1435957248;
-    # HomeAssistant = 1099568401;
-    # Xcode = 497799835;
-    # };
+    masApps = {
+      OnePasswordSafari = 1569813296;
+      Bumpr = 1166066070;
+      DayOne = 1055511498;
+      Drafts = 1435957248;
+      HomeAssistant = 1099568401;
+      Xcode = 497799835;
+    };
   };
 }

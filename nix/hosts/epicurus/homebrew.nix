@@ -11,6 +11,7 @@ _:
       "btop"
       "code-server"
       "coreutils"
+      "mas"
       "mosh"
     ];
 
@@ -26,9 +27,8 @@ _:
       "tailscale"
     ];
 
-    # TODO: re-enable when https://github.com/nix-darwin/nix-darwin/issues/1323 is resolved
-    # masApps = {
-    # Xcode = 497799835;
-    # };
+    masApps = {
+      Xcode = 497799835;
+    };
   };
 }
