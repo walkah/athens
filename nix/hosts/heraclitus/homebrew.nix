@@ -15,6 +15,7 @@ _:
     brews = [
       "asdf"
       "awscli"
+      "biome"
       "btop"
       "cmake"
       "cocoapods"
@@ -36,6 +37,7 @@ _:
       "mr"
       "ollama"
       "opentofu"
+      "podman"
       "ripgrep"
       "sentry-cli"
       "tea"
@@ -76,6 +78,7 @@ _:
       "obsidian"
       "opal-composer"
       "plexamp"
+      "podman-desktop"
       "raycast"
       "slack"
       "sonos"
