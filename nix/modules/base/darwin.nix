@@ -49,5 +49,8 @@
     };
   };
 
-  system.stateVersion = 4;
+  system = {
+    primaryUser = "walkah";
+    stateVersion = 4;
+  };
 }
