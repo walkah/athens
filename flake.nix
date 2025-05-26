@@ -6,11 +6,6 @@
     raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
     flake-utils.url = "github:numtide/flake-utils";
 
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +42,6 @@
       self,
       nixpkgs,
       flake-utils,
-      deploy-rs,
       pre-commit-hooks,
       ...
     }@inputs:
@@ -64,7 +58,6 @@
           inherit
             self
             pkgs
-            deploy-rs
             system
             pre-commit-hooks
             ;
@@ -79,7 +72,6 @@
 
       darwinConfigurations = import ./nix/darwin.nix inputs;
       nixosConfigurations = import ./nix/nixos.nix inputs;
-      deploy = import ./nix/deploy.nix inputs;
 
       nixConfig = {
         extra-substituters = [

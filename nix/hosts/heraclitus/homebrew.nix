@@ -39,7 +39,6 @@ _:
       "opentofu"
       "podman"
       "ripgrep"
-      "sentry-cli"
       "tea"
       "terminal-notifier"
       "watchman"
@@ -48,6 +47,7 @@ _:
     casks = [
       "1password"
       "1password-cli"
+      "actual"
       "android-studio"
       "balenaetcher"
       "beeper"

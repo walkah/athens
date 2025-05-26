@@ -1,7 +1,5 @@
 {
-  self,
   system,
-  deploy-rs,
   pre-commit-hooks,
   ...
 }:
@@ -15,4 +13,3 @@
     };
   };
 }
-// (deploy-rs.lib.${system}.deployChecks self.deploy)

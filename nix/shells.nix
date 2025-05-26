@@ -8,7 +8,6 @@
   default = pkgs.mkShell {
     name = "athens";
     buildInputs = with pkgs; [
-      deploy-rs
       deadnix
       doctl
       nixd
