@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    systems.url = "github:nix-systems/default";
     raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
-    flake-utils.url = "github:numtide/flake-utils";
 
     darwin = {
       url = "github:nix-darwin/nix-darwin/master";
@@ -41,31 +41,29 @@
     {
       self,
       nixpkgs,
-      flake-utils,
       pre-commit-hooks,
+      systems,
       ...
     }@inputs:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [ self.overlays.default ];
-        };
-      in
-      {
-        checks = import ./nix/checks.nix {
+    let
+      forAllSystems =
+        fn: nixpkgs.lib.genAttrs (import systems) (system: fn system nixpkgs.legacyPackages.${system});
+    in
+    {
+      checks = forAllSystems (
+        system: pkgs:
+        import ./nix/checks.nix {
           inherit
             self
             pkgs
-            system
             pre-commit-hooks
+            system
             ;
-        };
-        devShells = import ./nix/shells.nix { inherit self pkgs system; };
-        formatter = pkgs.nixfmt-tree;
-      }
-    )
+        }
+      );
+      devShells = forAllSystems (system: pkgs: import ./nix/shells.nix { inherit self pkgs system; });
+      formatter = forAllSystems (_: pkgs: pkgs.nixfmt-tree);
+    }
     // {
       hosts = import ./nix/hosts.nix;
       overlays.default = nixpkgs.lib.composeManyExtensions [ ];

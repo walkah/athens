@@ -13,7 +13,6 @@ let
       hostSystem = self.hosts.${hostName}.system;
     in
     nixpkgs.lib.nixosSystem {
-      system = hostSystem;
       modules = [
         home-manager.nixosModules.home-manager
         (_: {
@@ -21,6 +20,7 @@ let
           nixpkgs.overlays = [ self.overlays.default ];
           nixpkgs.config.allowUnfree = true;
         })
+        { nixpkgs.hostPlatform = hostSystem; }
       ] ++ modules;
       specialArgs = { inherit raspberry-pi-nix sops-nix; };
     };
