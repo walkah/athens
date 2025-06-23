@@ -17,14 +17,14 @@ _:
 
     casks = [
       "1password"
-      "docker"
+      "docker-desktop"
       "font-jetbrains-mono"
       "font-jetbrains-mono-nerd-font"
       "gpg-suite"
       "plex-media-server"
       "stats"
       "synology-drive"
-      "tailscale"
+      "tailscale-app"
     ];
 
     masApps = {
