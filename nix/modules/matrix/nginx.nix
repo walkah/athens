@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+_:
 
 {
   services.nginx = {
@@ -7,7 +7,10 @@
       "matrix.walkah.chat" = {
         forceSSL = true;
         enableACME = true;
-        locations."/" = {
+        locations."/_matrix" = {
+          proxyPass = "http://100.111.208.75:8008";
+        };
+        locations."/_synapse/client" = {
           proxyPass = "http://100.111.208.75:8008";
         };
       };
@@ -51,9 +54,9 @@
               add_header Access-Control-Allow-Origin *;
               return 200 '${builtins.toJSON client}';
             '';
-          "/" = {
-            root = pkgs.element-web;
-          };
+          # "/" = {
+          #   root = pkgs.element-web;
+          # };
         };
       };
     };

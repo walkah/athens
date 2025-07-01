@@ -55,6 +55,7 @@ _:
       "bruno"
       "bunch"
       "calibre"
+      "claude"
       "discord"
       "docker-desktop"
       "dracula-xcode"
