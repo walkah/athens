@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   automount_opts = "uid=1000,gid=1000,x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
   inherit (config.sops) secrets;
@@ -85,6 +90,12 @@ in
       ];
     };
   };
+
+  nixpkgs.config.allowInsecurePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "broadcom-sta" # aka “wl”
+    ];
 
   power.ups = {
     enable = true;
