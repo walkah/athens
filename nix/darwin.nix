@@ -18,7 +18,8 @@ let
           networking.hostName = hostName;
           nixpkgs.overlays = [ self.overlays.default ];
         })
-      ] ++ modules;
+      ]
+      ++ modules;
       specialArgs = { inherit home-manager; };
     };
 in

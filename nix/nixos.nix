@@ -21,7 +21,8 @@ let
           nixpkgs.config.allowUnfree = true;
         })
         { nixpkgs.hostPlatform = hostSystem; }
-      ] ++ modules;
+      ]
+      ++ modules;
       specialArgs = { inherit raspberry-pi-nix sops-nix; };
     };
 in
