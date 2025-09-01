@@ -90,6 +90,7 @@ _:
       "tailscale-app"
       "todoist-app"
       "visual-studio-code"
+      "zen"
       "zoom"
       "zulu@17"
     ];
