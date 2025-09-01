@@ -134,7 +134,7 @@ in
       paths = [
         "/var/backup"
       ];
-      repo = "ssh://fk0o7077@fk0o7077.repo.borgbase.com/./repo";
+      repo = "ssh://h7ug55o3@h7ug55o3.repo.borgbase.com/./repo";
       encryption = {
         mode = "repokey-blake2";
         passCommand = "cat /root/borgbackup/passphrase";
