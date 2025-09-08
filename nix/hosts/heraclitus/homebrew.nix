@@ -14,8 +14,7 @@ _:
 
     brews = [
       "asdf"
-      "awscli"
-      "block-goose-cli"
+      "argocd"
       "cmake"
       "cocoapods"
       "coreutils"
@@ -35,6 +34,7 @@ _:
       "ollama"
       "opentofu"
       "podman"
+      "r"
       "ripgrep"
       "tea"
       "terminal-notifier"
@@ -65,7 +65,6 @@ _:
       "font-jetbrains-mono-nerd-font"
       "ghostty"
       "google-chrome"
-      "google-cloud-sdk"
       "gpg-suite"
       "hazel"
       "jordanbaird-ice"
@@ -77,6 +76,7 @@ _:
       "opal-composer"
       "plexamp"
       "raycast"
+      "rstudio"
       "slack"
       "sonos"
       "spotify"
