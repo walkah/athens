@@ -18,7 +18,10 @@ _:
       "cmake"
       "cocoapods"
       "coreutils"
-      "emacs-plus"
+      {
+        name = "emacs-plus";
+        args = [ "--with-c9rgreen-sonoma-icon" ];
+      }
       "fontconfig"
       "gcc"
       "gh"
