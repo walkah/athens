@@ -130,6 +130,16 @@ in
   };
 
   services = {
+    avahi = {
+      enable = true;
+      nssmdns = true;
+
+      publish = {
+        enable = true;
+        userServices = true;
+      };
+    };
+
     borgbackup.jobs."borgbase" = {
       paths = [
         "/var/backup"
