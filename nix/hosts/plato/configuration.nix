@@ -63,7 +63,7 @@ in
 
   environment.systemPackages = with pkgs; [
     cifs-utils
-    pinentry
+    pinentry-curses
     weechat
   ];
   fileSystems = {
@@ -132,7 +132,7 @@ in
   services = {
     avahi = {
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
 
       publish = {
         enable = true;

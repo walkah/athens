@@ -26,7 +26,7 @@ in
 {
   imports = [ ./default.nix ];
 
-  environment.systemPackages = with pkgs; [ ipfs-migrator ];
+  environment.systemPackages = with pkgs; [ kubo-migrator ];
 
   environment.etc = {
     "ipfs/denylists/badbits.deny".source = ./badbits.deny;
