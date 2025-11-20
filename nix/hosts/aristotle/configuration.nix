@@ -7,7 +7,7 @@
     ../../modules/base/nixos.nix
     raspberry-pi-nix.nixosModules.raspberry-pi
     ../../modules/ipfs/cluster.nix
-    ../../modules/k3s/agent.nix
+    # ../../modules/k3s/agent.nix
     ../../modules/sops
   ];
 
