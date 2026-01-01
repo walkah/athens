@@ -19,10 +19,7 @@ _:
       "cmake"
       "cocoapods"
       "coreutils"
-      {
-        name = "emacs-plus";
-        args = [ "--with-c9rgreen-sonoma-icon" ];
-      }
+      "emacs-plus"
       "fontconfig"
       "gcc"
       "gh"
@@ -49,7 +46,6 @@ _:
     casks = [
       "1password"
       "1password-cli"
-      "actual"
       "android-studio"
       "arc"
       "balenaetcher"
@@ -58,6 +54,7 @@ _:
       "bunch"
       "calibre"
       "claude"
+      "cleanmymac"
       "discord"
       "dracula-xcode"
       "element"
@@ -83,9 +80,7 @@ _:
       "rstudio"
       "slack"
       "sonos"
-      "spotify"
       "stats"
-      "steam"
       "synology-drive"
       "tailscale-app"
       "todoist-app"
