@@ -12,17 +12,17 @@ in
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/base/nixos.nix
+    ../../nix/modules/base/nixos.nix
 
-    ../../modules/coredns
-    ../../modules/drone
-    ../../modules/drone/runner-docker.nix
-    ../../modules/gitea
-    # ../../modules/k3s/server.nix
-    ../../modules/matrix
-    ../../modules/minecraft
-    ../../modules/postgresql
-    ../../modules/sops
+    ../../nix/modules/coredns
+    ../../nix/modules/drone
+    ../../nix/modules/drone/runner-docker.nix
+    ../../nix/modules/gitea
+    # ../../nix/modules/k3s/server.nix
+    ../../nix/modules/matrix
+    ../../nix/modules/minecraft
+    ../../nix/modules/postgresql
+    ../../nix/modules/sops
   ];
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" ];

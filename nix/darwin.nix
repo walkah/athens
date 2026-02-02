@@ -24,6 +24,6 @@ let
     };
 in
 {
-  epicurus = mkDarwin "epicurus" [ ./hosts/epicurus/darwin-configuration.nix ];
-  heraclitus = mkDarwin "heraclitus" [ ./hosts/heraclitus/darwin-configuration.nix ];
+  epicurus = mkDarwin "epicurus" [ ../hosts/epicurus/darwin-configuration.nix ];
+  heraclitus = mkDarwin "heraclitus" [ ../hosts/heraclitus/darwin-configuration.nix ];
 }

@@ -4,11 +4,11 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../modules/base/nixos.nix
+    ../../nix/modules/base/nixos.nix
     raspberry-pi-nix.nixosModules.raspberry-pi
-    ../../modules/ipfs/cluster.nix
-    # ../../modules/k3s/agent.nix
-    ../../modules/sops
+    ../../nix/modules/ipfs/cluster.nix
+    # ../../nix/modules/k3s/agent.nix
+    ../../nix/modules/sops
   ];
 
   # See: https://github.com/NixOS/nixos-hardware/issues/858

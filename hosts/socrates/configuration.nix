@@ -3,19 +3,19 @@
   imports = [
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
-    ../../modules/base/nixos.nix
+    ../../nix/modules/base/nixos.nix
 
-    ../../modules/akkoma
-    ../../modules/akkoma/nginx.nix
-    ../../modules/coredns
-    ../../modules/code-server/nginx.nix
-    ../../modules/drone/nginx.nix
-    ../../modules/gitea/nginx.nix
-    ../../modules/home-assistant/nginx.nix
-    ../../modules/ipfs/gateway.nix
-    ../../modules/matrix/nginx.nix
-    ../../modules/minecraft/proxy.nix
-    ../../modules/sops
+    ../../nix/modules/akkoma
+    ../../nix/modules/akkoma/nginx.nix
+    ../../nix/modules/coredns
+    ../../nix/modules/code-server/nginx.nix
+    ../../nix/modules/drone/nginx.nix
+    ../../nix/modules/gitea/nginx.nix
+    ../../nix/modules/home-assistant/nginx.nix
+    ../../nix/modules/ipfs/gateway.nix
+    ../../nix/modules/matrix/nginx.nix
+    ../../nix/modules/minecraft/proxy.nix
+    ../../nix/modules/sops
   ];
 
   boot.tmp.cleanOnBoot = true;

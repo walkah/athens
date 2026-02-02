@@ -3,9 +3,9 @@
   imports = [
     ./homebrew.nix
 
-    ../../modules/base/darwin.nix
-    ../../modules/dev
-    ../../modules/builder
+    ../../nix/modules/base/darwin.nix
+    ../../nix/modules/dev
+    ../../nix/modules/builder
   ];
 
   system = {
