@@ -126,7 +126,9 @@ in
 
   sops.secrets = {
     filesystems-parthenon = { };
-    grafana-secret-key = { };
+    grafana-secret-key = {
+      owner = "grafana";
+    };
     upsmon = { };
   };
 
