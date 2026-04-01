@@ -126,6 +126,7 @@ in
 
   sops.secrets = {
     filesystems-parthenon = { };
+    grafana-secret-key = { };
     upsmon = { };
   };
 
@@ -157,6 +158,9 @@ in
     grafana = {
       enable = true;
       settings = {
+        security = {
+          secret_key = "$__file{${secrets.grafana-secret-key.path}}";
+        };
         server = {
           domain = "plato.walkah.lab";
           http_port = 2342;
