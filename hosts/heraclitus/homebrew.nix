@@ -40,6 +40,7 @@ _:
       "ripgrep"
       "tea"
       "terminal-notifier"
+      "thefuck"
       "watchman"
     ];
 
@@ -49,7 +50,6 @@ _:
       "android-studio"
       "arc"
       "balenaetcher"
-      "beeper"
       "brave-browser"
       "bunch"
       "calibre"
@@ -79,6 +79,7 @@ _:
       "podman-desktop"
       "raycast"
       "rstudio"
+      "signal"
       "slack"
       "sonos"
       "stats"
