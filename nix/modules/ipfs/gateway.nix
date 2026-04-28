@@ -39,6 +39,7 @@ in
   services = {
     kubo = {
       enable = true;
+      enableGC = true;
       settings = {
         Discovery = {
           MDNS = {
