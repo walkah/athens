@@ -14,6 +14,7 @@ _:
 
     brews = [
       "act"
+      "apfel"
       "asdf"
       "argocd"
       "cmake"
@@ -25,7 +26,7 @@ _:
       "gh"
       "helm"
       "heroku"
-      "ipfs"
+      "kubo"
       "kind"
       "kubernetes-cli"
       "kustomize"
@@ -97,8 +98,15 @@ _:
       OnePasswordSafari = 1569813296;
       Bumpr = 1166066070;
       DayOne = 1055511498;
+      Developer = 640199958;
       Drafts = 1435957248;
+      GoodNotes = 1444383602;
       HomeAssistant = 1099568401;
+      Ivory = 6444602274;
+      Mela = 1568924476;
+      Parcel = 375589283;
+      Reeder = 1529448980;
+      TestFlight = 899247664;
       Xcode = 497799835;
     };
   };

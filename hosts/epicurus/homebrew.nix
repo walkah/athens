@@ -8,6 +8,7 @@ _:
     ];
 
     brews = [
+      "apfel"
       "btop"
       "code-server"
       "coreutils"
