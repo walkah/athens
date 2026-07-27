@@ -2,7 +2,7 @@
   self,
   nixpkgs,
   home-manager,
-  raspberry-pi-nix,
+  nixos-hardware,
   sops-nix,
   ...
 }:
@@ -23,7 +23,7 @@ let
         { nixpkgs.hostPlatform = hostSystem; }
       ]
       ++ modules;
-      specialArgs = { inherit raspberry-pi-nix sops-nix; };
+      specialArgs = { inherit nixos-hardware sops-nix; };
     };
 in
 {

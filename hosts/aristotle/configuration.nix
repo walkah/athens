@@ -1,65 +1,50 @@
-{ pkgs, raspberry-pi-nix, ... }:
+{ pkgs, nixos-hardware, ... }:
 
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../nix/modules/base/nixos.nix
-    raspberry-pi-nix.nixosModules.raspberry-pi
+    nixos-hardware.nixosModules.raspberry-pi-4
     ../../nix/modules/ipfs/cluster.nix
     # ../../nix/modules/k3s/agent.nix
     ../../nix/modules/sops
   ];
 
-  # See: https://github.com/NixOS/nixos-hardware/issues/858
-  boot.initrd.systemd.tpm2.enable = false;
+  boot = {
+    # See: https://github.com/NixOS/nixos-hardware/issues/858
+    initrd.systemd.tpm2.enable = false;
+    initrd.availableKernelModules = [
+      "xhci_pci"
+      "usbhid"
+      "usb_storage"
+    ];
 
-  boot.kernelParams = [
-    "cgroup_enable=memory"
-    "cgroup_enable=cpuset"
-    "cgroup_memory=1"
-  ];
+    kernelParams = [
+      "cgroup_enable=memory"
+      "cgroup_enable=cpuset"
+      "cgroup_memory=1"
+    ];
 
-  raspberry-pi-nix.board = "bcm2711";
-  hardware.raspberry-pi.config = {
-    all = {
-      dt-overlays = {
-        rpi-poe = {
-          enable = true;
-          params = {
-            poe_fan_temp0 = {
-              enable = true;
-              value = 50000;
-            };
-            poe_fan_temp1 = {
-              enable = true;
-              value = 60000;
-            };
-            poe_fan_temp2 = {
-              enable = true;
-              value = 70000;
-            };
-            poe_fan_temp3 = {
-              enable = true;
-              value = 80000;
-            };
-          };
-        };
-      };
+    loader = {
+      grub.enable = false;
+      generic-extlinux-compatible.enable = true;
+    };
+  };
+
+  hardware.raspberry-pi = {
+    firmware = {
+      enable = true;
+      uboot.enable = true;
+    };
+    "4".poe-hat = {
+      enable = true;
     };
   };
 
   time.timeZone = "America/Toronto";
   networking = {
-    # networking.hostName = "nixos"; # Define your hostname.
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-    # Per-interface useDHCP will be mandatory in the future, so this generated config
-    # replicates the default behaviour.
-    useDHCP = false;
-    interfaces.eth0.useDHCP = true;
-    interfaces.wlan0.useDHCP = true;
+    useDHCP = true;
     firewall.enable = false;
   };
 
