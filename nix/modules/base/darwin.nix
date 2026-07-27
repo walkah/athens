@@ -21,6 +21,21 @@
       };
       options = "--delete-older-than 30d";
     };
+
+    linux-builder = {
+      enable = true;
+      maxJobs = 4;
+      config = {
+        virtualisation = {
+          darwin-builder = {
+            diskSize = 40 * 1024;
+            memorySize = 8 * 1024;
+          };
+          cores = 6;
+        };
+      };
+    };
+
     settings = {
       trusted-users = [
         "root"
@@ -43,7 +58,7 @@
     };
     onActivation = {
       autoUpdate = true;
-      cleanup = "zap";
+      cleanup = "none";
       upgrade = true;
     };
   };

@@ -6,7 +6,6 @@ _: {
         hostName = "plato";
         systems = [
           "x86_64-linux"
-          "aarch64-linux"
         ];
         maxJobs = 6;
         supportedFeatures = [
