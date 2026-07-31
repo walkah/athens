@@ -10,6 +10,7 @@
     buildInputs = with pkgs; [
       deadnix
       doctl
+      nh
       nixd
       nixf
       nixpkgs-fmt

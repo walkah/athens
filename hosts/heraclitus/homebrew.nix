@@ -5,11 +5,18 @@ _:
     taps = [
       "homebrew/cask"
       "homebrew/services"
-      "walkah/tap"
-      "1password/tap"
-      "d12frosted/emacs-plus"
-      "dracula/install"
-      "heroku/brew"
+      {
+        name = "1password/tap";
+        trusted = true;
+      }
+      {
+        name = "d12frosted/emacs-plus";
+        trusted = true;
+      }
+      {
+        name = "dracula/install";
+        trusted = true;
+      }
     ];
 
     brews = [
@@ -25,7 +32,6 @@ _:
       "gcc"
       "gh"
       "helm"
-      "heroku"
       "kubo"
       "kind"
       "kubernetes-cli"
@@ -41,7 +47,6 @@ _:
       "ripgrep"
       "tea"
       "terminal-notifier"
-      "thefuck"
       "watchman"
     ];
 
@@ -69,7 +74,6 @@ _:
       "google-chrome"
       "gpg-suite"
       "hazel"
-      "jordanbaird-ice@beta"
       "logi-options+"
       "logitech-camera-settings"
       "microsoft-edge"
@@ -87,6 +91,7 @@ _:
       "steam"
       "synology-drive"
       "tailscale-app"
+      "thaw"
       "todoist-app"
       "visual-studio-code"
       "zen"
