@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    systems.url = "github:nix-systems/default";
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
@@ -46,12 +45,17 @@
       self,
       nixpkgs,
       pre-commit-hooks,
-      systems,
       ...
     }@inputs:
     let
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
+
       forAllSystems =
-        fn: nixpkgs.lib.genAttrs (import systems) (system: fn system nixpkgs.legacyPackages.${system});
+        fn: nixpkgs.lib.genAttrs systems (system: fn system nixpkgs.legacyPackages.${system});
     in
     {
       checks = forAllSystems (
