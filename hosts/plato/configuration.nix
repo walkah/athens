@@ -23,6 +23,7 @@ in
     ../../nix/modules/minecraft
     ../../nix/modules/postgresql
     ../../nix/modules/sops
+    ../../nix/modules/traefik
   ];
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" ];
