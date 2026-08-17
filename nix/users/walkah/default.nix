@@ -2,14 +2,14 @@
 
 {
   users.users.walkah = {
-    home = if pkgs.stdenv.isDarwin then "/Users/walkah" else "/home/walkah";
+    home = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/walkah" else "/home/walkah";
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0mE4MyMnfd1b2nlBJT7kpZ6Vov+ILuGNfzdp5ZBNQe walkah@walkah.net"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM8YMax7PGIrcPNIHkpuNRFgn3HJK6Wepm+ycZWO6jfR walkah@walkah-ipadpro11"
     ];
   }
-  // lib.optionalAttrs pkgs.stdenv.isLinux {
+  // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
     extraGroups = [
       "wheel"
       "docker"
