@@ -77,6 +77,15 @@ in
           };
         };
       };
+      frontends = {
+        primary = {
+          package = pkgs.akkoma-fe;
+          name = "akkoma-fe";
+          ref = "stable";
+        };
+        # disable admin-fe for now (build is failing)
+        # TODO: re-enable admin-fe (or migrate?)
+      };
       nginx = null; # doing this manually
     };
 
