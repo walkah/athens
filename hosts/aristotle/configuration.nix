@@ -37,9 +37,6 @@
       enable = true;
       uboot.enable = true;
     };
-    "4".poe-hat = {
-      enable = true;
-    };
   };
 
   time.timeZone = "America/Toronto";
