@@ -31,7 +31,7 @@ in
           DEFAULT_BRANCH = "main";
         };
         server = {
-          DOMAIN = "walkah.dev";
+          BASE_URL = "walkah.dev";
           HTTP_ADDR = "0.0.0.0";
           HTTP_PORT = 8003;
           ROOT_URL = "https://walkah.dev/";
