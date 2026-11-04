@@ -54,7 +54,6 @@ _:
       "1password"
       "1password-cli"
       "android-studio"
-      "arc"
       "balenaetcher"
       "brave-browser"
       "bunch"
@@ -100,6 +99,7 @@ _:
     ];
 
     masApps = {
+      Amperfy = 1530145038;
       OnePasswordSafari = 1569813296;
       Bumpr = 1166066070;
       DayOne = 1055511498;
