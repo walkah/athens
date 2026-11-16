@@ -3,7 +3,7 @@
   services = {
     postgresql = {
       enable = true;
-      package = pkgs.postgresql_14;
+      package = pkgs.postgresql_18;
     };
 
     postgresqlBackup = {
@@ -17,7 +17,7 @@
       let
         # XXX specify the postgresql package you'd like to upgrade to.
         # Do not forget to list the extensions you need.
-        newPostgres = pkgs.postgresql_15;
+        newPostgres = pkgs.postgresql_18;
       in
       pkgs.writeScriptBin "upgrade-pg-cluster" ''
         set -eux
