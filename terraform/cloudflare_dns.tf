@@ -15,3 +15,15 @@ resource "cloudflare_record" "walkah_codes" {
   content = digitalocean_droplet.socrates.ipv4_address
 }
 
+resource "cloudflare_zone" "walkah_pub" {
+  account_id = local.account_id
+  zone       = "walkah.pub"
+}
+
+resource "cloudflare_record" "walkah_pup" {
+  zone_id = cloudflare_zone.walkah_pub.id
+  name    = "walkah.pub"
+  type    = "A"
+  proxied = true
+  content = digitalocean_droplet.socrates.ipv4_address
+}

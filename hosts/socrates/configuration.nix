@@ -11,6 +11,7 @@
     ../../nix/modules/code-server/nginx.nix
     ../../nix/modules/drone/nginx.nix
     ../../nix/modules/gitea/nginx.nix
+    ../../nix/modules/gotosocial/nginx.nix
     ../../nix/modules/home-assistant/nginx.nix
     ../../nix/modules/ipfs/gateway.nix
     ../../nix/modules/matrix/nginx.nix

@@ -13,4 +13,20 @@ services:
     volumes:
       - "/var/lib/navidrome:/data"
       - "/mnt/music:/music:ro"
- 
+  gotosocial:
+    image: docker.io/superseriousbusiness/gotosocial:latest
+    container_name: gotosocial
+    user: 1000:1000
+    environment:
+      GTS_HOST: walkah.pub
+      GTS_DB_TYPE: sqlite
+      GTS_DB_ADDRESS: /gotosocial/storage/sqlite.db
+      GTS_LETSENCRYPT_ENABLED: "false"
+      GTS_WAZERO_COMPILATION_CACHE: /gotosocial/.cache
+      TZ: America/Toronto
+    ports:
+      - "8088:8080"
+    volumes:
+      - /var/lib/gotosocial/storage:/gotosocial/storage
+      - /var/lib/gotosocial/.cache:/gotosocial/.cache
+    restart: "always"
